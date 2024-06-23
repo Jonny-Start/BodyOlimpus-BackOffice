@@ -1,0 +1,24 @@
+{
+  "name": "bodyolimpus",
+  "version": "1.0.0",
+  "description": "Sistema de gestión para administrar usuarios y contenido de los gimnasios.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "scss": "node-sass -w public/scss -o public/css --output-style compressed"
+  },
+  "keywords": [],
+  "author": "JonnyStart",
+  "license": "GPL-3.0 license",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "node-sass": "^9.0.0",
+    "pm2": "^5.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
