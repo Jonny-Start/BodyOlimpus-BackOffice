@@ -1,24 +1,20 @@
 'use strict'
 const axios = require('axios');
 require('dotenv').config();
-const Message = require('./../utils/message-views');
-const localStorage = require('./../utils/localStorage');
-
+const Message = require('../utils/Message');
+const API = require('./consume_api');
+const { setToken } = require('./../utils/cookie');
 
 const login = {
 
   get: async (req, res) => {
     try {
-      // Ejemplo de llamada a una API con Axios
-      const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
-      const data = response.data;
       res.render('index', {
         body: 'login',
-        data,
-        errors: Message.errorMessage,
-        succes: Message.successMessage,
+        errors: Message.error,
+        succes: Message.success,
       });
-      Message.crearMessage();
+      return Message.crearMessage();
     } catch (error) {
       console.error(error);
       return res.status(500).send('Error fetching data');
@@ -27,43 +23,26 @@ const login = {
 
   post: async (req, res) => {
     try {
-      //Validar req.body email y password existan
       const { email, password } = req.body;
 
-      const URL = process.env.URL_API + '/api/company/login';
+      if (!email || !password) {
+        Message.error.push('Existen campos obligatorios vacíos');
+        return res.redirect('/login');
+      }
 
       const dataSend = {
         email,
         password
       }
 
-      // Configuración opcional (encabezados, autenticación, etc.)
-      const config = {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer tu_token_de_autenticación'
-        }
-      };
+      const response = await API.post({ req, res, endpoint: '/company/login', dataSend: dataSend });
 
-      const response = await axios.post(URL, dataSend, config)
-        .then(response => response)
-        .catch(error => {
-          return error.response.data
-        });
-
-      const isError = response.data.data.errorMessage;
-      if (isError) {
-        // crear notificaciones 
-        isError == 'Data in the request is invalid' ? Message.errorMessage.push('Datos incorrectos') : Message.errorMessage.push(isError);
+      if (Message.error.length > 0) {
         return res.redirect('/login');
       }
-      // localStorage.push();
 
-      const data = response.data;
-      return res.render('index', {
-        body: 'login',
-        data
-      });
+      await setToken(res, response.data.token);
+      return res.redirect('home');
     } catch (error) {
       console.error(error);
       return res.status(500).send('Error fetching data');

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const loginController = require('../controllers/login.controller');
 const homeController = require('../controllers/home.controller');
+const {removeToken} = require('../utils/cookie');
 
 
 
@@ -16,8 +17,8 @@ router.route('/login')
     .post(loginController.post);
 
 
-router.get('/logout', (req, res) => {
-    req.session = '';
+router.get('/logout', async (req, res) => {
+    await removeToken(res);
     res.redirect('/');
 });
 

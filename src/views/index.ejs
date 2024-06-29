@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <%- include(body, { data: data }) %>
+  <%- include(body, { data: typeof data !='undefined' ? data : [] }) %>
 </body>
 
 </html>

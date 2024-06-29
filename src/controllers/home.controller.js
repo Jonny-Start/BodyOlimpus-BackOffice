@@ -1,6 +1,4 @@
 'use strict'
-const { errorMessage, succesMessage } = require('./../utils/message-views');
-
 const home = {
 
     get: async (req, res) => {

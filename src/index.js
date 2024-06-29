@@ -1,5 +1,7 @@
 const express = require('express');
 const path = require('path');
+const cookieParser = require('cookie-parser');
+require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -7,10 +9,7 @@ const port = process.env.PORT || 4000;
 // Configurar Express para manejar datos de formularios
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-// Esto para el manejo de mensajes de éxito o fracaso, usando la sesión
-const flash = require('connect-flash');
-app.use(flash());
+app.use(cookieParser());
 
 // Middleware para permitir CORS
 app.use(function (req, res, next) {
@@ -36,7 +35,10 @@ app.use('/', indexRouter);
 // Middleware para manejar errores
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send('Something broke!');
+  if(process.env.NODE_ENV === 'production') {
+    return res.status(500).send('Something broke!');
+  }
+  // next();
 });
 
 app.listen(port, () => {
