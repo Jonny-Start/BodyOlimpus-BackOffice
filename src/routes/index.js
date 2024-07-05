@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const loginController = require('../controllers/login.controller');
 const homeController = require('../controllers/home.controller');
-const {removeToken} = require('../utils/cookie');
+const { removeToken, validateAccess } = require('../utils/cookie');
 
 
 
@@ -11,18 +11,18 @@ const notImplement = (req, res) => {
 }
 
 
-router.get('/', loginController.get);
+router.get('/', validateAccess, loginController.get);
 router.route('/login')
-    .get(loginController.get)
-    .post(loginController.post);
+    .get(validateAccess, loginController.get)
+    .post(validateAccess, loginController.post);
 
 
 router.get('/logout', async (req, res) => {
     await removeToken(res);
-    res.redirect('/');
+    res.redirect('/login');
 });
 
 router.get('/resetPassword', notImplement);
-router.get('/home', homeController.get)
+router.get('/home', validateAccess, homeController.get)
 
 module.exports = router;

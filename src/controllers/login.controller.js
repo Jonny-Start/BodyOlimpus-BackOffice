@@ -41,8 +41,8 @@ const login = {
         return res.redirect('/login');
       }
 
-      await setToken(res, response.data.token);
-      return res.redirect('home');
+      await setToken(res, response.token);
+      return res.redirect('/home');
     } catch (error) {
       console.error(error);
       return res.status(500).send('Error fetching data');
