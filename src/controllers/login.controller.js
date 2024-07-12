@@ -1,5 +1,4 @@
 'use strict'
-const axios = require('axios');
 require('dotenv').config();
 const Message = require('../utils/Message');
 const API = require('./consume_api');
