@@ -1,28 +1,63 @@
 <%- include("./hooks/notifications"); -%>
-<main>
-    <h1>Data from API</h1>
-    <ul>
+
+<div class="shape"></div>
+
+    <main id="contentLogin">
+
+        <h1>Iniciar sesión</h1>
+
         <form action="/login" method="post">
-            <label for="email">Email</label>
-            <input type="email" name="email" required>
-            <label for="password">Contraseña</label>
-            <input type="password" name="password" required>
 
-            <!-- <a href="/register">Registrarse</a> -->
+            <div class="contentInputs">
+                <label for="email">Correo electrónico</label>
+                <input type="email" name="email" id="email" autocomplete="email" placeholder="email@dominio.com"
+                    required>
+                <ion-icon name="mail-outline"></ion-icon>
+            </div>
 
+            <div class="contentInputs contentPassword">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" autocomplete="current-password"
+                    placeholder="clave secreta" required>
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                <ion-icon name="eye-off-outline" id="eyeClose" class="hide" onclick="showPassword()"></ion-icon>
+                <ion-icon name="eye-outline" id="eyeOpen" onclick="showPassword()"></ion-icon>
+            </div>
 
+            <a href="/resetPassword" class="textChangePass">Cambiar la contraseña <i
+                    class="fa-solid fa-arrow-right"></i></a>
 
-            <a href="/resetPassword">Cambiar la contraseña</a>
+            <button type="submit" class="btn-primary">Enviar</button>
 
-            <button type="submit">Enviar</button>
         </form>
-        <hr />
-        o
-        <hr />
 
-        <a href="http://localhost:3000/auth/google"><i class="fa-brands fa-google"></i></a>
-        <a href="http://localhost:3000/auth/microsoft"><i class="fa-brands fa-microsoft"></i></i></a>
-        
+        <div class="separator">
+            <span></span>
+            <p>Ó</p>
+            <span></span>
+        </div>
 
-    </ul>
-</main>
+        <div class="contentIcons">
+            <a href="http://localhost:3000/auth/google">
+                <img src="/img/google.svg" alt="icono de google">
+            </a>
+            <a href="http://localhost:3000/auth/microsoft">
+                <img src="/img/outlook.svg" alt="icono de outlook">
+            </a>
+        </div>
+
+    </main>
+
+    <div class="shape"></div>
+
+    <script>
+        function showPassword() {
+            const password = document.getElementById('password');
+            const eyeOpen = document.getElementById('eyeOpen');
+            const eyeClose = document.getElementById('eyeClose');
+
+            eyeOpen.classList.toggle('hide');
+            eyeClose.classList.toggle('hide');
+            eyeClose.classList.contains('hide') ? password.type = 'password' : password.type = 'text';
+        }
+    </script>

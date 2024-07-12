@@ -1,2 +1,185 @@
-@import 'login';
-@import 'home';
+.hide {
+    display: none;
+}
+
+body {
+    background-color: $primary-Black-BO;
+    font-family: "Lexend Deca Regular", sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    color: white;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: "Lexend Deca Light", sans-serif;
+    font-weight: normal;
+}
+
+/* Inputs */
+.contentInputs {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2em;
+    position: relative;
+
+    label {
+        color: white;
+        font-size: 1.2em;
+        margin-bottom: 5px;
+        text-align: left;
+    }
+
+    ion-icon {
+        position: absolute;
+        left: 10px;
+        top: 68%;
+        transform: translateY(-50%);
+        color: #545358;
+        font-size: 1.5em;
+    }
+
+    input {
+        line-height: 2em;
+        height: 50px;
+        padding: 0 10px;
+        padding-left: 40px;
+        font-size: 1em;
+        background-color: $secondary-Black-BO;
+        border: 0px;
+        border-bottom: 3px solid $primary-Blue-BO;
+        outline: none;
+        border-radius: 10px;
+        color: #545358;
+    }
+
+    input:focus {
+        box-shadow: 0px 4px 4.5px 0px $secondary-Blue-Brandeis-BO;
+        border-bottom: 3px solid transparent !important;
+    }
+
+    input:focus,
+    input:not(:placeholder-shown) {
+        line-height: 2em;
+        height: 50px;
+        padding: 0 10px;
+        padding-left: 40px;
+        font-size: 1em;
+        background-color: $secondary-Black-BO;
+        border: 0px;
+        border-bottom: 3px solid $primary-Blue-BO;
+        outline: none;
+        border-radius: 10px;
+        color: white;
+    }
+
+    input:focus~ion-icon,
+    input:not(:placeholder-shown)~ion-icon {
+        color: white;
+    }
+}
+
+.contentPassword {
+    ion-icon[name^="eye"] {
+        position: absolute;
+        right: 10px;
+        left: auto;
+        top: 68%;
+        transform: translateY(-50%);
+        color: white;
+        font-size: 1.5em;
+    }
+
+    input {
+        padding-right: 40px;
+    }
+}
+
+/* Botones */
+.btn-primary {
+    color: white;
+    background-color: $primary-Blue-BO;
+    font-size: 17px;
+    line-height: 42px;
+    border: 0px;
+    border-radius: 10px;
+    width: 140px;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #146EF5;
+}
+
+.btn-primary:disabled {
+    background-color: #8BBAE9;
+}
+
+/* Definición de las fuentes */
+@font-face {
+    font-family: "Lexend Deca Regular";
+    font-weight: normal;
+    font-style: normal;
+    src: url("./LexendDeca-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Lexend Deca Bold";
+    font-weight: bold;
+    font-style: normal;
+    src: url("./LexendDeca-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Lexend Deca Semi Bold";
+    font-weight: 600;
+    font-style: normal;
+    src: url("./LexendDeca-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Lexend Deca Medium";
+    font-weight: 500;
+    font-style: normal;
+    src: url("./LexendDeca-Medium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Lexend Deca Light";
+    font-weight: 300;
+    font-style: normal;
+    src: url("./LexendDeca-Light.ttf") format("truetype");
+}
+
+/* Clases CSS */
+.lexend-deca-regular {
+    font-family: "Lexend Deca Regular", sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.lexend-deca-bold {
+    font-family: "Lexend Deca Bold", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.lexend-deca-semi-bold {
+    font-family: "Lexend Deca Semi Bold", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.lexend-deca-medium {
+    font-family: "Lexend Deca Medium", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.lexend-deca-light {
+    font-family: "Lexend Deca Light", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
