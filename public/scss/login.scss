@@ -1,3 +1,13 @@
+// body#login{
+//     background-image: url(../img/Trama-BO.svg);
+//     background-repeat: no-repeat;
+//     background-position: center;
+//     object-fit: cover;
+//     background-attachment: fixed;
+//     background-size: contain;
+//     background-blend-mode: hard-light;
+// }
+
 div.shapeLogin:nth-of-type(1) {
     padding: 0;
     margin: 0;
@@ -52,14 +62,22 @@ main#contentLogin {
     h1 {
         color: white;
         text-align: center;
-        margin-bottom: 20px;
         font-size: 2em;
-        margin-top: 0;
+        margin-top: 1em;
         margin-bottom: 1.5em;
         text-shadow: 2px 2px 5px #3e71d2;
     }
 
     form {
+
+        img {
+            position: fixed;
+            top: -71px;
+            width: 17em;
+            left: 23%;
+            mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+        }
+
         a.textChangePass {
             display: block;
             text-align: left;
