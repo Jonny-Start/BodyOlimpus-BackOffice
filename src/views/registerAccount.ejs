@@ -1,0 +1,23 @@
+<%- include("./hooks/notifications"); -%>
+    <main id="registerAccount">
+
+        <img src="/img/Logo_Black-transparent.svg" alt="logo de BodyOlimpus">
+
+        <h1>Registro</h1>
+        
+        <form action="/recoverPassword" method="post">
+            
+            <div class="contentInputs">
+                <label for="email">Correo electrónico</label>
+                <input type="email" name="email" id="email" autocomplete="email" placeholder="email@dominio.com"
+                required>
+                <ion-icon name="mail-outline"></ion-icon>
+            </div>
+            
+            <p>Al registrarte, aceptas la <a href="#"> Política de Privacidad </a> y los <a href="#">Términos y Condiciones </a> de Body Olimpus.</p>
+            
+            <button type="submit" class="btn-primary">Continuar</button>
+
+        </form>
+
+    </main>

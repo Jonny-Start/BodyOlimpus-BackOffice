@@ -11,6 +11,13 @@ const notImplement = (req, res) => {
 }
 
 
+router.get('/privacy_policies', (req, res) => {
+    res.render('privacy_policies');
+});
+router.get('/terms', (req, res) => {
+    res.render('terms');
+});
+
 router.get('/', validateAccess, loginController.get);
 router.route('/login')
     .get(validateAccess, loginController.get)
@@ -24,5 +31,8 @@ router.get('/logout', async (req, res) => {
 
 router.get('/recoverPassword', recoverPassword.get);
 router.get('/home', validateAccess, homeController.get)
+
+const registerAccount = require('../controllers/registerAccount.controller.js');
+router.get('/registerAccount', registerAccount.get);
 
 module.exports = router;

@@ -1,0 +1,200 @@
+nav#navBar {
+    background-color: transparent;
+    //width: 13em;
+    width: calc(18vw - 1em);
+    height: 100vh;
+    // min-width: 13em;
+    margin-left: 1em;
+    padding: 1em 0px 1em 0px;
+
+    overflow: auto;
+    scroll-behavior: smooth;
+
+    div#contentHeadNav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background-color: $primary-Black-BO;
+        position: sticky;
+        top: 0px;
+        z-index: 2;
+
+        padding-top: 2em;
+
+        img {
+            width: 4em;
+        }
+
+        p {
+            font-size: 14px;
+            margin-left: 5px;
+            // width: 9.4em;
+
+            span {
+                display: block;
+            }
+
+            span:first-of-type {
+                font-size: 9px;
+                font-weight: bold;
+            }
+        }
+    }
+
+    div#profileNav {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+
+        background-color: $primary-Black-BO;
+        // mask-image: linear-gradient( $primary-Black-BO 90%, transparent 10%);
+        mask-image: linear-gradient(to bottom, $primary-Black-BO 20%, $primary-Black-BO 90%, transparent);
+
+
+        position: sticky;
+        top: 89px;
+        z-index: 2;
+
+        div#contentImg {
+            background-color: #9ee39e;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            text-align: center;
+
+            p {
+                line-height: 80px;
+                margin: 0;
+                color: #467546;
+                font-size: 25px;
+                font-weight: bold;
+            }
+        }
+
+        // p{}
+    }
+
+    ul.nav__list {
+        list-style: none;
+        padding-left: 1em;
+        margin-bottom: 1em;
+
+        li.nav__title {
+            font-size: 17px;
+            padding-left: 1rem;
+
+            p {
+                margin: 10px 0px 10px 0px;
+            }
+        }
+
+        li.nav__item {
+            padding: 10px 0px 10px 1.5rem;
+            font-size: 14px;
+            position: relative;
+            border-radius: 7px 0px 0px 7px;
+
+            a {
+                color: white;
+                text-decoration: none;
+                display: flex;
+                align-items: flex-end;
+                // width: -webkit-fill-available;
+                // height: -webkit-fill-available;
+                i,
+                ion-icon {
+                    margin-right: 7px;
+                    font-size: 19px;
+                }
+            }
+        }
+
+        li.nav__item:hover {
+            background-color: #8bbae840;
+
+            a {
+
+                i,
+                ion-icon {
+                    color: #3E71D2;
+                }
+            }
+        }
+
+        li.nav__item:hover::before {
+            content: '';
+            display: block;
+            width: 10px;
+            height: 100%;
+            background-color: #3E71D2;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 7px 0px 0px 7px;
+        }
+    }
+
+    .icono {
+        cursor: pointer;
+        position: sticky;
+        bottom: 19px;
+        width: fit-content;
+        height: fit-content;
+
+        i {
+            color: #8BBAE9;
+            font-size: 18px;
+        }
+    }
+}
+
+/* Ajustes del scroll */
+// nav#navBar::before {
+//     content: "";
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     height: 50%;
+//     width: 200%;
+//     background: transparent;
+//     z-index: 1;
+//     overflow: auto;
+//     mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+// }
+
+/* Personalización del scrollbar */
+nav#navBar::-webkit-scrollbar {
+    // width: 7px;
+    display: none;
+}
+
+// nav#navBar::-webkit-scrollbar-thumb {
+//     background: #cec9c9;
+//     border-radius: 6px;
+// }
+
+// nav#navBar::-webkit-scrollbar-thumb:hover {
+//     background: #3E71D2;
+//     //Hover de la barra
+// }
+
+
+// nav#navBar::-webkit-scrollbar-button {
+//     display: none;
+//     //Puede funcionar en otros sistemas
+// }
+
+
+// nav#navBar::-webkit-scrollbar-track-piece {
+//     background: #ffffff; // color del fondo del scroll
+// }
+
+// //Ajuste del tamaño del scroll (No funciona)
+// nav#navBar::-webkit-scrollbar-thumb:vertical {
+//     height: 50px;
+// }
+
+
+/* End scroll */

@@ -1,0 +1,74 @@
+main#registerAccount {
+    height: 600px;
+    width: 400px;
+    // background-color: #3e71d221;
+    background-color: $primary-White-BO;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 20px;
+    // backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+    padding: 20px 35px;
+    text-align: center;
+    z-index: 2;
+
+    box-shadow: 4px 3px 11px 0px #9a6affad;
+
+    img {
+        width: 8em;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        opacity: 0.2;
+    }
+
+    h1 {
+        color: $primary-Black-BO;
+        text-align: center;
+        margin-bottom: 35px;
+        font-size: 2em;
+        margin-top: 2em;
+        text-shadow: 2px 2px 5px #3e71d2;
+    }
+
+    p {
+        margin-bottom: 3em;
+        font-size: small;
+        color: $primary-Black-BO;
+
+        a {
+            color: $secondary-Purple-BO;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    }
+
+    form {
+        label {
+            color: $primary-Black-BO;
+        }
+
+        input {
+            background-color: white;
+        }
+
+        input:focus,
+        input:not(:placeholder-shown) {
+            color: $primary-Black-BO;
+        }
+    
+        input:focus~ion-icon,
+        input:not(:placeholder-shown)~ion-icon {
+            color: $primary-Black-BO;
+        }
+
+
+        button {
+            margin-top: 2em;
+            width: 100%;
+        }
+    }
+}

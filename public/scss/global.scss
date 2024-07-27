@@ -8,6 +8,19 @@ body {
     font-weight: normal;
     font-style: normal;
     color: white;
+    margin: 0;
+
+    overflow: hidden;
+}
+
+main.containsNav {
+    background-color: $primary-White-BO;
+    width: 82vw;
+    height: 100vh;
+    border-radius: 60px 0px 0px 0px;
+
+    position: sticky;
+    top: 0;
 }
 
 button,

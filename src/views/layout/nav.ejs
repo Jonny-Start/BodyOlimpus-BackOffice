@@ -1,1 +1,132 @@
-<nav id="nav" class="nav"></nav>
+<nav id="navBar" class="">
+
+    <div id="contentHeadNav">
+        <img src="/img/Logo_White-transparent.svg" alt="Icono BodyOlimpus">
+        <p>
+            <span>BodyOlimpus</span>
+            <span>Name GYM</span>
+        </p>
+    </div>
+
+    <div id="profileNav">
+        <div id="contentImg">
+            <p>J</p>
+        </div>
+        <p>Hola, Jonny</p>
+    </div>
+
+    <ul class="nav__list">
+        <li class="nav__title">
+            <p>Admin</p>
+        </li>
+        <li class="nav__item">
+            <a href="#" class="nav__link"> <ion-icon name="home-outline"></ion-icon> Home</a>
+        </li>
+        <li class="nav__item">
+            <a href="#" class="nav__link"> <ion-icon name="address-card-regular"></ion-icon> Roles</a>
+        </li>
+        <li class="nav__item">
+            <a href="#" class="nav__link"> <ion-icon name="business-outline"></ion-icon> Empresa</a>
+        </li>
+        <li class="nav__item">
+            <a href="#" class="nav__link"> <ion-icon name="people-outline"></ion-icon> Usuarios</a>
+        </li>
+        <!--------------------------------------------------------------------------------------->
+        <li class="nav__title">
+            <p>Clientes</p>
+        </li>
+        <li class="nav__item">
+            <a href="#" class="nav__link"> <ion-icon name="list-outline"></ion-icon> Lista</a>
+        </li>
+        <li class="nav__item">
+            <a href="#" class="nav__link"> <ion-icon name="checkbox-outline"></ion-icon> Asignaciones</a>
+        </li>
+        <li class="nav__item">
+            <a href="#" class="nav__link"> <ion-icon name="user-settings"></ion-icon> Ajustes</a>
+        </li>
+        <!--------------------------------------------------------------------------------------->
+        <li class="nav__title">
+            <p>Contenidos</p>
+        </li>
+        <li class="nav__item">
+            <a href="#" class="nav__link"> <ion-icon name="weightlifting"></ion-icon> Ejercicios</a>
+        </li>
+        <li class="nav__item">
+            <a href="#" class="nav__link"> <ion-icon name="food"></ion-icon> Alimentación</a>
+        </li>
+        <li class="nav__item">
+            <a href="#" class="nav__link"> <ion-icon name="layers-outline"></ion-icon> Grupos</a>
+        </li>
+        <!--------------------------------------------------------------------------------------->
+        <li class="nav__title">
+            <p>Eventos</p>
+        </li>
+        <li class="nav__item">
+            <a href="#" class="nav__link"> <ion-icon name="calendar-outline"></ion-icon> Nuevo evento</a>
+        </li>
+        <li class="nav__item">
+            <a href="#" class="nav__link"> <ion-icon name="clock-rotate-left-solid"></ion-icon> Historico</a>
+        </li>
+        <!--------------------------------------------------------------------------------------->
+        <li class="nav__title">
+            <p>Cuenta</p>
+        </li>
+        <li class="nav__item">
+            <a href="#" class="nav__link"> <ion-icon name="id-card-outline"></ion-icon> Perfil</a>
+        </li>
+        <li class="nav__item">
+            <a href="/logout" class="nav__link"> <ion-icon name="person-through-window-solid"></ion-icon> Cerrar sesion</a>
+        </li>
+    </ul>
+
+    <div class="icono" onclick="toggleScroll()">
+        <i class="fa-solid fa-angles-down"></i>
+    </div>
+</nav>
+
+<script>
+    function toggleScroll() {
+        var navBar = document.getElementById('navBar');
+        var icon = document.querySelector('.icono i');
+
+        if (navBar.scrollTop === 0) {
+            navBar.scrollTo({ top: navBar.scrollHeight, behavior: 'smooth' });
+            icon.className = 'fa-solid fa-angles-up';
+        } else {
+            navBar.scrollTo({ top: 0, behavior: 'smooth' });
+            icon.className = 'fa-solid fa-angles-down';
+        }
+    }
+
+    function updateIconVisibility() {
+        var navBar = document.getElementById('navBar');
+        var icon = document.querySelector('.icono');
+
+        // console.log('navBar.scrollHeight: ', navBar.scrollHeight);
+        // console.log('navBar.clientHeight: ', navBar.clientHeight);
+
+        var absoluteDifference = Math.abs(navBar.scrollHeight - navBar.clientHeight);
+
+        if (navBar.scrollHeight > navBar.clientHeight && absoluteDifference > 15) {
+            icon.style.display = 'block';
+        } else {
+            icon.style.display = 'none';
+        }
+    }
+
+    document.getElementById('navBar').addEventListener('scroll', function () {
+        var navBar = document.getElementById('navBar');
+        var icon = document.querySelector('.icono i');
+
+        if (navBar.scrollTop === 0) {
+            icon.className = 'fa-solid fa-angles-down';
+        } else if (navBar.scrollTop + navBar.clientHeight >= navBar.scrollHeight) {
+            icon.className = 'fa-solid fa-angles-up';
+        }
+    });
+
+    // Actualizar la visibilidad del icono al cargar la página
+    window.addEventListener('load', updateIconVisibility);
+    // Actualizar la visibilidad del icono al cambiar el tamaño de la ventana
+    window.addEventListener('resize', updateIconVisibility);
+</script>
