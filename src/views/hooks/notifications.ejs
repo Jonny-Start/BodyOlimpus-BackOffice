@@ -1,15 +1,20 @@
 <!-- Errors -->
+
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+
 <% if(typeof errors !="undefined" && errors.length> 0){ %>
-    <ul class="list-group">
+    <ul class="notifications">
       <% for (let i=0; i < errors.length; i++) { %>
-        <li class="list-group-item list-group-item-danger errorNotification">
-          <span class="contentText-list-group">
-            <i class="fa-regular fa-circle-xmark icon-list-group"></i>
-            <p class="text-list-group">
+        <li class="animate__animated animate__backInLeft errorNotification"  id="test">
+          <span class="">
+            <p class="">
               <%= errors[i] %>
             </p>
+            <i class="fa-regular fa-circle-xmark" onclick="testFunction()"></i>
           </span>
-          <i class="fa-solid fa-xmark icon-list-group"></i>
         </li>
       <% } %>
     </ul>
@@ -17,17 +22,40 @@
    
   <!-- Success -->
 <% if(typeof success !="undefined" && success.length> 0){ %>
-    <ul class="list-group">
+    <ul class="notifications">
       <% for (let j=0; j < success.length; j++) { %>
-        <li class="list-group-item list-group-item-success successNotification">
-          <span class="contentText-list-group">
-            <i class="fa-regular fa-circle-check icon-list-group"></i>
-            <p class="text-list-group">
+        <li class="successNotification">
+          <span class="">
+            <p class="">
               <%= success[j] %>
             </p>
+            <i class="fa-regular fa-circle-check"></i>
           </span>
-          <i class="fa-solid fa-xmark icon-list-group"></i>
         </li>
       <% } %>
     </ul>
 <% } %>
+
+<!-- Warnings // NO usada en el momento -->
+<% if(typeof warnings !="undefined" && warnings.length> 0){ %>
+    <ul class="notifications">
+      <% for (let k=0; k < warnings.length; k++) { %>
+        <li class="warningNotification">
+          <span class="">
+            <p class="">
+              <%= warnings[k] %>
+            </p>
+            <i class="fa-regular fa-circle-exclamation"></i>
+          </span>
+        </li>
+      <% } %>
+    </ul>
+<% } %>
+
+<script>
+  function testFunction(){
+    const test = document.getElementById('test');
+    test.classList.remove('animate__backInLeft');
+    test.classList.add('animate__backOutLeft');
+  }
+</script>

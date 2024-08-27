@@ -2,6 +2,52 @@
     display: none;
 }
 
+/* Notificaciones */
+ul.notifications {
+    position: absolute;
+    z-index: 100;
+    width: fit-content;
+    padding: 0;
+    margin-left: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30em;
+        gap: 12px;
+        margin: 5px;
+        border-radius: 10px;
+        background-color: #1E2029;
+
+        span {
+            display: contents;
+
+            i {
+                font-size: 25px;
+                cursor: pointer;
+                position: absolute;
+                right: 10px;
+            }
+        }
+    }
+
+    li.successNotification {
+        color: #14F546;
+        border: 2px #14F546 solid;
+    }
+
+    li.errorNotification {
+        color: #F51414;
+        border: 2px #F51414 solid;
+    }
+}
+
+/* FIN de notificaciones */
+
 body {
     background-color: $primary-Black-BO;
     font-family: "Lexend Deca Regular", sans-serif;
