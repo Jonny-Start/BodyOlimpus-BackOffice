@@ -17,7 +17,7 @@ ul.notifications {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 30em;
+        width: 32em;
         gap: 12px;
         margin: 5px;
         border-radius: 10px;
@@ -59,7 +59,7 @@ body {
     overflow: hidden;
 }
 
-main.containsNav {
+main.internal_view {
     background-color: $primary-White-BO;
     width: 82vw;
     height: 100vh;
@@ -67,6 +67,8 @@ main.containsNav {
 
     position: sticky;
     top: 0;
+
+    color: $primary-Black-BO;
 }
 
 button,

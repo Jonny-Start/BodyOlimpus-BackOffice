@@ -1,4 +1,73 @@
 body#home {
     display: grid;
     grid-template-columns: repeat(2, auto);
+
+    main {
+        display: flex;
+        flex-direction: row;
+
+        section#dashBoard {
+            width: -webkit-fill-available;
+            padding: 1em 2em;
+
+            #content_title {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                h1 {
+                    margin: 0;
+                    width: fit-content;
+                    font-size: 35px;
+                    text-align: center;
+                    font-weight: 100;
+
+                    margin-left: 1em;
+
+                    p {
+                        margin: 0;
+                        font-size: 17px;
+                        color: #6D6D6D;
+                    }
+                }
+
+
+                #content_buttons {
+                    button {
+                        box-shadow: 1px 1px 6px 0px #0000006e;
+                        background-color: white;
+                        padding: 8px 10px;
+                        border-radius: 15px;
+                        border: 1px solid rgba(30, 32, 41, 0.17);
+                        height: 55px;
+
+                        ion-icon {
+                            color: white;
+                            background-color: black;
+                            border-radius: 50%;
+                            padding: 5px;
+                            font-size: 2em;
+                        }
+                    }
+
+                }
+            }
+
+            #information_cards{
+                h2{
+
+                }
+                .content_cards{
+                    .card{
+                        
+                    }
+                }
+            }
+        }
+
+        section#infUsers {
+            min-width: 20em;
+            background-color: red;
+        }
+    }
 }
