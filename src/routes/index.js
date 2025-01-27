@@ -19,17 +19,15 @@ router.get('/terms', (req, res) => {
 });
 
 router.get('/', validateAccess, loginController.get);
-router.route('/login')
-    .get(validateAccess, loginController.get)
-    .post(validateAccess, loginController.post);
-
+router.route('/login').get(validateAccess, loginController.get).post(validateAccess, loginController.post);
 
 router.get('/logout', async (req, res) => {
     await removeToken(res);
     res.redirect('/login');
 });
 
-router.get('/recoverPassword', recoverPassword.get);
+router.route('/recoverPassword').get(recoverPassword.get).post(recoverPassword.post);
+
 router.get('/home', validateAccess, homeController.get)
 
 const registerAccount = require('../controllers/registerAccount.controller.js');

@@ -21,26 +21,26 @@ const recoverPassword = {
 
   post: async (req, res) => {
     try {
-      //   const { email, password } = req.body;
+      const { email } = req.body;
 
-      //   if (!email || !password) {
-      //     Message.error.push('Existen campos obligatorios vacíos');
-      //     return res.redirect('/login');
-      //   }
+      if (!email) {
+        Message.error.push('El correo electrónico es requerido');
+        return res.redirect('/recoverPassword');
+      }
 
-      //   const dataSend = {
-      //     email,
-      //     password
-      //   }
+      const dataSend = { email: email }
 
-      //   const response = await API.post({ req, res, endpoint: '/company/login', dataSend: dataSend });
+      const response = await API.post({ req, res, endpoint: '/sendMail/recoverPassword', dataSend: dataSend });
 
-      //   if (Message.error.length > 0) {
-      //     return res.redirect('/login');
-      //   }
+      if (response == false) {
 
-      //   await setToken(res, response.token);
-      //   return res.redirect('/home');
+      }
+
+      if (Message.error.length > 0) {
+        return res.redirect('/recoverPassword');
+      }
+
+      return res.redirect('/recoverPassword');
     } catch (error) {
       console.error(error);
       return res.status(500).send('Error fetching data');
