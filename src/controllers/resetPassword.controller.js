@@ -3,12 +3,12 @@ require('dotenv').config();
 const Message = require('../utils/Message');
 const API = require('./consume_api');
 
-const registerAccount = {
+const resetPassword = {
 
     get: async (req, res) => {
         try {
             res.render('index', {
-                body: 'registerAccount',
+                body: 'resetPassword',
                 errors: Message.error,
                 success: Message.success,
             });
@@ -21,4 +21,4 @@ const registerAccount = {
 
 };
 
-module.exports = registerAccount;
+module.exports = resetPassword;

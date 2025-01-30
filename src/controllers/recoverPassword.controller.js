@@ -10,9 +10,9 @@ const recoverPassword = {
       res.render('index', {
         body: 'recoverPassword',
         errors: Message.error,
-        succes: Message.success,
+        success: Message.success,
       });
-      return Message.crearMessage();
+      return Message.clearMessages();
     } catch (error) {
       console.error(error);
       return res.status(500).send('Error fetching data');
@@ -28,16 +28,20 @@ const recoverPassword = {
         return res.redirect('/recoverPassword');
       }
 
-      const dataSend = { email: email }
+      //Validar existencia de usuario en la base de datos
+      const existUser = await API.post({ req, res, endpoint: '/company/validateExistenceByEmail', dataSend: { email: email } });
 
-      const response = await API.post({ req, res, endpoint: '/sendMail/recoverPassword', dataSend: dataSend });
-
-      if (response == false) {
-
-      }
-
-      if (Message.error.length > 0) {
-        return res.redirect('/recoverPassword');
+      if (existUser.data == "Company exists") {
+        //Enviar correo con instrucciones para recuperar contraseña
+        const responseSendMail = await API.post({ req, res, endpoint: '/sendMail/recoverPassword', dataSend: { email: email } });
+        if ('error' in responseSendMail) {
+          console.log(responseSendMail);
+          Message.error.push(responseSendMail.error);
+        } else {
+          Message.success.push('Si el correo electrónico ingresado cuenta con una cuenta, se enviará un correo con las instrucciones para recuperar la contraseña');
+        }
+      } else {
+        Message.success.push('Si el correo electrónico ingresado cuenta con una cuenta, se enviará un correo con las instrucciones para recuperar la contraseña');
       }
 
       return res.redirect('/recoverPassword');

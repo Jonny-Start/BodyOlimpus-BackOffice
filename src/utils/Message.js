@@ -2,7 +2,7 @@ class Message {
     static success = [];
     static error = [];
 
-    static crearMessage() {
+    static clearMessages() {
         Message.success = [];
         Message.error = [];
     }

@@ -1,36 +1,50 @@
 const express = require('express');
 const router = express.Router();
-const loginController = require('../controllers/login.controller');
-const homeController = require('../controllers/home.controller');
 const { removeToken, validateAccess } = require('../utils/cookie');
+
+/**
+ * @separator
+*/
+const loginController = require('../controllers/login.controller');
+router.get('/', validateAccess, loginController.get);
+router.route('/login').get(validateAccess, loginController.get).post(validateAccess, loginController.post);
+/**
+ * @separator
+*/
 const recoverPassword = require('../controllers/recoverPassword.controller');
-
-
-const notImplement = (req, res) => {
-    return res.json({ message: 'Aun no se implementa' });
-}
-
-
+router.route('/recoverPassword').get(recoverPassword.get).post(recoverPassword.post);
+/**
+ * @separator
+*/
+const homeController = require('../controllers/home.controller');
+router.get('/home', validateAccess, homeController.get)
+/**
+ * @separator
+*/
+const registerAccount = require('../controllers/registerAccount.controller.js');
+router.get('/registerAccount', registerAccount.get);
+/**
+ * @separator
+*/
+const resetPassword = require('../controllers/resetPassword.controller.js');
+router.get('/resetPassword', resetPassword.get);
+/**
+ * @separator
+*/
 router.get('/privacy_policies', (req, res) => {
     res.render('privacy_policies');
 });
+/**
+ * @separator
+*/
 router.get('/terms', (req, res) => {
     res.render('terms');
 });
-
-router.get('/', validateAccess, loginController.get);
-router.route('/login').get(validateAccess, loginController.get).post(validateAccess, loginController.post);
-
+/**
+ * @separator
+*/
 router.get('/logout', async (req, res) => {
     await removeToken(res);
     res.redirect('/login');
 });
-
-router.route('/recoverPassword').get(recoverPassword.get).post(recoverPassword.post);
-
-router.get('/home', validateAccess, homeController.get)
-
-const registerAccount = require('../controllers/registerAccount.controller.js');
-router.get('/registerAccount', registerAccount.get);
-
 module.exports = router;

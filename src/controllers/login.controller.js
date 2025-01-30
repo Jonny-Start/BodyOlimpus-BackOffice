@@ -11,9 +11,9 @@ const login = {
       res.render('index', {
         body: 'login',
         errors: Message.error,
-        succes: Message.success,
+        success: Message.success,
       });
-      return Message.crearMessage();
+      return Message.clearMessages();
     } catch (error) {
       console.error(error);
       return res.status(500).send('Error fetching data');

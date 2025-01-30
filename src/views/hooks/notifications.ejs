@@ -8,12 +8,12 @@
 <% if(typeof errors !="undefined" && errors.length> 0){ %>
     <ul class="notifications">
       <% for (let i=0; i < errors.length; i++) { %>
-        <li class="animate__animated animate__backInLeft errorNotification"  id="test">
+        <li class="animate__animated animate__backInLeft errorNotification" id="errorNotification<%= i %>">
           <span class="">
             <p class="">
               <%= errors[i] %>
             </p>
-            <i class="fa-regular fa-circle-xmark" onclick="testFunction()"></i>
+            <i class="fa-regular fa-circle-xmark" onclick="closeNotification('errorNotification<%= i %>')"></i>
           </span>
         </li>
       <% } %>
@@ -24,12 +24,12 @@
 <% if(typeof success !="undefined" && success.length> 0){ %>
     <ul class="notifications">
       <% for (let j=0; j < success.length; j++) { %>
-        <li class="successNotification">
+        <li class="animate__animated animate__backInLeft successNotification" id="successNotification<%= j %>">
           <span class="">
             <p class="">
               <%= success[j] %>
             </p>
-            <i class="fa-regular fa-circle-check"></i>
+            <i class="fa-regular fa-circle-check" onclick="closeNotification('successNotification<%= j %>')"></i>
           </span>
         </li>
       <% } %>
@@ -40,12 +40,12 @@
 <% if(typeof warnings !="undefined" && warnings.length> 0){ %>
     <ul class="notifications">
       <% for (let k=0; k < warnings.length; k++) { %>
-        <li class="warningNotification">
+        <li class="animate__animated animate__backInLeft warningNotification" id="warningNotification<%= k %>">
           <span class="">
             <p class="">
               <%= warnings[k] %>
             </p>
-            <i class="fa-regular fa-circle-exclamation"></i>
+            <i class="fa-regular fa-circle-exclamation" onclick="closeNotification('warningNotification<%= k %>')"></i>
           </span>
         </li>
       <% } %>
@@ -53,8 +53,8 @@
 <% } %>
 
 <script>
-  function testFunction(){
-    const test = document.getElementById('test');
+  function closeNotification(idElement){
+    const test = document.getElementById(idElement);
     test.classList.remove('animate__backInLeft');
     test.classList.add('animate__backOutLeft');
   }
