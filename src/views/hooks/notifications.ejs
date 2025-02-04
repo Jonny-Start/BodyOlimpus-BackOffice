@@ -1,14 +1,10 @@
+<link rel="stylesheet" href="/public/css/animate.min.css"/>
+
 <!-- Errors -->
-
-<link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
-
 <% if(typeof errors !="undefined" && errors.length> 0){ %>
     <ul class="notifications">
       <% for (let i=0; i < errors.length; i++) { %>
-        <li class="animate__animated animate__backInLeft errorNotification" id="errorNotification<%= i %>">
+        <li class="animate__animated animate__faster animate__backInLeft errorNotification" id="errorNotification<%= i %>">
           <span class="">
             <p class="">
               <%= errors[i] %>
@@ -24,7 +20,7 @@
 <% if(typeof success !="undefined" && success.length> 0){ %>
     <ul class="notifications">
       <% for (let j=0; j < success.length; j++) { %>
-        <li class="animate__animated animate__backInLeft successNotification" id="successNotification<%= j %>">
+        <li class="animate__animated animate__faster animate__backInLeft successNotification" id="successNotification<%= j %>">
           <span class="">
             <p class="">
               <%= success[j] %>
@@ -40,7 +36,7 @@
 <% if(typeof warnings !="undefined" && warnings.length> 0){ %>
     <ul class="notifications">
       <% for (let k=0; k < warnings.length; k++) { %>
-        <li class="animate__animated animate__backInLeft warningNotification" id="warningNotification<%= k %>">
+        <li class="animate__animated animate__faster animate__backInLeft warningNotification" id="warningNotification<%= k %>">
           <span class="">
             <p class="">
               <%= warnings[k] %>
@@ -52,10 +48,20 @@
     </ul>
 <% } %>
 
-<script>
+<!-- 
+  animate__slow	2s
+  animate__slower	3s
+  animate__fast	800ms
+  animate__faster	500ms 
+-->
+
+<script type="text/javascript">
   function closeNotification(idElement){
-    const test = document.getElementById(idElement);
-    test.classList.remove('animate__backInLeft');
-    test.classList.add('animate__backOutLeft');
+    const element = document.getElementById(idElement);
+    element.classList.remove('animate__backInLeft');
+    element.classList.add('animate__backOutLeft');
+    setTimeout(() => {
+      element.style.display = 'none';
+    }, 500);
   }
 </script>

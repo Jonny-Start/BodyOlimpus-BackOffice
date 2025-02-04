@@ -11,7 +11,7 @@ module.exports = cookie = {
         res.clearCookie('token');
     },
     validateAccess: (req, res, next) => {
-        const token = req.cookies.token;
+        const token = req.cookies.token || req.query.token;
         const origin = req.originalUrl;
 
         if (!token && (origin !== '/login' && origin !== '/')) {
@@ -24,9 +24,5 @@ module.exports = cookie = {
         }
 
         next();
-        // if (!token && !allowedRoles.includes(req.cookies.role)) {
-        //     Message.error.push('No tienes permisos para acceder a esta página');
-        //     return res.redirect('/login');
-        // }
     }
 };

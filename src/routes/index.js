@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const { removeToken, validateAccess } = require('../utils/cookie');
 
+const validateToken = require('../middleware/validateToken.js');
+
 /**
  * @separator
 */
@@ -27,7 +29,7 @@ router.get('/registerAccount', registerAccount.get);
  * @separator
 */
 const resetPassword = require('../controllers/resetPassword.controller.js');
-router.get('/resetPassword', resetPassword.get);
+router.get('/resetPassword', validateAccess, validateToken, resetPassword.get);
 /**
  * @separator
 */

@@ -1,7 +1,7 @@
 'use strict'
 require('dotenv').config();
 const Message = require('../utils/Message');
-const API = require('./consume_api');
+const API = require('../middleware/consume_API');
 
 const registerAccount = {
 

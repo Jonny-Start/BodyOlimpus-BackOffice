@@ -1,7 +1,7 @@
 'use strict'
 require('dotenv').config();
 const Message = require('../utils/Message');
-const API = require('./consume_api');
+const API = require('../middleware/consume_API');
 const { setToken } = require('./../utils/cookie');
 
 const login = {
@@ -36,11 +36,13 @@ const login = {
 
       const response = await API.post({ req, res, endpoint: '/company/login', dataSend: dataSend });
 
-      if (Message.error.length > 0) {
+      if ('error' in response) {
+        Message.error.push('Usuario o contraseña incorrectos');
         return res.redirect('/login');
       }
 
-      await setToken(res, response.token);
+      await setToken(res, response.data?.token);
+      
       return res.redirect('/home');
     } catch (error) {
       console.error(error);
