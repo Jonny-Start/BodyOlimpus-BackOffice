@@ -29,7 +29,11 @@ router.get('/registerAccount', registerAccount.get);
  * @separator
 */
 const resetPassword = require('../controllers/resetPassword.controller.js');
-router.get('/resetPassword', validateAccess, validateToken, resetPassword.get);
+// router.get('/resetPassword', validateAccess, validateToken, resetPassword.get);
+// router.post('/resetPassword', validateAccess, validateToken, resetPassword.get);
+router.route('/resetPassword')
+    .get(validateAccess, validateToken, resetPassword.get)
+    .post(validateAccess, validateToken, resetPassword.post);
 /**
  * @separator
 */

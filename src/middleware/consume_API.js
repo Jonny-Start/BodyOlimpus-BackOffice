@@ -6,9 +6,6 @@ const { getToken } = require('../utils/cookie');
 
 module.exports = API = {
   get: async ({ req, res, endpoint, firstApi = true }) => {
-    // Extraer la URL original del endpoint
-    const endpointOrigin = req.originalUrl;
-
     try {
       // Extraer el token de autenticación
       const token = getToken(req);
@@ -78,9 +75,6 @@ module.exports = API = {
     }
   },
   post: async ({ req, res, endpoint, dataSend = [] }) => {
-    // Extraer la URL original del endpoint
-    const endpointOrigin = req.originalUrl;
-
     try {
       // Extraer el token de autenticación
       const token = getToken(req);
@@ -130,7 +124,7 @@ module.exports = API = {
         };
       }
 
-      if (error.response.data) {
+      if (error.response?.data) {
         return {
           success: false,
           error: error.response.data?.error?.code || error.response.data?.error?.details || 'UNKNOWN_ERROR',
