@@ -1,0 +1,42 @@
+<%- include("./hooks/notifications"); -%>
+
+<% if (!notification) { %>
+    <h1>Solicitud de creación de cuenta</h1>
+
+    <form action="/requestCreateAccount" method="post">
+
+        <img src="/img/Logo_White-transparent.svg" alt="logo de BodyOlimupus">
+
+        <div class="contentInputs">
+            <label for="name">Nombre/s</label>
+            <input type="text" name="name" id="name" autocomplete="name" placeholder="Ingresa tu nombre" required>
+            <ion-icon name="mail-outline"></ion-icon>
+        </div>
+
+        <div class="contentInputs">
+            <label for="last_name">Apellido/s</label>
+            <input type="text" name="last_name" id="last_name" autocomplete="last_name"
+                placeholder="Ingresa tu apellido" required>
+            <ion-icon name="mail-outline"></ion-icon>
+        </div>
+
+        <div class="contentInputs">
+            <label for="email">Correo electrónico</label>
+            <input type="email" name="email" id="email" autocomplete="email" placeholder="" required>
+            <ion-icon name="mail-outline"></ion-icon>
+        </div>
+
+        <button type="submit" class="btn-primary">Enviar</button>
+    </form>
+<% } else { %>
+        <h1>Gracias por solicitar registrarse en BodyOlimpus, ahora continua desde el enlace enviado al correo
+            electronico proporcionado</h1>
+
+            <a href="/requestCreateAccount">
+                Cambiar correo electronico
+            </a>
+            <br />
+            <a href="/login">
+                Login
+            </a>
+<% } %>

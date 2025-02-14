@@ -29,11 +29,19 @@ router.get('/registerAccount', registerAccount.get);
  * @separator
 */
 const resetPassword = require('../controllers/resetPassword.controller.js');
-// router.get('/resetPassword', validateAccess, validateToken, resetPassword.get);
-// router.post('/resetPassword', validateAccess, validateToken, resetPassword.get);
 router.route('/resetPassword')
     .get(validateAccess, validateToken, resetPassword.get)
     .post(validateAccess, validateToken, resetPassword.post);
+/**
+ * @separator
+*/
+const request_create_account = require('../controllers/request_create_account.controller.js');
+router.route('/requestCreateAccount').get(request_create_account.get).post(request_create_account.post);
+/**
+ * @separator
+*/
+const create_account = require('../controllers/create_account.controller.js');
+router.route('/createAccount').get(create_account.get).post(create_account.post);
 /**
  * @separator
 */

@@ -34,15 +34,15 @@ const login = {
         password
       }
 
-      const response = await API.post({ req, res, endpoint: '/company/login', dataSend: dataSend });
+      const response = await API.post({ req, res, endpoint: '/userAdmin/login', dataSend: dataSend });
 
       if ('error' in response) {
         Message.error.push('Usuario o contraseña incorrectos');
         return res.redirect('/login');
       }
 
-      await setToken(res, response.data?.token);
-      
+      await setToken(res, response.data.token); // Tiene que traer el token sino se permite el acceso con el token invalido
+
       return res.redirect('/home');
     } catch (error) {
       console.error(error);

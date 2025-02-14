@@ -54,7 +54,7 @@ const resetPassword = {
 
             const data = { token, newPassword };
 
-            const response = await API.post({ req, res, endpoint: '/company/resetPassword', dataSend: data });
+            const response = await API.post({ req, res, endpoint: '/userAdmin/resetPassword', dataSend: data });
 
             if ('error' in response) {
                 if (response.error === 'INVALID_TOKEN') {
