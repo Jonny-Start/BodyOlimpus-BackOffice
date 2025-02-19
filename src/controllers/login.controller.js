@@ -8,6 +8,12 @@ const login = {
 
   get: async (req, res) => {
     try {
+      const { ERROR } = req.cookies;
+      if (ERROR) {
+        Message.error.push(`${ERROR}`);
+        res.clearCookie('ERROR');
+      }
+
       res.render('index', {
         body: 'login',
         errors: Message.error,

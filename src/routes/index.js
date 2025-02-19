@@ -35,12 +35,12 @@ router.route('/resetPassword')
 /**
  * @separator
 */
-const request_create_account = require('../controllers/request_create_account.controller.js');
-router.route('/requestCreateAccount').get(request_create_account.get).post(request_create_account.post);
+const requestCreateAccount = require('../controllers/requestCreateAccount.controller.js');
+router.route('/requestCreateAccount').get(requestCreateAccount.get).post(requestCreateAccount.post);
 /**
  * @separator
 */
-const create_account = require('../controllers/create_account.controller.js');
+const create_account = require('../controllers/createAccount.controller.js');
 router.route('/createAccount').get(create_account.get).post(create_account.post);
 /**
  * @separator

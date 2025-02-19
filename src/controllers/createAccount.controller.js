@@ -2,6 +2,7 @@
 require('dotenv').config();
 const Message = require('../utils/Message');
 const API = require('../middleware/consume_API');
+const { setToken } = require('./../utils/cookie');
 
 const createAccount = {
 
@@ -72,14 +73,7 @@ const createAccount = {
         Message.success.push('Cuenta creada con éxito');
       }
 
-      const responseLogin = await API.post({ req, res, endpoint: '/userAdmin/login', dataSend: { email: responseCreate.data.email, password } });
-
-      if ('error' in responseLogin) {
-        Message.error.push('Error al iniciar sesión');
-        return res.redirect('/login');
-      }
-
-      await setToken(res, response.data.token); // Tiene que traer el token sino se permite el acceso con el token invalido
+      await setToken(res, responseCreate.data.token); // Tiene que traer el token sino se permite el acceso con el token invalido
 
       return res.redirect('/home');
 
