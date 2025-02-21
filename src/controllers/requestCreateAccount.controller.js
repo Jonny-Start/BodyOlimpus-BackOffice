@@ -47,6 +47,10 @@ const requestCreateAccount = {
 
             const createAccountRequest = await API.post({ req, res, endpoint: '/userAdmin/createAccountRequest', dataSend: { name, last_name, email } });
             if ('error' in createAccountRequest) {
+                if(createAccountRequest.message == 'The email already exists') {
+                    Message.error.push('El correo electrónico ya se encuentra registrado');
+                    return res.redirect('/requestCreateAccount');
+                }
                 Message.error.push('Error al solicitar creación de cuenta');
                 return res.redirect('/requestCreateAccount');
             } else if ('success' in createAccountRequest) {
