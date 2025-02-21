@@ -1,43 +1,78 @@
 <%- include("./hooks/notifications"); -%>
 
-<% if (!notification) { %>
-    <h1>Solicitud de creación de cuenta</h1>
+<main id="sectionRCA">
+  <section id="contentSteps">
+    <h2>¡Hola, nos da gusto <br /> tenerte aquí!</h2>
 
+    <p>Completa estos sencillos <br /> pasos para crear tu cuenta en <br /> BO:</p>
+
+    <ul class="steps">
+      <li class="active">
+        <div class="circle">1</div>
+        <p>Ingresa tu nombre, apellido y correo</p>
+      </li>
+      <li class="<% if (notification) { %>active<% } %>">
+        <div class="circle">2</div>
+        <p>Verifica tu cuenta</p>
+      </li>
+      <li>
+        <div class="circle">3</div>
+        <p>Completa los datos basicos</p>
+      </li>
+    </ul>
+
+    <h3><span class="primaryBlue">B</span>ody<span class="primaryBlue">O</span>limpus</h3>
+  </section>
+  <section id="register">
+    <img src="/img/Logo_White-transparent.svg" alt="logo de BodyOlimupus">
+    <h1>Registro</h1>
+    <% if (!notification) { %>
     <form action="/requestCreateAccount" method="post">
 
-        <img src="/img/Logo_White-transparent.svg" alt="logo de BodyOlimupus">
+      <div class="contentInputs">
+        <label for="name">Nombre/s *</label>
+        <input type="text" name="name" id="name" autocomplete="name" placeholder="Ingresa tu nombre" required>
+        <ion-icon name="user-regular"></ion-icon>
+      </div>
 
-        <div class="contentInputs">
-            <label for="name">Nombre/s</label>
-            <input type="text" name="name" id="name" autocomplete="name" placeholder="Ingresa tu nombre" required>
-            <ion-icon name="mail-outline"></ion-icon>
-        </div>
+      <div class="contentInputs">
+        <label for="last_name">Apellido/s *</label>
+        <input type="text" name="last_name" id="last_name" autocomplete="last_name" placeholder="Ingresa tu apellido" required>
+        <ion-icon name="address-card-regular"></ion-icon>
+      </div>
 
-        <div class="contentInputs">
-            <label for="last_name">Apellido/s</label>
-            <input type="text" name="last_name" id="last_name" autocomplete="last_name"
-                placeholder="Ingresa tu apellido" required>
-            <ion-icon name="mail-outline"></ion-icon>
-        </div>
+      <div class="contentInputs">
+        <label for="email">Correo electrónico *</label>
+        <input type="email" name="email" id="email" autocomplete="email" placeholder="micorreo@dominio.com" required>
+        <ion-icon name="mail-outline"></ion-icon>
+      </div>
 
-        <div class="contentInputs">
-            <label for="email">Correo electrónico</label>
-            <input type="email" name="email" id="email" autocomplete="email" placeholder="" required>
-            <ion-icon name="mail-outline"></ion-icon>
-        </div>
+      <p class="contentTermsConditions">Al registrarte, aceptas la <a href="/privacy_policies" class="colorPurple">Politica de Privacidad</a> y los <a href="/terms" class="colorPurple">Términos y condiciones</a> de BodyOlimpus.</p>
 
-        <button type="submit" class="btn-primary">Enviar</button>
-        <button type="button" class="btn-primary" onclick="window.location.href = '/login'">Cancelar</button>
+      <button type="submit" class="btn-primary" id="buttonRequestCreateAccount" disabled>Continuar</button>
     </form>
-<% } else { %>
-        <h1>Gracias por solicitar registrarse en BodyOlimpus, ahora continua desde el enlace enviado al correo
-            electronico proporcionado</h1>
+    <% } else { %>
+    <p>
+      Gracias por solicitar registrarse en BodyOlimpus, ahora continua desde el enlace enviado al correo electronico proporcionado
+    </p>
+    <button type="button" class="btn-primary" onclick="window.location.href='/login' " style="margin: 1em 0em;">Login</button>
+    <button type="button" class="btn-secondary" onclick="window.location.href='/requestCreateAccount' ">Cambiar correo electronico</button>
 
-            <a href="/requestCreateAccount">
-                Cambiar correo electronico
-            </a>
-            <br />
-            <a href="/login">
-                Login
-            </a>
-<% } %>
+    <% } %>
+  </section>
+
+</main>
+
+<script type="text/javascript">
+  const button = document.getElementById('buttonRequestCreateAccount');
+  const inputs = document.querySelectorAll('input');
+  inputs.forEach(input => {
+    input.addEventListener('input', () => {
+      if (inputs[0].value && inputs[1].value && inputs[2].value) {
+        button.removeAttribute('disabled');
+      } else {
+        button.setAttribute('disabled', true);
+      }
+    });
+  });
+</script>

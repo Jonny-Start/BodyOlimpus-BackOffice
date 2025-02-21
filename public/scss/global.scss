@@ -12,6 +12,8 @@ ul.notifications {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    top: 0;
+    left: 0;
 
     li {
         display: flex;
@@ -180,6 +182,28 @@ textarea {
 
 .btn-primary:disabled {
     background-color: #8BBAE9;
+}
+
+.btn-secondary {
+    color: $secondary-Purple-BO;
+    border: 2px solid $secondary-Purple-BO;
+    background-color: transparent;
+    font-size: 17px;
+    line-height: 42px;
+    border-radius: 10px;
+    width: 140px;
+    font-weight: bold;
+    padding: 0 1.5em;
+}
+
+.btn-secondary:hover {
+    color: #774BD2;
+    border-color: #774BD2;
+}
+
+.btn-secondary:disabled {
+    color: #b38dff;
+    border-color: #b38dff;
 }
 
 /* Definición de las fuentes */

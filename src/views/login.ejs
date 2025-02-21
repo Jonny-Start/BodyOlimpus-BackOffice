@@ -1,68 +1,64 @@
 <%- include("./hooks/notifications"); -%>
 
-    <div class="shapeLogin"></div>
+<div class="shapeLogin"></div>
 
-    <main id="contentLogin">
+<main id="contentLogin">
 
-        <h1>Iniciar sesión</h1>
+  <h1>Iniciar sesión</h1>
 
-        <form action="/login" method="post">
+  <form action="/login" method="post">
 
-            <img src="/img/Logo_White-transparent.svg" alt="logo de BodyOlimupus">
+    <img src="/img/Logo_White-transparent.svg" alt="logo de BodyOlimupus">
 
-            <div class="contentInputs">
-                <label for="email">Correo electrónico</label>
-                <input type="email" name="email" id="email" autocomplete="email" placeholder="email@dominio.com"
-                    required>
-                <ion-icon name="mail-outline"></ion-icon>
-            </div>
+    <div class="contentInputs">
+      <label for="email">Correo electrónico</label>
+      <input type="email" name="email" id="email" autocomplete="email" placeholder="email@dominio.com" required>
+      <ion-icon name="mail-outline"></ion-icon>
+    </div>
 
-            <div class="contentInputs contentPassword">
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" name="password" autocomplete="current-password"
-                    placeholder="clave secreta" required>
-                <ion-icon name="lock-closed-outline"></ion-icon>
-                <ion-icon name="eye-off-outline" id="eyeClose" class="hide" onclick="showPassword()"></ion-icon>
-                <ion-icon name="eye-outline" id="eyeOpen" onclick="showPassword()"></ion-icon>
-            </div>
+    <div class="contentInputs contentPassword">
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" name="password" autocomplete="current-password" placeholder="clave secreta" required>
+      <ion-icon name="lock-closed-outline"></ion-icon>
+      <ion-icon name="eye-off-outline" id="eyeClose" class="hide" onclick="showPassword()"></ion-icon>
+      <ion-icon name="eye-outline" id="eyeOpen" onclick="showPassword()"></ion-icon>
+    </div>
 
-            <a href="/recoverPassword" class="textChangePass">Cambiar la contraseña <i
-                    class="fa-solid fa-arrow-right"></i></a>
+    <a href="/recoverPassword" class="textChangePass">Cambiar la contraseña <i class="fa-solid fa-arrow-right"></i></a>
 
-            <a href="/requestCreateAccount" class="textChangePass">Registrarse  <i
-                    class="fa-solid fa-arrow-right"></i></a>
+    <a href="/requestCreateAccount" class="textChangePass">Registrarse <i class="fa-solid fa-arrow-right"></i></a>
 
-            <button type="submit" class="btn-primary">Enviar</button>
+    <button type="submit" class="btn-primary">Enviar</button>
 
-        </form>
+  </form>
 
-        <div class="separator">
-            <span></span>
-            <p>Ó</p>
-            <span></span>
-        </div>
+  <div class="separator">
+    <span></span>
+    <p>Ó</p>
+    <span></span>
+  </div>
 
-        <div class="contentIcons">
-            <a href="http://localhost:3000/auth/google">
-                <img src="/img/google.svg" alt="icono de google">
-            </a>
-            <a href="http://localhost:3000/auth/microsoft">
-                <img src="/img/outlook.svg" alt="icono de outlook">
-            </a>
-        </div>
+  <div class="contentIcons">
+    <a href="http://localhost:3000/auth/google">
+      <img src="/img/google.svg" alt="icono de google">
+    </a>
+    <a href="http://localhost:3000/auth/microsoft">
+      <img src="/img/outlook.svg" alt="icono de outlook">
+    </a>
+  </div>
 
-    </main>
+</main>
 
-    <div class="shapeLogin"></div>
+<div class="shapeLogin"></div>
 
-    <script>
-        function showPassword() {
-            const password = document.getElementById('password');
-            const eyeOpen = document.getElementById('eyeOpen');
-            const eyeClose = document.getElementById('eyeClose');
+<script type="text/javascript">
+  function showPassword() {
+    const password = document.getElementById('password');
+    const eyeOpen = document.getElementById('eyeOpen');
+    const eyeClose = document.getElementById('eyeClose');
 
-            eyeOpen.classList.toggle('hide');
-            eyeClose.classList.toggle('hide');
-            eyeClose.classList.contains('hide') ? password.type = 'password' : password.type = 'text';
-        }
-    </script>
+    eyeOpen.classList.toggle('hide');
+    eyeClose.classList.toggle('hide');
+    eyeClose.classList.contains('hide') ? password.type = 'password' : password.type = 'text';
+  }
+</script>

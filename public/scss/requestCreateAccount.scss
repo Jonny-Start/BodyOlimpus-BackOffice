@@ -1,0 +1,131 @@
+body#request_create_account {
+    background: linear-gradient(to left,
+            #3E71D2 0%,
+            #264580 17%,
+            #1A2F57 30%,
+            #060A13 49%,
+            $primary-Black-BO 62%);
+    display: inline-block;
+    height: 100vh;
+    width: 100vw;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    p.contentTermsConditions {
+        padding: 1em 2em;
+        text-align: center;
+        font-size: 0.9em;
+
+        .colorPurple {
+            color: $secondary-Purple-BO;
+        }
+
+        a.colorPurple:visited {
+            color: $secondary-Purple-BO;
+        }
+    }
+
+    main#sectionRCA {
+        border: 5px solid $primary-Black-BO;
+        // border: 5px solid white;
+        width: 94vw;
+        height: 88vh;
+        border-radius: 15px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        #contentSteps {
+            text-align: center;
+            position: relative;
+
+            h2 {
+                font-weight: 100;
+                margin-bottom: 9em;
+            }
+
+            ul.steps {
+                list-style: none;
+                justify-items: center;
+
+                li {
+                    background-color: $secondary-Black-BO;
+                    width: 24em;
+                    font-family: 'Lexend Deca Light';
+                    font-size: small;
+                    margin-bottom: 1em;
+                    text-align: left;
+                    padding: 0.8em;
+                    border-radius: 10px;
+
+                    .circle {
+                        display: inline-block;
+                        background-color: #1d1531;
+                        width: 1.8em;
+                        height: 1.8em;
+                        text-align: center;
+                        line-height: 1.8em;
+                        border-radius: 50%;
+                    }
+
+                    p {
+                        display: inline-block;
+                        margin: 5px;
+                    }
+                }
+
+                li.active {
+                    background-color: $neutral-White-Smoke-BO;
+
+                    .circle {
+                        background-color: $secondary-Purple-BO;
+                    }
+
+                    p {
+                        color: $primary-Black-BO;
+                    }
+
+
+                }
+            }
+
+            h3 {
+                position: sticky;
+                top: 100%;
+                font-size: 2.5em;
+                margin-bottom: 10px;
+
+                .primaryBlue {
+                    color: $primary-Blue-BO;
+                }
+            }
+        }
+
+        #register {
+        background-color: $primary-Black-BO;
+            padding: 2em;
+            text-align: center;
+            justify-items: center;
+
+            img {
+                width: 8em;
+            }
+
+            h1 {
+                font-family: 'Lexend Deca Light';
+                margin-top: 0;
+                font-size: 2.3em;
+                font-weight: 100;
+            }
+
+            form {
+                max-width: 31em;
+            }
+
+            button {
+                width: 100%;
+                max-width: 27em;
+            }
+        }
+    }
+}

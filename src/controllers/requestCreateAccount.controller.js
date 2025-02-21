@@ -2,7 +2,6 @@
 require('dotenv').config();
 const Message = require('../utils/Message');
 const API = require('../middleware/consume_API');
-const { post } = require('./login.controller');
 
 const requestCreateAccount = {
 
