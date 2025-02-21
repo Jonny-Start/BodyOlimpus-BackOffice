@@ -2,6 +2,8 @@
 
 <main id="sectionRCA">
   <section id="contentSteps">
+    <a href="/login" class="redirectLogin"><i class="fa-solid fa-arrow-left"></i> Login</a>
+
     <h2>¡Hola, nos da gusto <br /> tenerte aquí!</h2>
 
     <p>Completa estos sencillos <br /> pasos para crear tu cuenta en <br /> BO:</p>
@@ -50,6 +52,22 @@
       <p class="contentTermsConditions">Al registrarte, aceptas la <a href="/privacy_policies" class="colorPurple">Politica de Privacidad</a> y los <a href="/terms" class="colorPurple">Términos y condiciones</a> de BodyOlimpus.</p>
 
       <button type="submit" class="btn-primary" id="buttonRequestCreateAccount" disabled>Continuar</button>
+
+      <div class="separator">
+        <span></span>
+        <p>Ó</p>
+        <span></span>
+      </div>
+
+      <div class="contentIcons">
+        <a href="http://localhost:3000/auth/google?createAccount=true">
+          <img src="/img/google.svg" alt="icono de google">
+        </a>
+        <a href="http://localhost:3000/auth/microsoft?createAccount=true">
+          <img src="/img/outlook.svg" alt="icono de outlook">
+        </a>
+      </div>
+
     </form>
     <% } else { %>
     <p>
@@ -64,15 +82,17 @@
 </main>
 
 <script type="text/javascript">
-  const button = document.getElementById('buttonRequestCreateAccount');
-  const inputs = document.querySelectorAll('input');
-  inputs.forEach(input => {
-    input.addEventListener('input', () => {
-      if (inputs[0].value && inputs[1].value && inputs[2].value) {
-        button.removeAttribute('disabled');
-      } else {
-        button.setAttribute('disabled', true);
-      }
+  window.addEventListener('DOMContentLoaded', () => {
+    const button = document.getElementById('buttonRequestCreateAccount');
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+      input.addEventListener('input', () => {
+        if (inputs[0].value && inputs[1].value && inputs[2].value) {
+          button.removeAttribute('disabled');
+        } else {
+          button.setAttribute('disabled', true);
+        }
+      });
     });
   });
 </script>

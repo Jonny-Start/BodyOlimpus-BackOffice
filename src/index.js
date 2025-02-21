@@ -28,6 +28,8 @@ app.set('views', path.join(__dirname, 'views'));
 // Configuración de archivos estáticos
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
+app.use('/public', express.static('public'));
+
 // Rutas
 const indexRouter = require('./routes/index.js');
 app.use('/', indexRouter);
