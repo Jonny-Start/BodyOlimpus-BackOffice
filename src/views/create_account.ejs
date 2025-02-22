@@ -34,6 +34,7 @@
         <input type="text" name="name_gym" id="name_gym" placeholder="Ingresa el nombre de tu gimnasio" required>
         <ion-icon name="dumbbell-solid"></ion-icon>
       </div>
+      <% if(!isFederated) { %>
       <div class="contentInputs contentPassword">
         <label for="password">Contraseña</label>
         <input type="password" id="password" name="password" placeholder="clave secreta" required>
@@ -50,7 +51,10 @@
       </div>
 
       <p class="contentDescriptionPass">La contraseña debe ser alfanumérica, debe contener minimo 8 caracteres, una letra ayúscula, un número y un carácter especial.</p>
-
+      <% } else { %>
+        <p class="contentDescriptionPass">Con una cuenta federada no es necesario definir una contraseña, pero lo puedes hacer cuando quieras dentro de la app y entrar a BodyOlimpus como se te sea más fácil.</p>
+        <input type="hidden" name="isFederated" value="<%= isFederated %>">
+      <% } %>
       <button type="submit" class="btn-primary" id="buttonRequestCreateAccount" disabled>Terminar</button>
     </form>
 

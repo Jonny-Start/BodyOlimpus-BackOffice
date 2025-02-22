@@ -19,9 +19,12 @@ const createAccount = {
         return res.redirect("/login");
       }
 
+      const isFederated = dataUser.data?.google_id ?? dataUser.data?.facebook_id ?? false;
+
       res.render('index', {
         body: 'create_account',
         token: token,
+        isFederated,
         dataUser: dataUser.data,
         errors: Message.error,
         success: Message.success,
@@ -36,21 +39,21 @@ const createAccount = {
 
   post: async (req, res) => {
     try {
-      const { password, confirm_password, name_gym } = req.body;
+      const { password, confirm_password, name_gym, isFederated } = req.body;
       const { token } = req.query;
       if (!token) {
         Message.error.push('token de creación no encontrado');
         return res.redirect('/login');
       }
-      if (!password) {
+      if (!password && !isFederated) {
         Message.error.push('La contraseña es requerida');
         return res.redirect(`/createAccount?token=${token}`);
       }
-      if (!confirm_password) {
+      if (!confirm_password && !isFederated) {
         Message.error.push('Confirmar contraseña es requerido');
         return res.redirect(`/createAccount?token=${token}`);
       }
-      if (password !== confirm_password) {
+      if ((password !== confirm_password) && !isFederated) {
         Message.error.push('Las contraseñas no coinciden');
         return res.redirect(`/createAccount?token=${token}`);
       }
