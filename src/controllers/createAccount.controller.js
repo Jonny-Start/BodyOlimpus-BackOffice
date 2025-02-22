@@ -19,7 +19,7 @@ const createAccount = {
         return res.redirect("/login");
       }
 
-      const isFederated = dataUser.data?.google_id ?? dataUser.data?.facebook_id ?? false;
+      const isFederated = (dataUser.data?.google_id ? true : (dataUser.data?.microsoft_id ? true : false));
 
       res.render('index', {
         body: 'create_account',

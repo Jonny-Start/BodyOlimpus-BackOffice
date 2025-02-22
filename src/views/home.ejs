@@ -1,46 +1,51 @@
 <%- include("./hooks/notifications"); -%>
+
 <%- include('./layout/nav.ejs') %>
-    <main class="internal_view">
-        <section id="dashBoard">
+<main class="internal_view">
+  <section id="dashBoard">
 
-            <article id="content_title">
-                <h1>
-                    DashBoard
-                    <p id="date_now">...</p>
-                </h1>
-    
-                <div id="content_buttons">
-                    <button type="button">
-                        <ion-icon name="icon-pay"></ion-icon>
-                    </button>
-                    <button type="button">
-                        <ion-icon name="icon-person-plus"></ion-icon>
-                    </button>
-                </div>
-            </article>
+    <article id="content_title">
+      <h1>
+        DashBoard
+        <p id="date_now">...</p>
+      </h1>
 
-            <article id="information_cards">
-                <h2>Ingresos</h2>
-                <div class="content_cards">
-                    <div class="card">
-                        <ion-icon name="icon-person-plus"></ion-icon>
-                        <span>
-                            $ 170.000
-                            <p>Hoy</p>
-                        </span>
-                    </div>
-                </div>
-            </article>
-        </section>
-        <section id="infUsers">
+      <div id="content_buttons">x
+        <button type="button">
+          <ion-icon name="icon-pay"></ion-icon>
+        </button>
+        <button type="button">
+          <ion-icon name="icon-person-plus"></ion-icon>
+        </button>
+      </div>
+    </article>
 
-        </section>
-    </main>
+    <article id="information_cards">
+      <h2>Ingresos</h2>
+      <div class="content_cards">
+        <div class="card">
+          <ion-icon name="icon-person-plus"></ion-icon>
+          <span>
+            $ 170.000
+            <p>Hoy</p>
+          </span>
+        </div>
+      </div>
+    </article>
+  </section>
+  <section id="infUsers">
 
-    <script type="text/javascript">
-        const date_now = document.getElementById('date_now');
-        const date = new Date();
-        const options = { day: '2-digit', month: 'short', year: 'numeric' };
-        const formatDate = date.toLocaleDateString('es-ES', options);
-        date_now.innerHTML = formatDate;
-    </script>
+  </section>
+</main>
+
+<script type="text/javascript">
+  const date_now = document.getElementById('date_now');
+  const date = new Date();
+  const options = {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric'
+  };
+  const formatDate = date.toLocaleDateString('es-ES', options);
+  date_now.innerHTML = formatDate;
+</script>

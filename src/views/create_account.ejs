@@ -52,8 +52,8 @@
 
       <p class="contentDescriptionPass">La contraseña debe ser alfanumérica, debe contener minimo 8 caracteres, una letra ayúscula, un número y un carácter especial.</p>
       <% } else { %>
-        <p class="contentDescriptionPass">Con una cuenta federada no es necesario definir una contraseña, pero lo puedes hacer cuando quieras dentro de la app y entrar a BodyOlimpus como se te sea más fácil.</p>
-        <input type="hidden" name="isFederated" value="<%= isFederated %>">
+      <p class="contentDescriptionPass">Con una cuenta federada no es necesario definir una contraseña, pero lo puedes hacer cuando quieras dentro de la app y entrar a BodyOlimpus como se te sea más fácil.</p>
+      <input type="hidden" name="isFederated" value="<%= isFederated %>">
       <% } %>
       <button type="submit" class="btn-primary" id="buttonRequestCreateAccount" disabled>Terminar</button>
     </form>
@@ -68,13 +68,25 @@
     const inputs = document.querySelectorAll('input');
     inputs.forEach(input => {
       input.addEventListener('input', () => {
-        if (inputs[0].value && inputs[1].value && inputs[2].value) {
+        if (validateAllInputs()) {
           button.removeAttribute('disabled');
         } else {
           button.setAttribute('disabled', true);
         }
       });
     });
+
+    function validateAllInputs() {
+      const inputs = document.querySelectorAll('input');
+      let allComplete = true;
+      inputs.forEach(input => {
+        if (!input.value) {
+          allComplete = false;
+        }
+      });
+      return allComplete
+    };
+
   });
 
   function showPassword(idInput, prefix = '') {

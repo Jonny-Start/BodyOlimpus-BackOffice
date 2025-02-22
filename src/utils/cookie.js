@@ -1,3 +1,4 @@
+const { name } = require('ejs');
 const Message = require('./Message');
 
 module.exports = cookie = {
@@ -10,18 +11,40 @@ module.exports = cookie = {
     removeToken: (res) => {
         res.clearCookie('token');
     },
-    validateAccess: (req, res, next) => {
+    validateAccess: async (req, res, next) => {
         const token = req.cookies.token || req.query.token;
         const origin = req.originalUrl;
 
+        //Validación por si deseo ingresar a algun logar que no sea el login y no tengo token
         if (!token && (origin !== '/login' && origin !== '/')) {
             Message.error.push('No tienes acceso para la página que quieres ingresar');
             return res.redirect('/login');
         }
 
-        if(!!token && (origin === '/login' || origin === '/')){
+        //Validación por si deseo ingresar al login y ya tengo token
+        if (!!token && (origin === '/login' || origin === '/')) {
             return res.redirect('/home');
         }
+
+        if (token) {
+            //Estraer los datos
+            const dataUser = await API.get({ req, res, endpoint: '/userAdmin/getUserByToken?token=' + token });
+            if ('error' in dataUser) {
+                Message.error.push('Error al obtener datos de usuario');
+                res.clearCookie('token');
+                return res.redirect("/login");
+            }
+            req.context = {
+                email: dataUser.data,
+                id_user_admin: dataUser.data.id_user_admin,
+                name: dataUser.data.name,
+                last_name: dataUser.data.last_name,
+                role: dataUser.data.role,
+                company_name: dataUser.data.company_name,
+                img_profile: dataUser.data.img_profile,
+            };
+        }
+
 
         next();
     }

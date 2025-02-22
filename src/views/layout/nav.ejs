@@ -4,15 +4,15 @@
         <img src="/img/Logo_White-transparent.svg" alt="Icono BodyOlimpus">
         <p>
             <span>BodyOlimpus</span>
-            <span>Name GYM</span>
+            <span><%= userAdmin.company_name %></span>
         </p>
     </div>
 
     <div id="profileNav">
-        <div id="contentImg">
-            <p>J</p>
+        <div id="contentImg" class="<%= userAdmin.img_profile ? 'active' : '' %>" <% if (userAdmin.img_profile) { %> style="background-image: url('<%= userAdmin.img_profile %>');"" <% } %>>
+            <p><%= userAdmin.name.split('')[0].toUpperCase() %></p>
         </div>
-        <p>Hola, Jonny</p>
+        <p>Hola, <%= userAdmin.name %></p>
     </div>
 
     <ul class="nav__list">
