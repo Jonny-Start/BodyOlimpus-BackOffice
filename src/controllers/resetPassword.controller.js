@@ -28,7 +28,7 @@ const resetPassword = {
 
     post: async (req, res) => {
         try {
-            const { newPassword, confirmPassword } = req.body;
+            const { newPassword, confirm_password } = req.body;
             const { token } = req.query;
 
             if (!token) {
@@ -36,12 +36,12 @@ const resetPassword = {
                 return res.redirect('/login');
             }
 
-            if (!newPassword || !confirmPassword) {
+            if (!newPassword || !confirm_password) {
                 Message.error.push('Por favor, rellene todos los campos');
                 return res.redirect(`/resetPassword?token=${token}`);
             }
 
-            if (newPassword !== confirmPassword) {
+            if (newPassword !== confirm_password) {
                 Message.error.push('Las contraseñas no coinciden');
                 return res.redirect(`/resetPassword?token=${token}`);
             }
@@ -60,8 +60,8 @@ const resetPassword = {
                 if (response.error === 'INVALID_TOKEN') {
                     Message.error.push('Token inválido o no encontrado');
                 }
+                Message.error.push('Error al cambiar la contraseña, por favor intente de nuevo');
                 return res.redirect(`/resetPassword?token=${token}`);
-
             }
 
             if (response.error) {

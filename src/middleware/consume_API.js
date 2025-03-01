@@ -91,7 +91,7 @@ module.exports = API = {
       const response = await axios.post(URL, dataSend, config);
 
       // Estandarización: Verificar si la respuesta sigue el esquema de éxito
-      if (response.data.status === 'success') {
+      if (response.data?.status === 'success') {
         return {
           success: true,
           data: response.data.data,
@@ -100,7 +100,7 @@ module.exports = API = {
       }
 
       // Estandarización: Manejar respuestas de error de la API
-      if (response.data.status === 'error') {
+      if (response.data?.status === 'error') {
         return {
           success: false,
           error: response.data.error.code,

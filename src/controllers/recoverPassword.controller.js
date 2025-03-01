@@ -31,7 +31,7 @@ const recoverPassword = {
       //Validar existencia de usuario en la base de datos
       const existUser = await API.post({ req, res, endpoint: '/userAdmin/validateExistenceByEmail', dataSend: { email: email } });
 
-      if (existUser.data == "userAdmin exists") {
+      if (existUser.data == 'Company exists') {
         //Enviar correo con instrucciones para recuperar contraseña
         const responseSendMail = await API.post({ req, res, endpoint: '/sendMail/recoverPassword', dataSend: { email: email } });
         if ('error' in responseSendMail) {

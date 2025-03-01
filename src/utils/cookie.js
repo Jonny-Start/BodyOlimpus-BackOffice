@@ -30,12 +30,21 @@ module.exports = cookie = {
             //Estraer los datos
             const dataUser = await API.get({ req, res, endpoint: '/userAdmin/getUserByToken?token=' + token });
             if ('error' in dataUser) {
+                if (dataUser.error === 'INVALID_TOKEN') {
+                    Message.error.push('Token inválido o no encontrado');
+                    res.clearCookie('token');
+                    return res.redirect("/login");
+                } else if (dataUser.error === 'TOKEN_EXPIRED') {
+                    Message.error.push('Token expirado, sin permisos para acceder');
+                    res.clearCookie('token');
+                    return res.redirect("/login");
+                }
                 Message.error.push('Error al obtener datos de usuario');
                 res.clearCookie('token');
                 return res.redirect("/login");
             }
             req.context = {
-                email: dataUser.data,
+                email: dataUser.data.email,
                 id_user_admin: dataUser.data.id_user_admin,
                 name: dataUser.data.name,
                 last_name: dataUser.data.last_name,

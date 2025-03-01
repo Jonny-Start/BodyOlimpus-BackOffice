@@ -53,6 +53,9 @@ ul.notifications {
 }
 
 /* FIN de notificaciones */
+html {
+    background-color: $primary-Black-BO;
+}
 
 body {
     background-color: $primary-Black-BO;
@@ -61,8 +64,11 @@ body {
     font-style: normal;
     color: white;
     margin: 0;
-
-    overflow: hidden;
+    
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+    
+    overflow: auto;
 }
 
 main.internal_view {
