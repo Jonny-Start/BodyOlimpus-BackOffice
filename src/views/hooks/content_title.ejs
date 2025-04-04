@@ -1,0 +1,29 @@
+<article id="content_title">
+  <h1>
+    <%= title %>
+    <p id="date_now">...</p>
+  </h1>
+
+  <%- typeof child !='undefined' ? child : '' %>
+
+  <div id="content_buttons">
+    <button type="button">
+      <ion-icon name="icon-pay"></ion-icon>
+    </button>
+    <button type="button">
+      <ion-icon name="icon-person-plus"></ion-icon>
+    </button>
+  </div>
+</article>
+
+<script type="text/javascript">
+  let date_now = document.getElementById('date_now');
+  let date = new Date();
+  let options = {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric'
+  };
+  let formatDate = date.toLocaleDateString('es-ES', options);
+  date_now.innerHTML = formatDate;
+</script>

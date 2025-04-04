@@ -3,22 +3,7 @@
 <%- include('./layout/nav.ejs') %>
 <main class="internal_view">
   <section id="dashBoard">
-
-    <article id="content_title">
-      <h1>
-        DashBoard
-        <p id="date_now">...</p>
-      </h1>
-
-      <div id="content_buttons">x
-        <button type="button">
-          <ion-icon name="icon-pay"></ion-icon>
-        </button>
-        <button type="button">
-          <ion-icon name="icon-person-plus"></ion-icon>
-        </button>
-      </div>
-    </article>
+    <%- include("./hooks/content_title", {title: 'DashBoard' }); -%>
 
     <article id="information_cards">
       <h2>Ingresos</h2>
@@ -37,15 +22,3 @@
 
   </section>
 </main>
-
-<script type="text/javascript">
-  const date_now = document.getElementById('date_now');
-  const date = new Date();
-  const options = {
-    day: '2-digit',
-    month: 'short',
-    year: 'numeric'
-  };
-  const formatDate = date.toLocaleDateString('es-ES', options);
-  date_now.innerHTML = formatDate;
-</script>

@@ -1,0 +1,204 @@
+body#company {
+    main.internal_view {
+        padding: 1em;
+    }
+
+    button.right {
+        float: right;
+        margin-top: 1em;
+    }
+
+    form#formCompanyBasic {
+        #inf_basic_img {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+            margin-top: 4em;
+            gap: 3em;
+            margin-bottom: 1.5em;
+
+            .content_form {
+                content_img {
+                    display: flex;
+                    justify-content: center;
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+            }
+
+            /* imagen */
+            div.file-upload {
+                position: relative;
+                display: inline-block;
+                width: calc(100% - 2.5em);
+                background-color: $neutral-White-Smoke-BO;
+                border-radius: 10px;
+
+                input.file-input {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    opacity: 0;
+                    cursor: pointer;
+                    z-index: 10;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                label.file-label {
+                    // padding: 8px 16px;
+                    padding: 0;
+                    background-color: transparent;
+                    color: #99999a;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: 1em;
+                    align-items: center;
+                    height: 280px;
+                    justify-content: center;
+                    border-radius: 11px;
+                    font-size: 14px;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: contain;
+
+                    img {
+                        width: 100px;
+                    }
+
+                    p {
+                        font-size: 12px;
+                        margin-bottom: 0.5em;
+                        padding: 1em;
+                        width: 70%;
+                        text-align: center;
+                    }
+                }
+
+                span.file-name {
+                    display: block;
+                    margin-top: 8px;
+                    font-size: 14px;
+                    color: #666;
+                }
+            }
+
+            div.file-upload:hover {
+                border: 2px dashed $primary-Blue-BO;
+                background-color: #c4d5e6 !important;
+
+                label.file-label {
+                    color: white;
+                }
+            }
+
+            .file-upload {
+                border: 2px dashed #cccccc00;
+                padding: 20px;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            .file-upload.dragging {
+                border-color: #000;
+                background-color: #f0f0f0;
+            }
+
+            /* imagen */
+
+        }
+
+        .contentInputAndButton {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+
+            .contentInputs {
+                width: -webkit-fill-available;
+            }
+
+            button {
+
+                color: #3f71d2;
+                border: 1px solid #00000014;
+                font-size: 1.6em;
+                line-height: 56px;
+                height: 50px;
+                border-radius: 5px;
+                background-color: #e4eaf7;
+                width: 2em;
+                margin-left: 10px;
+                cursor: pointer;
+                margin-bottom: 9px;
+
+                .iconLocation {
+                    font-size: 30px;
+                }
+            }
+        }
+
+    }
+
+    h2:nth-of-type(1) {
+        display: block;
+        margin-top: 3em;
+    }
+
+    h2:nth-of-type(2),
+    h2:nth-of-type(3),
+    h2:nth-of-type(4),
+    h2:nth-of-type(5) {
+        display: block;
+        margin-top: 2em;
+    }
+
+    section#paymentMethods {
+        padding: 2em;
+        padding-bottom: 4.5em;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 0px #0000004a;
+    }
+
+    section#gymAvailability {
+        padding: 2em;
+        padding-bottom: 4.5em;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 0px #0000004a;
+
+        h3:nth-of-type(2) {
+            margin-top: 2em;
+        }
+
+        #schedule_availability {
+            margin-top: 1em;
+        }
+    }
+
+    section#subscriptionPlans {
+        padding: 2em;
+        padding-bottom: 4.5em;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 0px #0000004a;
+
+        .contentInputs.contentDiscount {
+            max-width: 6em;
+        }
+    }
+
+    section#accountInformation {
+        padding: 2em;
+        padding-bottom: 4.5em;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 0px #0000004a;
+
+        button {
+            width: 12em;
+        }
+    }
+}

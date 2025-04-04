@@ -2,6 +2,93 @@
     display: none;
 }
 
+button {
+    cursor: pointer;
+}
+
+.flex {
+    display: flex;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.grid-3{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+}
+
+.flex-col-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: center;
+}
+
+#content_title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+        margin: 0;
+        width: fit-content;
+        font-size: 35px;
+        text-align: center;
+        font-weight: 100;
+
+        margin-left: 1em;
+        min-width: 4em;
+
+        p {
+            margin: 0;
+            font-size: 17px;
+            color: #6D6D6D;
+        }
+    }
+
+
+    #content_buttons {
+        display: inline;
+        min-width: 8em;
+
+        button {
+            cursor: pointer;
+            box-shadow: 1px 1px 6px 0px #0000006e;
+            background-color: white;
+            padding: 8px 10px;
+            border-radius: 15px;
+            border: 1px solid rgba(30, 32, 41, 0.17);
+            height: 55px;
+
+            ion-icon {
+                color: white;
+                background-color: black;
+                border-radius: 50%;
+                padding: 5px;
+                font-size: 2em;
+            }
+        }
+
+    }
+}
+
 /* Notificaciones */
 ul.notifications {
     position: absolute;
@@ -64,23 +151,24 @@ body {
     font-style: normal;
     color: white;
     margin: 0;
-    
+
     height: -webkit-fill-available;
     width: -webkit-fill-available;
-    
+
     overflow: auto;
 }
 
 main.internal_view {
     background-color: $primary-White-BO;
-    width: 82vw;
+    // width: 82vw;
     height: 100vh;
     border-radius: 60px 0px 0px 0px;
 
-    position: sticky;
-    top: 0;
+    // position: sticky;
+    // top: 0;
 
     color: $primary-Black-BO;
+    display: inline-table;
 }
 
 button,
@@ -97,6 +185,7 @@ textarea {
     flex-direction: column;
     margin-bottom: 2em;
     position: relative;
+    width: -webkit-fill-available;
 
     label {
         color: white;
@@ -116,7 +205,7 @@ textarea {
 
     input {
         line-height: 2em;
-        height: 50px;
+        height: 3.2em;
         padding: 0 10px;
         padding-left: 40px;
         font-size: 1em;
@@ -126,6 +215,25 @@ textarea {
         outline: none;
         border-radius: 10px;
         color: #545358;
+    }
+
+    select {
+        line-height: 2em;
+        height: 50px;
+        padding: 0 10px;
+        font-size: 1em;
+        background-color: $secondary-Black-BO;
+        border: 0px;
+        border-bottom: 3px solid $primary-Blue-BO;
+        outline: none;
+        border-radius: 10px;
+        color: #545358;
+        cursor: pointer;
+
+        appearance: none; // Oculta la flecha nativa
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        //padding: 10px 40px 10px 15px;
     }
 
     input:focus {
@@ -154,6 +262,47 @@ textarea {
     }
 }
 
+.contentInputs.light {
+    label {
+        color: $primary-Black-BO;
+    }
+
+    ion-icon {
+        color: #5d5b5b;
+    }
+
+    input,
+    select {
+
+        // background-color: white;
+        // border-bottom: 3px solid $primary-Blue-BO;
+        color: $primary-Black-BO;
+        background-color: rgba(30, 32, 41, 0.02); //este es el secondary-Black-BO pero con opacidad de 0.02
+        box-shadow: 0px 1.5px 0px rgba(62, 113, 210, 0.671); // este es el primary-Blue-BO pero con opacidad de 0.671
+        border: 3px solid transparent !important;
+    }
+
+    input:focus {
+        // box-shadow: 0px 4px 4.5px 0px #5d5b5b;
+        box-shadow: 0px 2px 2px rgba(62, 113, 210, 0.671); // este es el primary-Blue-BO pero con opacidad de 0.671
+        // border-bottom: 3px solid transparent !important;
+    }
+
+    input:focus,
+    input:not(:placeholder-shown) {
+        color: $primary-Black-BO;
+        // background-color: white;
+        // border-bottom: 3px solid #5d5b5b;
+        box-shadow: 0px 2px 2px rgba(62, 113, 210, 0.671); // este es el primary-Blue-BO pero con opacidad de 0.671
+
+    }
+
+    input:focus~ion-icon,
+    input:not(:placeholder-shown)~ion-icon {
+        color: $primary-Black-BO;
+    }
+}
+
 .contentPassword {
     ion-icon[name^="eye"] {
         position: absolute;
@@ -169,6 +318,87 @@ textarea {
         padding-right: 40px;
     }
 }
+
+.contentCheck {
+    label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        color: $primary-Black-BO;
+    }
+
+    input[type="checkbox"] {
+        appearance: none;
+        width: 1rem;
+        height: 1rem;
+        border: 2px solid rgba(62, 113, 210, 0.671);
+        border-radius: 0.25rem;
+        display: grid;
+        place-content: center;
+        background-color: white;
+        outline: none;
+        transition: background-color 0.2s, border-color 0.2s;
+    }
+
+    input[type="checkbox"]:checked {
+        background-color: #8fb0f5;
+        border-color: #8fb0f5;
+    }
+
+    input[type="checkbox"]:checked::after {
+        content: "✔";
+        font-size: 0.8rem;
+        color: white;
+    }
+}
+
+.contentCheck.md {
+    input[type="checkbox"] {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    input[type="checkbox"]:checked::after {
+        font-size: 1rem;
+    }
+}
+
+.contentInputs.md {
+    label {
+        // font-size: 1em;
+        font-size: 0.8em;
+    }
+
+    input,
+    select {
+        font-size: 13px;
+        height: 3.2em;
+        border-radius: 5px;
+    }
+
+
+    ion-icon {
+        font-size: 1.3em;
+        top: 70%;
+    }
+}
+
+.contentInputs.contentSelect.md::after {
+    content: "\f107";
+    font-family: 'fontAwesome';
+    font-size: 16px;
+    color: #333;
+    position: absolute;
+    top: 70%;
+    right: 12px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+// .contentInputs.contentSelect:focus-within::after{
+//     transform: translateY(-50%) rotate(180deg);
+// }
 
 /* Botones */
 .btn-primary {

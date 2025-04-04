@@ -45,6 +45,13 @@ router.route('/createAccount').get(create_account.get).post(create_account.post)
 /**
  * @separator
 */
+const company = require('../controllers/company.controller.js');
+router.route('/company').get(validateAccess, company.get).post(validateAccess, company.post);
+router.route('/company/legal').get(validateAccess, company.get).post(validateAccess, company.post);
+router.route('/company/advanced').get(validateAccess, company.get).post(validateAccess, company.post);
+/**
+ * @separator
+*/
 router.get('/privacy_policies', (req, res) => {
     res.render('privacy_policies');
 });
