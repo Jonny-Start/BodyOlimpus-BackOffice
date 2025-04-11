@@ -1,0 +1,120 @@
+<main class="resoluciones-container internal_view">
+  <%- include("./../hooks/content_title", {title: 'GYM', child: buttonsHTML}); -%>
+
+  <header class="resoluciones-header">
+    <h2>Resoluciones DIAN</h2>
+    <div class="resoluciones-filtros">
+      <div class="contentInputs light md" style="margin: 0;">
+        <input type="text" name="name" id="name" autocomplete="off" placeholder="Nombre Empresa/GYM" required>
+        <ion-icon name="search"></ion-icon>
+      </div>
+      <div class="contentInputs contentSelect light md" style="margin: 0;">
+        <select name="status" id="status">
+          <option value="1">Activo</option>
+          <option value="0">Inactivo</option>
+        </select>
+      </div>
+      <button class="btn-primary" id="" style="width: 16em;">Agregar +</button>
+    </div>
+  </header>
+
+  <section class="tabla-resoluciones">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>N° Resolución</th>
+          <th>Fecha Vencimiento</th>
+          <th>Estado</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Aquí se inyectan dinámicamente las resoluciones -->
+        <tr>
+          <td>1</td>
+          <td>187640000</td>
+          <td>2025-12-31</td>
+          <td class="estado-activo">Activa</td>
+          <td>
+            <button class="btn-ver"><ion-icon name="eye-regular"></ion-icon></button>
+            <button class="btn-editar"><ion-icon name="edit"></ion-icon></button>
+            <button class="btn-eliminar"><ion-icon name="trash"></ion-icon></button>
+          </td>
+        </tr>
+        <!-- Más filas -->
+      </tbody>
+    </table>
+  </section>
+
+  <div class="modal-overlay" id="modalAgregar">
+    <div class="modal-content">
+      <h3>Agregar Resolución DIAN</h3>
+      <form id="formAgregarResolucion">
+        <label>N° Resolución</label>
+        <input type="text" name="numero" required />
+
+        <label>Fecha Resolución</label>
+        <input type="date" name="fecha_resolucion" required />
+
+        <label>Fecha Vencimiento</label>
+        <input type="date" name="fecha_vencimiento" required />
+
+        <label>Estado</label>
+        <select name="estado" required>
+          <option value="activa">Activa</option>
+          <option value="vencida">Vencida</option>
+        </select>
+
+        <label>Archivo PDF (máx 2MB)</label>
+        <input type="file" name="documento" accept="application/pdf" required />
+
+        <div class="acciones-form">
+          <button type="submit">Guardar</button>
+          <button type="button" id="cancelarModal">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</main>
+<script>
+  const modal = document.getElementById("modalAgregar");
+  const btnAbrir = document.querySelector(".btn-agregar");
+  const btnCerrar = document.getElementById("cancelarModal");
+  const form = document.getElementById("formAgregarResolucion");
+
+  btnAbrir.addEventListener("click", () => {
+    modal.style.display = "flex";
+  });
+
+  btnCerrar.addEventListener("click", () => {
+    modal.style.display = "none";
+    form.reset();
+  });
+
+  // Validación archivo
+  form.addEventListener("submit", (e) => {
+    const archivo = form.documento.files[0];
+
+    if (archivo) {
+      const maxSizeMB = 2;
+      const isPDF = archivo.type === "application/pdf";
+
+      if (!isPDF) {
+        alert("Solo se permiten archivos PDF.");
+        e.preventDefault();
+        return;
+      }
+
+      if (archivo.size > maxSizeMB * 1024 * 1024) {
+        alert("El archivo no debe superar los 2 MB.");
+        e.preventDefault();
+        return;
+      }
+    } else {
+      alert("Por favor adjunta el archivo de resolución.");
+      e.preventDefault();
+    }
+  });
+</script>

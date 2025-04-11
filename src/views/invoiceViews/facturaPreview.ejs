@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Factura de Inscripción</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 40px;
+    }
+
+    .factura-container {
+      max-width: 600px;
+      margin: auto;
+      border: 1px solid #ccc;
+      padding: 20px;
+    }
+
+    @media print {
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="factura-container">
+    <div style="text-align: center; margin-bottom: 20px;">
+      <img src="<%= factura.logo || '/public/img/Logo_White.png' %>" style="max-height: 80px;" />
+      <h2>Factura de Inscripción</h2>
+    </div>
+
+    <p><strong>Cliente:</strong> <%= factura.cliente %></p>
+    <p><strong>Documento:</strong> <%= factura.documento %></p>
+    <p><strong>Fecha:</strong> <%= factura.fecha %></p>
+
+    <hr>
+
+    <p><strong>Plan:</strong> <%= factura.plan %></p>
+    <p><strong>Duración:</strong> <%= factura.duracion %></p>
+    <p><strong>Método de Pago:</strong> <%= factura.metodoPago %></p>
+
+    <hr>
+
+    <p><strong>Total:</strong> $<%= factura.total.toLocaleString() %></p>
+
+    <p style="text-align: center; margin-top: 30px;">¡Gracias por tu inscripción!</p>
+  </div>
+</body>
+
+</html>

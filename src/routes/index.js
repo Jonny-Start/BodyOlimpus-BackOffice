@@ -52,6 +52,12 @@ router.route('/company/advanced').get(validateAccess, company.get).post(validate
 /**
  * @separator
 */
+const invoiceRegistration = require('../controllers/invoice/registration.controller.js');
+router.route('/invoice/registration').get(invoiceRegistration.get).post(invoiceRegistration.post);
+
+/**
+ * @separator
+*/
 router.get('/privacy_policies', (req, res) => {
     res.render('privacy_policies');
 });
