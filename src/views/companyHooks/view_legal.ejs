@@ -1,9 +1,9 @@
-<main class="resoluciones-container internal_view">
+<main class="container-resolution internal_view">
   <%- include("./../hooks/content_title", {title: 'GYM', child: buttonsHTML}); -%>
 
-  <header class="resoluciones-header">
+  <header class="resolutions-header">
     <h2>Resoluciones DIAN</h2>
-    <div class="resoluciones-filtros">
+    <div class="resolutions-filters">
       <div class="contentInputs light md" style="margin: 0;">
         <input type="text" name="name" id="name" autocomplete="off" placeholder="Nombre Empresa/GYM" required>
         <ion-icon name="search"></ion-icon>
@@ -14,11 +14,11 @@
           <option value="0">Inactivo</option>
         </select>
       </div>
-      <button class="btn-primary" id="" style="width: 16em;">Agregar +</button>
+      <button class="btn-primary" id="btn-add" style="width: 16em;">Agregar +</button>
     </div>
   </header>
 
-  <section class="tabla-resoluciones">
+  <section class="resolutions-table">
     <table>
       <thead>
         <tr>
@@ -35,11 +35,17 @@
           <td>1</td>
           <td>187640000</td>
           <td>2025-12-31</td>
-          <td class="estado-activo">Activa</td>
+          <td class="active-state">Activa</td>
           <td>
-            <button class="btn-ver"><ion-icon name="eye-regular"></ion-icon></button>
-            <button class="btn-editar"><ion-icon name="edit"></ion-icon></button>
-            <button class="btn-eliminar"><ion-icon name="trash"></ion-icon></button>
+            <button class="btn-view">
+              <ion-icon name="eye-regular"></ion-icon>
+            </button>
+            <button class="btn-edit">
+              <ion-icon name="edit"></ion-icon>
+            </button>
+            <button class="btn-delete">
+              <ion-icon name="trash"></ion-icon>
+            </button>
           </td>
         </tr>
         <!-- Más filas -->
@@ -47,31 +53,43 @@
     </table>
   </section>
 
-  <div class="modal-overlay" id="modalAgregar">
+  <div class="modal-overlay" id="modalAdd">
     <div class="modal-content">
       <h3>Agregar Resolución DIAN</h3>
-      <form id="formAgregarResolucion">
-        <label>N° Resolución</label>
-        <input type="text" name="numero" required />
+      <form id="formAddResolution">
 
-        <label>Fecha Resolución</label>
-        <input type="date" name="fecha_resolucion" required />
+        <div class="contentInputs light md">
+          <label for="facebook">N° Resolución</label>
+          <input type="text" name="facebook" id="facebook" autocomplete="facebook" placeholder="www.sitio.com/cuenta" required>
+          <ion-icon name="mail-outline"></ion-icon>
+        </div>
 
-        <label>Fecha Vencimiento</label>
-        <input type="date" name="fecha_vencimiento" required />
+        <div class="contentInputs light md">
+          <label for="facebook">Fecha Resolución</label>
+          <input type="text" name="facebook" id="facebook" autocomplete="facebook" placeholder="www.sitio.com/cuenta" required>
+          <ion-icon name="mail-outline"></ion-icon>
+        </div>
 
-        <label>Estado</label>
-        <select name="estado" required>
-          <option value="activa">Activa</option>
-          <option value="vencida">Vencida</option>
-        </select>
+        <div class="contentInputs light md">
+          <label for="facebook">Fecha Vencimiento</label>
+          <input type="date" name="facebook" id="facebook" autocomplete="facebook" placeholder="www.sitio.com/cuenta" required>
+          <ion-icon name="mail-outline"></ion-icon>
+        </div>
+
+        <div class="contentInputs contentSelect light md">
+          <label for="name">Estado</label>
+          <select name="status" id="status">
+            <option value="1">Activo</option>
+            <option value="0">Inactivo</option>
+          </select>
+        </div>
 
         <label>Archivo PDF (máx 2MB)</label>
-        <input type="file" name="documento" accept="application/pdf" required />
+        <input type="file" name="document" accept="application/pdf" required />
 
-        <div class="acciones-form">
-          <button type="submit">Guardar</button>
-          <button type="button" id="cancelarModal">Cancelar</button>
+        <div class="actions-form">
+          <button type="submit" class="btn-primary">Guardar</button>
+          <button type="button" id="cancelModal" class="btn-secondary">Cancelar</button>
         </div>
       </form>
     </div>
@@ -79,16 +97,16 @@
 
 </main>
 <script>
-  const modal = document.getElementById("modalAgregar");
-  const btnAbrir = document.querySelector(".btn-agregar");
-  const btnCerrar = document.getElementById("cancelarModal");
-  const form = document.getElementById("formAgregarResolucion");
+  const modal = document.getElementById("modalAdd");
+  const btnOpen = document.getElementById("btn-add");
+  const btnCancel = document.getElementById("cancelModal");
+  const form = document.getElementById("formAddResolution");
 
-  btnAbrir.addEventListener("click", () => {
+  btnOpen.addEventListener("click", () => {
     modal.style.display = "flex";
   });
 
-  btnCerrar.addEventListener("click", () => {
+  btnCancel.addEventListener("click", () => {
     modal.style.display = "none";
     form.reset();
   });

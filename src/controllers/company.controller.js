@@ -12,6 +12,7 @@ const company = {
                 body: 'company',
                 environment,
                 userAdmin,
+                MAPS_API_KEY: process.env.MAPS_API_KEY,
                 errors: Message.error,
                 success: Message.success
             });

@@ -1,5 +1,98 @@
-<main class="internal_view">
-    <%- include("./../hooks/content_title", {title: 'GYM', child: buttonsHTML}); -%>
-    <h1>advanced</h1>
+<main class="container-advance internal_view">
+  <%- include("./../hooks/content_title", {title: 'GYM', child: buttonsHTML}); -%>
+
+  <form action="#" method="post">
+    <div class="contentInputs">
+      <label for="facebook">Registro de ingreso con huella</label>
+      <div class="contentInputs contentSwitch">
+        <label class="switch">
+          <input type="checkbox" id="statusSwitch" name="statusSwitch" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <h2>Envio de correos</h2>
+    <div class="row">
+      <div class="contentInputs">
+        <label for="facebook">Renovar plan</label>
+        <div class="contentInputs contentSwitch">
+          <label class="switch">
+            <input type="checkbox" id="statusSwitch" name="statusSwitch" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="contentInputs">
+        <label for="facebook">Registro/Bienvenida</label>
+        <div class="contentInputs contentSwitch">
+          <label class="switch">
+            <input type="checkbox" id="statusSwitch" name="statusSwitch" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="contentInputs">
+        <label for="facebook">3 dias antedes de vencer plan</label>
+        <div class="contentInputs contentSwitch">
+          <label class="switch">
+            <input type="checkbox" id="statusSwitch" name="statusSwitch" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+
+      <div class="contentInputs">
+        <label for="facebook">Vencimiento de plan</label>
+        <div class="contentInputs contentSwitch">
+          <label class="switch">
+            <input type="checkbox" id="statusSwitch" name="statusSwitch" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="contentInputs">
+        <label for="facebook">Registro de valoración</label>
+        <div class="contentInputs contentSwitch">
+          <label class="switch">
+            <input type="checkbox" id="statusSwitch" name="statusSwitch" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="contentInputs">
+        <label for="facebook">Envio de factura</label>
+        <div class="contentInputs contentSwitch">
+          <label class="switch">
+            <input type="checkbox" id="statusSwitch" name="statusSwitch" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="contentInputAndButton">
+      <div class="contentInputs light md">
+        <label for="direccion">Token acceso API</label>
+        <input type="text" name="address" id="address" autocomplete="on" placeholder="khgkhgjsxtd6e76cjui" onclick="">
+        <ion-icon name="clone-regular" onclick="alert('click')"></ion-icon>
+      </div>
+      <button type="button" class="btn" onclick="">
+        <ion-icon name="eye-regular" class="iconLocation"></ion-icon>
+      </button>
+    </div>
+
+    <button class="btn-primary" style="float: right;">Guardar</button>
+  </form>
+
+
 
 </main>
