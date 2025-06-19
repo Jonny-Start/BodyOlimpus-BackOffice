@@ -54,6 +54,11 @@ router.route('/company/advanced').get(validateAccess, company.get).post(validate
 */
 const invoiceRegistration = require('../controllers/invoice/registration.controller.js');
 router.route('/invoice/registration').get(invoiceRegistration.get).post(invoiceRegistration.post);
+/**
+ * @separator
+*/
+const users = require('../controllers/users.controller.js');
+router.route('/users').get(validateAccess, users.get).post(validateAccess, users.post);
 
 /**
  * @separator
