@@ -6,14 +6,158 @@ body#home {
         section#dashBoard {
             width: -webkit-fill-available;
             padding: 1em 2em;
+            overflow: auto;
 
-            #information_cards{
-                h2{
+            #information_cards {
+                text-align: center;
 
+                h2 {
+                    font-size: 1.8rem;
                 }
-                .content_cards{
-                    .card{
-                        
+
+                .content_cards {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: space-around;
+                    gap: 1em;
+
+                    .card {
+                        border: 1px solid #b7b7b7;
+                        border-radius: 15px;
+                        width: 12em;
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        align-content: center;
+                        align-items: center;
+                        padding: 10px;
+
+                        ion-icon {
+                            background-color: #5C0FFF;
+                            color: white;
+                            width: 1em;
+                            height: 1em;
+                            font-size: 27px;
+                            border-radius: 50%;
+                            padding: 6px;
+                        }
+
+                        span {
+                            margin-left: 8px;
+
+                            p {
+                                margin: 0;
+                                color: #858282;
+                            }
+                        }
+                    }
+                }
+            }
+
+            #contentCharts {
+                margin-top: 2em;
+                display: flex;
+                flex-direction: row; // Asegura que estén en línea
+                gap: 2em;
+                align-items: stretch;
+                flex-wrap: nowrap;
+
+                >div {
+                    width: 50%;
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+
+                    span {
+                        width: 100%;
+                        text-align: end;
+
+                        select {
+                            color: #3E71D2;
+                            background-color: #c7d4ec;
+                            border: 1px solid #c7d4ec;
+                            padding: 0.2em 0.5em;
+                            border-radius: 5px;
+                            outline: none;
+
+                            &:focus {
+                                color: #c7d4ec;
+                                border: 1px solid #3E71D2;
+                                background-color: #3E71D2;
+                            }
+                        }
+                    }
+                }
+
+                canvas {
+                    width: 100% !important;
+                    max-width: 100%;
+                }
+            }
+
+            #tableClients {
+                margin-top: 2em;
+                width: 100%;
+                overflow-x: auto;
+
+                a.icon-redirect {
+                    margin-left: 0.5em;
+                    color: #3E71D2;
+                    font-size: 1.2rem;
+                    text-decoration: none;
+
+                    &:hover {
+                        color: #1a4f8c;
+                    }
+                }
+
+                .table_container {
+                    width: 100%;
+                    overflow-x: auto;
+
+                    table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        border-radius: 5px;
+
+                        box-shadow: inset 0px -20px 20px #0000001c;
+
+                        th,
+                        td {
+                            padding: 0.5em;
+                            text-align: left;
+                            border-bottom: 1px solid #ddd;
+                        }
+
+                        tbody {
+                            color: rgb(96, 96, 96);
+                            font-size: 0.9rem;
+                            font-weight: 500;
+
+                            tr {
+                                &:hover {
+                                    background-color: #e9f4ff;
+                                }
+                            }
+                        }
+
+                        .green {
+                            color: rgb(141, 225, 141);
+                        }
+
+                        .red {
+                            color: rgb(233, 136, 136);
+                        }
+
+                        td.email-col,
+                        th.email-col {
+                            max-width: 200px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                        }
                     }
                 }
             }
@@ -21,7 +165,113 @@ body#home {
 
         section#infUsers {
             min-width: 20em;
-            background-color: red;
+            background-color: #E3E3E38A;
+            overflow: auto;
+
+            h2 {
+                text-align: center;
+                margin-top: 1.5em;
+                margin-bottom: 1em;
+            }
+
+            #contentTarjetUsers {
+                display: flex;
+                gap: 1em;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+
+                .cardKpiUsers {
+                    background-color: #b6b5b5;
+                    border-radius: 10px;
+                    padding: 1em 2em;
+
+                    span {
+                        ion-icon {
+                            font-size: 4em;
+                        }
+
+                        p {
+                            margin-top: 0;
+                            text-align: center;
+                        }
+                    }
+
+                    h3 {
+                        text-align: center;
+                        margin-top: 1.5em;
+                        font-size: 1.4rem;
+                        margin-bottom: 0;
+                        font-weight: 100;
+                    }
+                }
+
+                .cardKpiUsers:first-of-type {
+                    color: #5F2A71;
+                    background-color: #D2BDFA;
+                }
+
+                .cardKpiUsers:last-of-type {
+                    color: #2A7153;
+                    background-color: #BDFAE1;
+                }
+            }
+
+            #infActivities {
+                >h2 {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 0px 5px;
+                    font-size: 1.3em;
+
+                    a {
+                        color: #9A6AFF;
+                        font-size: 0.7em;
+                        text-decoration: underline;
+
+                        &:hover {
+                            color: #804cf2;
+                        }
+                    }
+                }
+
+                .cardActivity {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 5px;
+                    margin-bottom: 1.5em;
+
+                    padding: 0px 8px;
+
+                    ion-icon {
+                        background-color: black;
+                        font-size: 27px;
+                        padding: 4px 6px;
+                        border-radius: 9px;
+                    }
+
+                    div {
+                        font-size: 11px;
+
+                        h3 {
+                            margin: 0;
+                        }
+
+                        p {
+                            margin: 0;
+                            color: rgb(91, 90, 90);
+                        }
+                    }
+
+                    p {
+                        margin: 0;
+                        font-size: 0.8em;
+                        color: black;
+                    }
+                }
+            }
         }
     }
 }

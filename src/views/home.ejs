@@ -7,18 +7,278 @@
 
     <article id="information_cards">
       <h2>Ingresos</h2>
+
       <div class="content_cards">
+
         <div class="card">
-          <ion-icon name="icon-person-plus"></ion-icon>
+          <ion-icon name="briefcase-dollar-stroke-rounded"></ion-icon>
           <span>
             $ 170.000
             <p>Hoy</p>
           </span>
         </div>
+
+        <div class="card">
+          <ion-icon name="money-saving-jar-stroke-rounded"></ion-icon>
+          <span>
+            $ 170.000
+            <p>Hoy</p>
+          </span>
+        </div>
+
+        <div class="card">
+          <ion-icon name="purse-stroke-rounded"></ion-icon>
+          <span>
+            $ 170.000
+            <p>Hoy</p>
+          </span>
+        </div>
+
       </div>
     </article>
-  </section>
-  <section id="infUsers">
 
+    <article id="contentCharts">
+      <div>
+        <h2>Asistencia de clientes</h2>
+        <span>
+          <select name="" id="" class="">
+            <option value="horas">Horas</option>
+            <option value="dias">Días</option>
+            <option value="semanas">Semanas</option>
+          </select>
+          <select name="" id="" class="">
+            <option value="hoy">hoy</option>
+          </select>
+        </span>
+        <canvas id="clientAttended"></canvas>
+      </div>
+      <div>
+        <h2>Ingresos</h2>
+        <span>
+          <select name="" id="" class="">
+            <option value="mensual">Mensual</option>
+          </select>
+        </span>
+        <canvas id="Income"></canvas>
+      </div>
+    </article>
+
+    <article id="tableClients">
+      <h2>
+        Asistencia de clientes
+        <a href="/users" class="icon-redirect">
+          <ion-icon name="arrow-up-right"></ion-icon>
+        </a>
+      </h2>
+      <div class="table_container">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Documento</th>
+              <th class="email-col">Correo</th>
+              <th>Plan</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Juan Pérez</td>
+              <td>1234567890</td>
+              <td class="email-col">juan@gmail.com</td>
+              <td>Mensual</td>
+              <td class="green">Activo</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>María López</td>
+              <td>0987654321</td>
+              <td class="email-col">marlhlkjsczxdsadsñlkdfhlaksjhia@gmail.com</td>
+              <td>Trimestral</td>
+              <td class="green">Activo</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Carlos García</td>
+              <td>1122334455</td>
+              <td class="email-col">Carlos@gmail.com</td>
+              <td>Anual</td>
+              <td class="red">Inactivo</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Ana Torres</td>
+              <td>5566778899</td>
+              <td class="email-col">ana@gmail.com</td>
+              <td>Mensual</td>
+              <td class="green">Activo</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Pedro Martínez</td>
+              <td>2233445566</td>
+              <td class="email-col">pedro@gmail.com</td>
+              <td>Trimestral</td>
+              <td class="green">Activo</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Lucía Fernández</td>
+              <td>3344556677</td>
+              <td class="email-col">lucia@gmail.com</td>
+              <td>Anual</td>
+              <td class="red">Inactivo</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </article>
+
+    <script src="/public/js/chartjs_4_5_0.js"></script>
+    <script src="/public/js/charts_home.js"></script>
   </section>
+
+  <section id="infUsers">
+    <h2>Usuarios</h2>
+
+    <div id="contentTarjetUsers">
+      <div class="cardKpiUsers">
+        <span>
+          <ion-icon name="ai-user-stroke-rounded"></ion-icon>
+          <p>Total</p>
+        </span>
+        <h3>1.140</h3>
+      </div>
+      <div class="cardKpiUsers">
+        <span>
+          <ion-icon name="star-square-stroke-rounded"></ion-icon>
+          <p>Activos</p>
+        </span>
+        <h3>940</h3>
+      </div>
+    </div>
+
+    <div id="infActivities">
+      <h2>Actividades <a href="#">Ver todos</a></h2>
+
+      <span class="cardActivity">
+        <ion-icon name="music"></ion-icon>
+        <div>
+          <h3>Actividad 1</h3>
+          <p>Descripción de la actividad 1.</p>
+        </div>
+        <p>23 Jul 2024 6:00 am</p>
+      </span>
+
+      <span class="cardActivity">
+        <ion-icon name="music"></ion-icon>
+        <div>
+          <h3>Actividad 1</h3>
+          <p>Descripción de la actividad 1.</p>
+        </div>
+        <p>23 Jul 2024 6:00 am</p>
+      </span>
+
+
+      <span class="cardActivity">
+        <ion-icon name="music"></ion-icon>
+        <div>
+          <h3>Actividad 1</h3>
+          <p>Descripción de la actividad 1.</p>
+        </div>
+        <p>23 Jul 2024 6:00 am</p>
+      </span>
+
+
+      <span class="cardActivity">
+        <ion-icon name="music"></ion-icon>
+        <div>
+          <h3>Actividad 1</h3>
+          <p>Descripción de la actividad 1.</p>
+        </div>
+        <p>23 Jul 2024 6:00 am</p>
+      </span>
+
+
+      <span class="cardActivity">
+        <ion-icon name="music"></ion-icon>
+        <div>
+          <h3>Actividad 1</h3>
+          <p>Descripción de la actividad 1.</p>
+        </div>
+        <p>23 Jul 2024 6:00 am</p>
+      </span>
+
+
+      <span class="cardActivity">
+        <ion-icon name="music"></ion-icon>
+        <div>
+          <h3>Actividad 1</h3>
+          <p>Descripción de la actividad 1.</p>
+        </div>
+        <p>23 Jul 2024 6:00 am</p>
+      </span>
+
+      <span class="cardActivity">
+        <ion-icon name="music"></ion-icon>
+        <div>
+          <h3>Actividad 1</h3>
+          <p>Descripción de la actividad 1.</p>
+        </div>
+        <p>23 Jul 2024 6:00 am</p>
+      </span>
+
+      <span class="cardActivity">
+        <ion-icon name="music"></ion-icon>
+        <div>
+          <h3>Actividad 1</h3>
+          <p>Descripción de la actividad 1.</p>
+        </div>
+        <p>23 Jul 2024 6:00 am</p>
+      </span>
+
+
+      <span class="cardActivity">
+        <ion-icon name="music"></ion-icon>
+        <div>
+          <h3>Actividad 1</h3>
+          <p>Descripción de la actividad 1.</p>
+        </div>
+        <p>23 Jul 2024 6:00 am</p>
+      </span>
+
+      <span class="cardActivity">
+        <ion-icon name="music"></ion-icon>
+        <div>
+          <h3>Actividad 1</h3>
+          <p>Descripción de la actividad 1.</p>
+        </div>
+        <p>23 Jul 2024 6:00 am</p>
+      </span>
+
+
+      <span class="cardActivity">
+        <ion-icon name="music"></ion-icon>
+        <div>
+          <h3>Actividad 1</h3>
+          <p>Descripción de la actividad 1.</p>
+        </div>
+        <p>23 Jul 2024 6:00 am</p>
+      </span>
+
+
+      <span class="cardActivity">
+        <ion-icon name="music"></ion-icon>
+        <div>
+          <h3>Actividad 1</h3>
+          <p>Descripción de la actividad 1.</p>
+        </div>
+        <p>23 Jul 2024 6:00 am</p>
+      </span>
+    </div>
+  </section>
+
 </main>
