@@ -33,6 +33,12 @@ button {
     gap: 1em;
 }
 
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1em;
+}
+
 .flex-col-center {
     display: flex;
     flex-direction: column;

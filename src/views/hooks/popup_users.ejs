@@ -1,0 +1,311 @@
+<div class="modal-overlay" id="modalAdd" style="display: flex;">
+  <div class="modal-content">
+    <h3>Agregar usuario</h3>
+
+    <button class="xmark" id="xmark" type="button">
+      <ion-icon name="x-solid"></ion-icon>
+    </button>
+
+    <form id="formAddUser" action="/users" method="POST" enctype="multipart/form-data">
+      <section id="content_data_user">
+        <label class="user-image-container" for="image" id="userImageLabel">
+          <ion-icon name="add-a-photo" id="iconAddPhoto"></ion-icon>
+          <img id="previewImage" style="display:none;" />
+          <div class="user-image-actions">
+            <button type="button" id="btnCamera" class="btn-primary">Tomar foto</button>
+          </div>
+          <input type="file" name="image" id="image" accept="image/*" class="user-image-input">
+        </label>
+
+        <div id="cameraContainer">
+          <video id="videoCamera" autoplay></video>
+          <button type="button" id="btnCapture" class="btn-primary">Capturar</button>
+          <button type="button" id="btnCloseCamera" class="btn-secondary">Cerrar cámara</button>
+        </div>
+
+        <div class="form-group">
+          <section class="grid-3" style="width: -webkit-fill-available;">
+            <div class="contentInputs light md">
+              <label for="name">Name</label>
+              <input type="number" name="name" id="name" autocomplete="off" placeholder="Nombre" required>
+            </div>
+            <div class="contentInputs light md">
+              <label for="lastName">Apellido</label>
+              <input type="number" name="lastName" id="lastName" autocomplete="off" placeholder="Apellido" required>
+            </div>
+            <div class="contentInputs light md">
+              <label for="rh">RH / Grupo</label>
+              <input type="number" name="rh" id="rh" autocomplete="off" placeholder="+A" required>
+            </div>
+          </section>
+
+          <section class="grid-3" style="width: -webkit-fill-available;">
+            <div class="contentInputs light md">
+              <label for="email">Correo electronico</label>
+              <input type="text" name="email" id="email" autocomplete="off" placeholder="Correo electronico" required>
+            </div>
+            <div class="contentInputs light md">
+              <label for="cc">Cedula / NIT / CF</label>
+              <input type="number" name="cc" id="cc" autocomplete="off" placeholder="CC | 1000000000" required>
+            </div>
+            <div class="contentInputs light md">
+              <label for="phoneNumber">Pref / Numero telefonico</label>
+              <input type="number" name="phoneNumber" id="phoneNumber" autocomplete="off" placeholder="3100000000" required>
+            </div>
+          </section>
+
+          <section class="grid-4" style="width: -webkit-fill-available;">
+            <div class="contentInputs light md">
+              <label for="birthDate">Fecha de nacimiento</label>
+              <input type="date" name="birthDate" id="birthDate" autocomplete="off" placeholder="" required>
+            </div>
+            <div class="contentInputs light md">
+              <label for="age">Edad</label>
+              <input type="text" name="age" id="age" placeholder="---" disabled readonly>
+            </div>
+            <div class="contentInputs light md">
+              <label for="height">Estatura</label>
+              <input type="number" name="height" id="height" autocomplete="off" placeholder="166" required>
+            </div>
+            <div class="contentInputs contentSelect light md">
+              <label for="gender">Genero</label>
+              <select name="gender" id="gender">
+                <option value="M">Masculino</option>
+                <option value="F">Femenino</option>
+                <option value="O">Otro</option>
+              </select>
+            </div>
+          </section>
+
+        </div>
+      </section>
+
+      <section id="emergency_contact">
+        <h2>Contactos de emergencia</h2>
+
+        <section class="grid-4" style="width: -webkit-fill-available; margin-bottom: 1em;">
+          <div class="contentInputs light md">
+            <label for="nameEmergencyContact1">Nombre</label>
+            <input type="text" name="nameEmergencyContact1" id="nameEmergencyContact1" autocomplete="off" placeholder="Contacto de emergencia #1" required>
+          </div>
+          <div class="contentInputs light md">
+            <label for="relationship1">Parentezco</label>
+            <input type="text" name="relationship1" id="relationship1" autocomplete="off" placeholder="Padre / Madre / Esposa ..." required>
+          </div>
+          <div class="contentInputs light md">
+            <label for="phoneNumberEmergencyContact1">Numero de telefono 1</label>
+            <input type="number" name="phoneNumberEmergencyContact1" id="phoneNumberEmergencyContact1" autocomplete="off" placeholder="3100000000" required>
+          </div>
+          <div class="contentInputs light md">
+            <label for="phoneNumberEmergencyContact2">Numero de telefono 2</label>
+            <input type="number" name="phoneNumberEmergencyContact2" id="phoneNumberEmergencyContact2" autocomplete="off" placeholder="3100000000" required>
+          </div>
+        </section>
+
+        <section class="grid-4" style="width: -webkit-fill-available;">
+          <div class="contentInputs light md">
+            <label for="nameEmergencyContact2">Nombre</label>
+            <input type="text" name="nameEmergencyContact2" id="nameEmergencyContact2" autocomplete="off" placeholder="Contacto de emergencia #2" >
+          </div>
+          <div class="contentInputs light md">
+            <label for="relationship2">Parentezco</label>
+            <input type="text" name="relationship2" id="relationship2" autocomplete="off" placeholder="Padre / Madre / Esposa ..." >
+          </div>
+          <div class="contentInputs light md">
+            <label for="phoneNumberEmergencyContact3">Numero de telefono 1</label>
+            <input type="number" name="phoneNumberEmergencyContact3" id="phoneNumberEmergencyContact3" autocomplete="off" placeholder="3100000000" >
+          </div>
+          <div class="contentInputs light md">
+            <label for="phoneNumberEmergencyContact4">Numero de telefono 2</label>
+            <input type="number" name="phoneNumberEmergencyContact4" id="phoneNumberEmergencyContact4" autocomplete="off" placeholder="3100000000" >
+          </div>
+        </section>
+
+      </section>
+
+
+      <div class="actions-form">
+        <button type="submit" class="btn-primary">Guardar</button>
+        <button type="button" id="cancelModal" class="btn-secondary">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<script>
+  const modal = document.getElementById("modalAdd");
+  const btnOpen = document.getElementById("btn-add");
+  const btnCancel = document.getElementById("cancelModal");
+  const xmark = document.getElementById("xmark");
+  const form = document.getElementById("formAddUser");
+  const birthDate = document.getElementById("birthDate");
+
+  birthDate.max = new Date().toISOString().split("T")[0]; // Establece la fecha máxima al día de hoy
+
+  btnOpen.addEventListener("click", () => {
+    modal.style.display = "flex";
+  });
+
+  btnCancel.addEventListener("click", () => {
+    modal.style.display = "none";
+    form.reset();
+  });
+
+  xmark.addEventListener("click", () => {
+    modal.style.display = "none";
+    form.reset();
+  });
+
+  // Validación archivo
+  form.addEventListener("submit", (e) => {
+    const archivo = form.documento.files[0];
+
+    if (archivo) {
+      const maxSizeMB = 2;
+      const isPDF = archivo.type === "application/pdf";
+
+      if (!isPDF) {
+        alert("Solo se permiten archivos PDF.");
+        e.preventDefault();
+        return;
+      }
+
+      if (archivo.size > maxSizeMB * 1024 * 1024) {
+        alert("El archivo no debe superar los 2 MB.");
+        e.preventDefault();
+        return;
+      }
+    } else {
+      alert("Por favor adjunta el archivo de resolución.");
+      e.preventDefault();
+    }
+  });
+
+  // Drag & Drop y previsualización de imagen
+  const userImageLabel = document.getElementById('userImageLabel');
+  const imageInput = document.getElementById('image');
+  const previewImage = document.getElementById('previewImage');
+  const iconAddPhoto = document.getElementById('iconAddPhoto');
+  const btnCamera = document.getElementById('btnCamera');
+  const cameraContainer = document.getElementById('cameraContainer');
+  const videoCamera = document.getElementById('videoCamera');
+  const btnCapture = document.getElementById('btnCapture');
+  const btnCloseCamera = document.getElementById('btnCloseCamera');
+
+  // Drag & drop
+  userImageLabel.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    userImageLabel.style.backgroundColor = '#c0baba';
+    userImageLabel.style.borderColor = '#507dd2';
+  });
+  userImageLabel.addEventListener('dragleave', (e) => {
+    e.preventDefault();
+    userImageLabel.style.backgroundColor = '';
+    userImageLabel.style.borderColor = '';
+  });
+  userImageLabel.addEventListener('drop', (e) => {
+    e.preventDefault();
+    userImageLabel.style.backgroundColor = '';
+    userImageLabel.style.borderColor = '';
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      imageInput.files = e.dataTransfer.files;
+      showPreviewImage(e.dataTransfer.files[0]);
+    }
+  });
+
+  // Previsualización al seleccionar archivo
+  imageInput.addEventListener('change', (e) => {
+    if (e.target.files && e.target.files[0]) {
+      showPreviewImage(e.target.files[0]);
+    }
+  });
+
+  function showPreviewImage(file) {
+    if (!file.type.startsWith('image/')) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      previewImage.src = e.target.result;
+      previewImage.style.display = 'block';
+      iconAddPhoto.style.display = 'none';
+      previewImage.style.objectFit = 'cover';
+      previewImage.style.objectPosition = 'center';
+      previewImage.style.width = '100%';
+      previewImage.style.height = '100%';
+      previewImage.style.borderRadius = '10px';
+      previewImage.style.background = '#eaeaea';
+      previewImage.style.position = 'absolute';
+      previewImage.style.top = '0';
+      previewImage.style.left = '0';
+      previewImage.style.zIndex = '1';
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // Activar cámara
+  let stream = null;
+  btnCamera.addEventListener('click', async () => {
+    cameraContainer.style.display = 'flex';
+    userImageLabel.style.display = 'none';
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({
+        video: true
+      });
+      videoCamera.srcObject = stream;
+    } catch (err) {
+      alert('No se pudo acceder a la cámara');
+      cameraContainer.style.display = 'none';
+      userImageLabel.style.display = '';
+    }
+  });
+
+  // Capturar foto
+  btnCapture.addEventListener('click', () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = videoCamera.videoWidth;
+    canvas.height = videoCamera.videoHeight;
+    canvas.getContext('2d').drawImage(videoCamera, 0, 0, canvas.width, canvas.height);
+    canvas.toBlob((blob) => {
+      const file = new File([blob], 'captured.png', {
+        type: 'image/png'
+      });
+      // Simula la selección en el input file
+      const dataTransfer = new DataTransfer();
+      dataTransfer.items.add(file);
+      imageInput.files = dataTransfer.files;
+      showPreviewImage(file);
+      // Oculta cámara y muestra label
+      cameraContainer.style.display = 'none';
+      userImageLabel.style.display = '';
+      // Detiene la cámara
+      if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+        stream = null;
+      }
+    }, 'image/png');
+  });
+
+  // Cerrar cámara
+  btnCloseCamera.addEventListener('click', () => {
+    cameraContainer.style.display = 'none';
+    userImageLabel.style.display = '';
+    if (stream) {
+      stream.getTracks().forEach(track => track.stop());
+      stream = null;
+    }
+  });
+
+  // Resetear previsualización al cerrar modal
+  btnCancel.addEventListener("click", () => {
+    modal.style.display = "none";
+    form.reset();
+    previewImage.style.display = 'none';
+    iconAddPhoto.style.display = '';
+  });
+  xmark.addEventListener("click", () => {
+    modal.style.display = "none";
+    form.reset();
+    previewImage.style.display = 'none';
+    iconAddPhoto.style.display = '';
+  });
+</script>
