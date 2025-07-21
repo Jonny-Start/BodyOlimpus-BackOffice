@@ -2,7 +2,7 @@
 
 <%- include('./layout/nav.ejs') %>
 
-<main class="container-resolution internal_view">
+<main class="container-data-user internal_view">
   <%- include("./hooks/content_title", {title: 'Usuarios' }); -%>
 
   <section id="KPIs">
@@ -55,25 +55,25 @@
           <td>CC 1006844604</td>
           <td class="active-state">Activa</td>
           <td>
-            <button class="btn-view">
+            <button class="btn-view" title="Ver usuario">
               <ion-icon name="eye-regular"></ion-icon>
             </button>
-            <button class="btn-edit">
+            <button class="btn-edit" title="Editar usuario">
               <ion-icon name="edit"></ion-icon>
             </button>
-            <button class="btn-delete">
+            <button class="btn-delete" title="Eliminar usuario">
               <ion-icon name="trash"></ion-icon>
             </button>
-            <button class="btn-mail">
+            <button class="btn-mail" title="Enviar correo">
               <ion-icon name="mail-outline"></ion-icon>
             </button>
-            <button class="btn-whatsapp">
+            <button class="btn-whatsapp" title="WhatsApp">
               <ion-icon name="whatsapp"></ion-icon>
             </button>
-            <button class="btn-clipboard">
+            <button type="button" class="btn-clipboard" title="Valoración" onclick="location.href='/assessment/1006844604'">
               <ion-icon name="clipboard"></ion-icon>
             </button>
-            <button class="btn-paid">
+            <button class="btn-paid" title="Pagos">
               <ion-icon name="paid"></ion-icon>
             </button>
           </td>

@@ -59,7 +59,11 @@ router.route('/invoice/registration').get(invoiceRegistration.get).post(invoiceR
 */
 const users = require('../controllers/users.controller.js');
 router.route('/users').get(validateAccess, users.get).post(validateAccess, users.post);
-
+/**
+ * @separator
+*/
+const assessment = require('../controllers/assessment.controller.js');
+router.route('/assessment/:id').get(validateAccess, assessment.get).post(validateAccess, assessment.post);
 /**
  * @separator
 */

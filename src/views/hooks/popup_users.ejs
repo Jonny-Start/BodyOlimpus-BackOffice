@@ -1,4 +1,4 @@
-<div class="modal-overlay" id="modalAdd" style="display: flex;">
+<div class="modal-overlay-add-user" id="modalAdd">
   <div class="modal-content">
     <h3>Agregar usuario</h3>
 
@@ -105,30 +105,94 @@
         <section class="grid-4" style="width: -webkit-fill-available;">
           <div class="contentInputs light md">
             <label for="nameEmergencyContact2">Nombre</label>
-            <input type="text" name="nameEmergencyContact2" id="nameEmergencyContact2" autocomplete="off" placeholder="Contacto de emergencia #2" >
+            <input type="text" name="nameEmergencyContact2" id="nameEmergencyContact2" autocomplete="off" placeholder="Contacto de emergencia #2">
           </div>
           <div class="contentInputs light md">
             <label for="relationship2">Parentezco</label>
-            <input type="text" name="relationship2" id="relationship2" autocomplete="off" placeholder="Padre / Madre / Esposa ..." >
+            <input type="text" name="relationship2" id="relationship2" autocomplete="off" placeholder="Padre / Madre / Esposa ...">
           </div>
           <div class="contentInputs light md">
             <label for="phoneNumberEmergencyContact3">Numero de telefono 1</label>
-            <input type="number" name="phoneNumberEmergencyContact3" id="phoneNumberEmergencyContact3" autocomplete="off" placeholder="3100000000" >
+            <input type="number" name="phoneNumberEmergencyContact3" id="phoneNumberEmergencyContact3" autocomplete="off" placeholder="3100000000">
           </div>
           <div class="contentInputs light md">
             <label for="phoneNumberEmergencyContact4">Numero de telefono 2</label>
-            <input type="number" name="phoneNumberEmergencyContact4" id="phoneNumberEmergencyContact4" autocomplete="off" placeholder="3100000000" >
+            <input type="number" name="phoneNumberEmergencyContact4" id="phoneNumberEmergencyContact4" autocomplete="off" placeholder="3100000000">
           </div>
         </section>
 
       </section>
 
+      <section id="settings_user">
+        <h2>Configuración</h2>
+        <section class="grid-4" style="width: -webkit-fill-available; margin-bottom: 1em;">
+
+          <div class="contentInputs light md">
+            <label for="fingerprintEntry">Ingreso con huella</label>
+            <div class="contentInputs contentSwitch">
+              <label class="switch">
+                <input type="checkbox" id="fingerprintEntry" name="fingerprintEntry" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="contentInputs contentSelect light md">
+            <label for="assignedRoutine">Rutina asignada</label>
+            <select name="assignedRoutine" id="assignedRoutine">
+              <option value="1">Rutina pop</option>
+              <option value="0">Extra slim</option>
+            </select>
+          </div>
+
+        </section>
+
+      </section>
 
       <div class="actions-form">
         <button type="submit" class="btn-primary">Guardar</button>
         <button type="button" id="cancelModal" class="btn-secondary">Cancelar</button>
       </div>
     </form>
+
+    <section id="data_plan">
+      <h2>Datos del plan</h2>
+
+      <section class="grid-3" style="width: -webkit-fill-available;">
+        <div class="contentInputs light md">
+          <label for="plan">Plan</label>
+          <input type="text" name="plan" id="plan" placeholder="Plan de entrenamiento" readonly disabled>
+        </div>
+        <div class="contentInputs light md">
+          <label for="startDate">Fecha de inicio</label>
+          <input type="date" name="startDate" id="startDate" placeholder="" readonly disabled>
+        </div>
+        <div class="contentInputs light md">
+          <label for="endDate">Fecha de finalización</label>
+          <input type="date" name="endDate" id="endDate" placeholder="" readonly disabled>
+        </div>
+      </section>
+
+      <section class="grid-3" style="width: -webkit-fill-available;">
+        <div class="contentInputs light md">
+          <label for="status_plan">Estado</label>
+          <input type="text" name="status_plan" id="status_plan" placeholder="Estado del plan" readonly disabled>
+        </div>
+        <div class="contentInputs light md">
+          <label for="costPlan">Costo</label>
+          <input type="number" name="costPlan" id="costPlan" placeholder="$$$$$$" readonly disabled>
+        </div>
+        <div class="contentInputs light md">
+          <label for="datePaid">Fecha en que se pagó</label>
+          <input type="datetime" name="datePaid" id="datePaid" placeholder="" readonly disabled>
+        </div>
+      </section>
+
+      <div class="content-buttons">
+        <button type="button" class="btn-primary">Renovar plan</button>
+        <button type="button" class="btn-secondary">Cancelar plan</button>
+      </div>
+    </section>
   </div>
 </div>
 
