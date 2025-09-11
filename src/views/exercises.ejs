@@ -1,0 +1,277 @@
+<%- include("./hooks/notifications"); -%>
+
+<%- include('./layout/nav.ejs') %>
+<main class="internal_view container-resolution">
+  <%- include("./hooks/content_title", {title: 'Ejercicios' }); -%>
+
+  <header class="resolutions-header">
+    <div class="resolutions-filters">
+      <div class="contentInputs light md" style="margin: 0; max-width: 20em;">
+        <input type="text" name="name" id="name" autocomplete="off" placeholder="Nombre del plan" required>
+        <ion-icon name="search"></ion-icon>
+      </div>
+      <section class="content_filters">
+        <div class="contentInputs contentSelect light md" style="margin: 0;">
+          <select name="status" id="status">
+            <option value="1">Activo</option>
+            <option value="0">Inactivo</option>
+          </select>
+        </div>
+        <button class="btn-primary" id="btn-add" style="width: 16em;">Agregar +</button>
+      </section>
+    </div>
+  </header>
+
+  <section class="resolutions-table">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre plan</th>
+          <th>Costo</th>
+          <th>Users activos</th>
+          <th>Estado</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Aquí se inyectan dinámicamente las resoluciones -->
+        <tr>
+          <td>1</td>
+          <td>Mensual</td>
+          <td>$90.000</td>
+          <td>150</td>
+          <td class="active-state">Activa</td>
+          <td>
+            <button class="btn-view">
+              <ion-icon name="eye-regular"></ion-icon>
+            </button>
+            <button class="btn-edit">
+              <ion-icon name="edit"></ion-icon>
+            </button>
+            <button class="btn-delete">
+              <ion-icon name="trash"></ion-icon>
+            </button>
+          </td>
+        </tr>
+        <!-- Más filas -->
+      </tbody>
+    </table>
+  </section>
+
+
+
+  <div class="modal-overlay" id="modalAdd">
+    <section id="routine" class="modal-content">
+
+      <button type="button" id="cancelModal" class="close-modal-btn" aria-label="Cerrar">&times;</button>
+
+      <h2>Rutina asignada</h2>
+
+      <!-- Configuración rápida de la rutina -->
+      <div class="routine-meta">
+        <div class="contentInputs light md">
+          <label for="routineName">Nombre de la rutina</label>
+          <input type="text" id="routineName" placeholder="Ej. Hipertrofia torso-pierna">
+        </div>
+        <div class="contentInputs light md">
+          <label for="routineStart">Inicio</label>
+          <input type="date" id="routineStart">
+        </div>
+        <div class="contentInputs contentSelect light md">
+          <label for="routineSplit">Split</label>
+          <select id="routineSplit">
+            <option>Full Body</option>
+            <option>Torso/Pierna</option>
+            <option>PPL (Push/Pull/Legs)</option>
+            <option>Upper/Lower/Full</option>
+            <option>Personalizado</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Tabs de días -->
+      <div class="routine-days">
+        <button class="day-tab active" data-day="mon">Lun</button>
+        <button class="day-tab" data-day="tue">Mar</button>
+        <button class="day-tab" data-day="wed">Mié</button>
+        <button class="day-tab" data-day="thu">Jue</button>
+        <button class="day-tab" data-day="fri">Vie</button>
+        <button class="day-tab" data-day="sat">Sáb</button>
+        <button class="day-tab" data-day="sun">Dom</button>
+      </div>
+
+      <!-- Panel por día -->
+      <div class="day-panel active" data-day="mon">
+        <header class="exercise-header">
+          <span>#</span>
+          <span>Ejercicio</span>
+          <span>Series</span>
+          <span>Reps</span>
+          <span>Tempo</span>
+          <span>Desc. series</span>
+          <span>Desc. ejer.</span>
+          <span>RPE/RIR</span>
+          <span>Notas</span>
+          <span></span>
+        </header>
+        <div class="exercise-rows" id="rows-mon"></div>
+        <div class="exercise-actions">
+          <button class="btn btn-secondary add-row" data-target="rows-mon">Añadir ejercicio</button>
+          <div class="day-summary" id="summary-mon">Volumen: 0 reps totales</div>
+        </div>
+      </div>
+
+      <div class="day-panel" data-day="tue">
+        <header class="exercise-header">
+          <span>#</span><span>Ejercicio</span><span>Series</span><span>Reps</span><span>Tempo</span><span>Desc. series</span><span>Desc. ejer.</span><span>RPE/RIR</span><span>Notas</span><span></span>
+        </header>
+        <div class="exercise-rows" id="rows-tue"></div>
+        <div class="exercise-actions">
+          <button class="btn btn-secondary add-row" data-target="rows-tue">Añadir ejercicio</button>
+          <div class="day-summary" id="summary-tue">Volumen: 0 reps totales</div>
+        </div>
+      </div>
+
+      <div class="day-panel" data-day="wed">
+        <header class="exercise-header">
+          <span>#</span><span>Ejercicio</span><span>Series</span><span>Reps</span><span>Tempo</span><span>Desc. series</span><span>Desc. ejer.</span><span>RPE/RIR</span><span>Notas</span><span></span>
+        </header>
+        <div class="exercise-rows" id="rows-wed"></div>
+        <div class="exercise-actions">
+          <button class="btn btn-secondary add-row" data-target="rows-wed">Añadir ejercicio</button>
+          <div class="day-summary" id="summary-wed">Volumen: 0 reps totales</div>
+        </div>
+      </div>
+
+      <div class="day-panel" data-day="thu">
+        <header class="exercise-header">
+          <span>#</span><span>Ejercicio</span><span>Series</span><span>Reps</span><span>Tempo</span><span>Desc. series</span><span>Desc. ejer.</span><span>RPE/RIR</span><span>Notas</span><span></span>
+        </header>
+        <div class="exercise-rows" id="rows-thu"></div>
+        <div class="exercise-actions">
+          <button class="btn btn-secondary add-row" data-target="rows-thu">Añadir ejercicio</button>
+          <div class="day-summary" id="summary-thu">Volumen: 0 reps totales</div>
+        </div>
+      </div>
+
+      <div class="day-panel" data-day="fri">
+        <header class="exercise-header">
+          <span>#</span><span>Ejercicio</span><span>Series</span><span>Reps</span><span>Tempo</span><span>Desc. series</span><span>Desc. ejer.</span><span>RPE/RIR</span><span>Notas</span><span></span>
+        </header>
+        <div class="exercise-rows" id="rows-fri"></div>
+        <div class="exercise-actions">
+          <button class="btn btn-secondary add-row" data-target="rows-fri">Añadir ejercicio</button>
+          <div class="day-summary" id="summary-fri">Volumen: 0 reps totales</div>
+        </div>
+      </div>
+
+      <div class="day-panel" data-day="sat">
+        <header class="exercise-header">
+          <span>#</span><span>Ejercicio</span><span>Series</span><span>Reps</span><span>Tempo</span><span>Desc. series</span><span>Desc. ejer.</span><span>RPE/RIR</span><span>Notas</span><span></span>
+        </header>
+        <div class="exercise-rows" id="rows-sat"></div>
+        <div class="exercise-actions">
+          <button class="btn btn-secondary add-row" data-target="rows-sat">Añadir ejercicio</button>
+          <div class="day-summary" id="summary-sat">Volumen: 0 reps totales</div>
+        </div>
+      </div>
+
+      <div class="day-panel" data-day="sun">
+        <header class="exercise-header">
+          <span>#</span><span>Ejercicio</span><span>Series</span><span>Reps</span><span>Tempo</span><span>Desc. series</span><span>Desc. ejer.</span><span>RPE/RIR</span><span>Notas</span><span></span>
+        </header>
+        <div class="exercise-rows" id="rows-sun"></div>
+        <div class="exercise-actions">
+          <button class="btn btn-secondary add-row" data-target="rows-sun">Añadir ejercicio</button>
+          <div class="day-summary" id="summary-sun">Volumen: 0 reps totales</div>
+        </div>
+      </div>
+
+      <div class="routine-footer">
+        <button class="btn btn-secondary" id="clearRoutine">Limpiar rutina</button>
+        <button class="btn btn-primary" id="saveRoutine">Guardar rutina</button>
+      </div>
+
+      <!-- Template de fila -->
+      <template id="exercise-row-template">
+        <div class="exercise-row">
+          <span class="order"></span>
+          <input class="ex-name" type="text" list="exerciseList" placeholder="Sentadilla, Press banca, Remo...">
+          <input class="ex-sets" type="number" min="1" step="1" placeholder="4">
+          <input class="ex-reps" type="number" min="1" step="1" placeholder="10">
+          <input class="ex-tempo" type="text" placeholder="3-1-1">
+          <input class="ex-rest" type="number" min="0" step="5" placeholder="90" title="Descanso entre series (seg)">
+          <input class="ex-between" type="number" min="0" step="5" placeholder="120" title="Descanso entre ejercicios (seg)">
+          <input class="ex-rpe" type="text" placeholder="RPE 7-8 / RIR 2-3">
+          <input class="ex-notes" type="text" placeholder="Técnica, variantes, superseries...">
+          <button class="icon-btn remove-row" title="Eliminar">✕</button>
+        </div>
+      </template>
+
+      <!-- Lista rápida de ejercicios frecuentes -->
+      <datalist id="exerciseList">
+        <option value="Sentadilla trasera"></option>
+        <option value="Peso muerto convencional"></option>
+        <option value="Press de banca"></option>
+        <option value="Press militar"></option>
+        <option value="Dominadas"></option>
+        <option value="Remo con barra"></option>
+        <option value="Hip thrust"></option>
+        <option value="Zancadas"></option>
+        <option value="Curl bíceps con barra"></option>
+        <option value="Extensión de tríceps polea"></option>
+        <option value="Elevaciones laterales"></option>
+        <option value="Crunch en polea"></option>
+      </datalist>
+    </section>
+    <script>
+      document.getElementById('cancelModal').addEventListener('click', function() {
+        document.getElementById('modalAdd').style.display = 'none';
+      });
+    </script>
+  </div>
+
+  <script src="/js/exercises.js" defer></script>
+  <script>
+    const modal = document.getElementById("modalAdd");
+    const btnOpen = document.getElementById("btn-add");
+    const btnCancel = document.getElementById("cancelModal");
+    const form = document.getElementById("formAddResolution");
+
+    btnOpen.addEventListener("click", () => {
+      modal.style.display = "flex";
+    });
+
+    btnCancel.addEventListener("click", () => {
+      modal.style.display = "none";
+      form.reset();
+    });
+
+    // Validación archivo
+    form.addEventListener("submit", (e) => {
+      const archivo = form.documento.files[0];
+
+      if (archivo) {
+        const maxSizeMB = 2;
+        const isPDF = archivo.type === "application/pdf";
+
+        if (!isPDF) {
+          alert("Solo se permiten archivos PDF.");
+          e.preventDefault();
+          return;
+        }
+
+        if (archivo.size > maxSizeMB * 1024 * 1024) {
+          alert("El archivo no debe superar los 2 MB.");
+          e.preventDefault();
+          return;
+        }
+      } else {
+        alert("Por favor adjunta el archivo de resolución.");
+        e.preventDefault();
+      }
+    });
+  </script>
+
+</main>

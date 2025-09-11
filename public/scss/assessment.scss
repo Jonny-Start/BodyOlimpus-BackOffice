@@ -1,0 +1,548 @@
+body#assessment {
+    main {
+        section#goals {
+            margin-top: 3em;
+        }
+
+        section#questionary {
+            display: flex;
+            flex-direction: row;
+            gap: 2em;
+
+            div:nth-of-type(1):not(.question) {
+                width: 70%;
+                padding: 0em 10px;
+            }
+
+            div:nth-of-type(2):not(.question) {
+                width: 40%;
+                padding: 0em 10px;
+            }
+
+            li {
+                display: flex;
+                justify-content: space-between;
+                text-wrap-mode: nowrap;
+                -webkit-wrap: nowrap;
+
+                input {
+                    width: -webkit-fill-available;
+                    margin-left: 10px;
+                    border: 0px solid transparent;
+                    border-bottom: 1px solid black;
+                    background-color: transparent;
+                    outline: none;
+
+
+                    color: #0A0A0A;
+                    border: 1.5px solid transparent;
+                    border-bottom-style: solid;
+                    border-bottom-color: rgba(62, 113, 210, 0.671);
+                }
+
+                input:focus {
+                    box-shadow: 0px 20px 20px #648fe014;
+                }
+
+
+            }
+
+        }
+
+        section#assessment {
+            margin-top: 24px;
+
+
+            h2 {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+            }
+
+            .dateInline input[type="date"],
+            h2 .dateInline {
+                border: none;
+                background: transparent;
+                font-size: 14px;
+                color: #555;
+                padding: 4px 0;
+            }
+
+            .measurements-grid {
+                display: grid;
+                grid-template-columns: repeat(4, minmax(180px, 1fr));
+                gap: 14px;
+                width: 100%;
+            }
+
+            @media (max-width: 1100px) {
+                .measurements-grid {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+            }
+
+            @media (max-width: 780px) {
+                .measurements-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+
+            @media (max-width: 520px) {
+                .measurements-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            .with-unit {
+                position: relative;
+                display: flex;
+                align-items: center;
+            }
+
+            .with-unit .unit {
+                position: absolute;
+                right: 10px;
+                color: #777;
+                font-size: 12px;
+                pointer-events: none;
+            }
+
+            .with-unit input {
+                width: 100%;
+                padding-right: 36px;
+                /* espacio para la unidad */
+            }
+
+            .assessment-actions {
+                display: flex;
+                gap: 10px;
+                justify-content: flex-end;
+                margin-top: 16px;
+            }
+
+        }
+
+        section#routine {
+
+            margin-top: 28px;
+
+
+            .routine-meta {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(200px, 1fr));
+                gap: 12px;
+                margin-bottom: 14px;
+            }
+
+            @media (max-width: 760px) {
+                .routine-meta {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            .routine-days {
+                display: flex;
+                gap: 6px;
+                overflow-x: auto;
+                padding-bottom: 6px;
+                margin-bottom: 10px;
+            }
+
+            .routine-days .day-tab {
+                border: 1px solid #e3e3e3;
+                background: #fff;
+                color: #333;
+                padding: 6px 10px;
+                border-radius: 8px;
+                cursor: pointer;
+                white-space: nowrap;
+            }
+
+            .routine-days .day-tab.active {
+                background: #0d6efd;
+                color: #fff;
+                border-color: #0d6efd;
+            }
+
+            .day-panel {
+                display: none;
+            }
+
+            .day-panel.active {
+                display: block;
+            }
+
+            .exercise-header {
+                display: grid;
+                grid-template-columns: 34px 1.2fr 90px 90px 90px 120px 120px 120px 1fr 34px;
+                gap: 8px;
+                font-size: 12px;
+                color: #666;
+                padding: 8px 8px;
+                border-bottom: 1px dashed #e3e3e3;
+            }
+
+            .exercise-rows {
+                display: grid;
+                gap: 8px;
+                margin-top: 10px;
+            }
+
+            .exercise-row {
+                display: grid;
+                align-items: center;
+                grid-template-columns: 34px 1.2fr 90px 90px 90px 120px 120px 120px 1fr 34px;
+                gap: 8px;
+                padding: 8px;
+                background: #fafafa;
+                border: 1px solid #eee;
+                border-radius: 10px;
+            }
+
+            .exercise-row input {
+                width: 100%;
+            }
+
+            .icon-btn {
+                background: #fff;
+                border: 1px solid #e2e2e2;
+                border-radius: 8px;
+                cursor: pointer;
+                height: 30px;
+            }
+
+            .exercise-actions {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 12px;
+            }
+
+            .day-summary {
+                font-size: 13px;
+                color: #444;
+            }
+
+            .routine-footer {
+                display: flex;
+                justify-content: flex-end;
+                gap: 10px;
+                margin-top: 16px;
+            }
+
+            /* Responsive para pantallas pequeñas */
+            @media (max-width: 980px) {
+
+                .exercise-header,
+                .exercise-row {
+                    grid-template-columns: 28px 1fr 72px 72px 80px 90px 90px 90px 1fr 28px;
+                }
+            }
+
+            @media (max-width: 680px) {
+                .exercise-header {
+                    display: none;
+                }
+
+                .exercise-row {
+                    grid-template-columns: 28px 1fr 0.9fr 0.9fr 0.9fr;
+                    grid-auto-rows: minmax(36px, auto);
+                }
+
+                .exercise-row .ex-sets,
+                .exercise-row .ex-reps,
+                .exercise-row .ex-tempo,
+                .exercise-row .ex-rest,
+                .exercise-row .ex-between,
+                .exercise-row .ex-rpe,
+                .exercise-row .ex-notes {
+                    grid-column: span 2;
+                }
+            }
+        }
+
+        section#nutrition {
+
+            margin-top: 28px;
+
+
+            .nutrition-meta {
+                display: grid;
+                grid-template-columns: repeat(4, minmax(200px, 1fr));
+                gap: 12px;
+                margin-bottom: 14px;
+            }
+
+            @media (max-width: 1024px) {
+                .nutrition-meta {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+            }
+
+            @media (max-width: 760px) {
+                .nutrition-meta {
+                    grid-template-columns: 1fr 1fr;
+                }
+            }
+
+            @media (max-width: 520px) {
+                .nutrition-meta {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            .nutrition-days {
+                display: flex;
+                gap: 6px;
+                overflow-x: auto;
+                padding-bottom: 6px;
+                margin-bottom: 10px;
+            }
+
+            .nutrition-days .n-day-tab {
+                border: 1px solid #e3e3e3;
+                background: #fff;
+                color: #333;
+                padding: 6px 10px;
+                border-radius: 8px;
+                cursor: pointer;
+                white-space: nowrap;
+            }
+
+            .nutrition-days .n-day-tab.active {
+                background: #0d6efd;
+                color: #fff;
+                border-color: #0d6efd;
+            }
+
+            .n-day-panel {
+                display: none;
+            }
+
+            .n-day-panel.active {
+                display: block;
+            }
+
+            .meal-header {
+                display: grid;
+                grid-template-columns: 34px 1fr 110px 1.6fr 100px 90px 90px 90px 1fr 34px;
+                gap: 8px;
+                font-size: 12px;
+                color: #666;
+                padding: 8px 8px;
+                border-bottom: 1px dashed #e3e3e3;
+            }
+
+            .meal-rows {
+                display: grid;
+                gap: 8px;
+                margin-top: 10px;
+            }
+
+            .meal-row {
+                display: grid;
+                align-items: center;
+                grid-template-columns: 34px 1fr 110px 1.6fr 100px 90px 90px 90px 1fr 34px;
+                gap: 8px;
+                padding: 8px;
+                background: #fafafa;
+                border: 1px solid #eee;
+                border-radius: 10px;
+            }
+
+            .meal-row input {
+                width: 100%;
+            }
+
+            .meal-actions {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 12px;
+            }
+
+            .day-kpi {
+                font-size: 13px;
+                color: #444;
+            }
+
+            .nutrition-footer {
+                display: flex;
+                justify-content: flex-end;
+                gap: 10px;
+                margin-top: 16px;
+            }
+
+            @media (max-width: 980px) {
+
+                .meal-header,
+                .meal-row {
+                    grid-template-columns: 28px 1fr 90px 1.2fr 90px 80px 80px 80px 1fr 28px;
+                }
+            }
+
+            @media (max-width: 680px) {
+                .meal-header {
+                    display: none;
+                }
+
+                .meal-row {
+                    grid-template-columns: 28px 1fr 0.8fr 1fr;
+                    grid-auto-rows: minmax(36px, auto);
+                }
+
+                .meal-row .meal-foods,
+                .meal-row .meal-kcal,
+                .meal-row .meal-prot,
+                .meal-row .meal-carb,
+                .meal-row .meal-fat,
+                .meal-row .meal-notes {
+                    grid-column: span 2;
+                }
+            }
+        }
+
+        section#supplementation {
+
+            margin-top: 28px;
+
+            .supp-meta {
+                display: grid;
+                grid-template-columns: repeat(4, minmax(220px, 1fr));
+                gap: 12px;
+                margin-bottom: 14px;
+            }
+
+            @media (max-width: 1080px) {
+                .supp-meta {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+            }
+
+            @media (max-width: 780px) {
+                .supp-meta {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+
+            @media (max-width: 520px) {
+                .supp-meta {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            .supp-header {
+                display: grid;
+                grid-template-columns: 34px 1.2fr 0.8fr 0.8fr 1fr 1fr 100px 1.1fr 120px 1.2fr 34px;
+                gap: 8px;
+                font-size: 12px;
+                color: #666;
+                padding: 8px 8px;
+                border-bottom: 1px dashed #e3e3e3;
+            }
+
+            .supp-rows {
+                display: grid;
+                gap: 8px;
+                margin-top: 10px;
+            }
+
+            .supp-row {
+                display: grid;
+                align-items: center;
+                grid-template-columns: 34px 1.2fr 0.8fr 0.8fr 1fr 1fr 100px 1.1fr 120px 1.2fr 34px;
+                gap: 8px;
+                padding: 8px;
+                background: #fafafa;
+                border: 1px solid #eee;
+                border-radius: 10px;
+            }
+
+            .supp-row input,
+            .supp-row select {
+                width: 100%;
+            }
+
+            .sup-days {
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                gap: 4px;
+            }
+
+            .sup-days label {
+                display: grid;
+                place-items: center;
+                background: #fff;
+                border: 1px solid #e2e2e2;
+                border-radius: 6px;
+                font-size: 12px;
+                color: #555;
+                height: 30px;
+                cursor: pointer;
+            }
+
+            .sup-days input {
+                display: none;
+            }
+
+            .sup-days input:checked+span {
+                background: #0d6efd;
+                color: #fff;
+                border-radius: 6px;
+                padding: 2px 6px;
+            }
+
+            .supp-actions {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 12px;
+            }
+
+            .supp-kpi {
+                font-size: 13px;
+                color: #444;
+            }
+
+            .supp-footer {
+                display: flex;
+                justify-content: flex-end;
+                gap: 10px;
+                margin-top: 16px;
+            }
+
+            /* Responsive */
+            @media (max-width: 980px) {
+
+                .supp-header,
+                .supp-row {
+                    grid-template-columns: 28px 1fr 0.8fr 0.8fr 0.9fr 0.9fr 90px 1fr 100px 1fr 28px;
+                }
+            }
+
+            @media (max-width: 720px) {
+                .supp-header {
+                    display: none;
+                }
+
+                .supp-row {
+                    grid-template-columns: 28px 1fr 1fr;
+                    grid-auto-rows: minmax(36px, auto);
+                }
+
+                .supp-row .sup-dose,
+                .supp-row .sup-form,
+                .supp-row .sup-frequency,
+                .supp-row .sup-timing,
+                .supp-row .sup-time,
+                .supp-row .sup-days,
+                .supp-row .sup-caffeine,
+                .supp-row .sup-notes {
+                    grid-column: span 2;
+                }
+            }
+        }
+
+    }
+}

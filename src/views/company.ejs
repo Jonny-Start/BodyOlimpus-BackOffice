@@ -7,7 +7,7 @@
 <% buttonsHTML += `
         <button type="button" onclick="window.location.href='/company'" title="Datos básicos" style="width: 16em;">
           <p class="labelTaps">Datos básicos</p>
-          <ion-icon name="fitness-center" style="float: right;"></ion-icon>
+          <ion-icon name="building-regular-full" style="float: right;"></ion-icon>
         </button>
     `; %>
 <% } %>
@@ -27,6 +27,14 @@
         </button>
     `; %>
 <% } %>
+<% if (environment !== 'plans') { %>
+<% buttonsHTML += `
+        <button type="button" onclick="window.location.href='/company/plans'" title="Planes de suscripciones" style="width: 16em;">
+          <p class="labelTaps">Planes</p>
+          <ion-icon name="store" style="float: right;"></ion-icon>
+        </button>
+    `; %>
+<% } %>
 <% buttonsHTML += `</div>` %>
 
 
@@ -41,5 +49,9 @@
 <% } else if (environment == 'advanced') { %>
 
   <%- include("./companyParts/view_advanced.ejs", {buttonsHTML}); %>
+
+<% } else if (environment == 'plans') { %>
+
+  <%- include("./companyParts/plans.ejs", {buttonsHTML}); %>
 
 <% } %>

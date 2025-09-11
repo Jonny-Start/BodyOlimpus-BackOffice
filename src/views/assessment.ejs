@@ -3,8 +3,756 @@
 <%- include('./layout/nav.ejs') %>
 
 <main class="container-data-user internal_view">
-  <%- include("./hooks/content_title", {title: 'Valoración', child: 'Jonny Alejandro cano Acosta' }); -%>
+  <%- include("./hooks/content_title", {
+    title: 'Valoración',
+    child: '<h2 style="text-align: center">Jonny Alejandro cano Acosta <br /> <p style="margin: 0; font-size: 13px; color: #706e6e;">Ultima valoración: <b style="color: black;">31 Noviembre 2025</b></p> </h2>' 
+  }); -%>
 
-  <h2>Ultima valoración: <b>31 Noviembre 2025</b></h2>
-  
+  <section id="goals" class="grid-4" style="width: -webkit-fill-available;">
+    <div class="contentInputs light md">
+      <label for="goal">Objetivo</label>
+      <input type="text" name="goal" id="goal" autocomplete="off" placeholder="Bajar de peso" required>
+      <ion-icon name="attach-money"></ion-icon>
+    </div>
+    <div class="contentInputs light md">
+      <label for="targetDays">Dias objetivo</label>
+      <input type="text" name="targetDays" id="targetDays" autocomplete="off" placeholder="6" required>
+      <ion-icon name="attach-money"></ion-icon>
+    </div>
+    <div class="contentInputs light md">
+      <label for="targetHours">Hora/s objetivo</label>
+      <input type="number" name="targetHours" id="targetHours" autocomplete="off" placeholder="2" required>
+      <ion-icon name="attach-money"></ion-icon>
+    </div>
+    <div class="contentInputs contentSelect light md">
+      <label for="level">Nivel / Experiencia </label>
+      <select name="level" id="level">
+        <option value="1">Novato</option>
+        <option value="2">Principieante</option>
+        <option value="3">Intermedio</option>
+        <option value="4">Avanzado</option>
+      </select>
+    </div>
+  </section>
+
+  <section id="questionary">
+    <div>
+      <div class="question">
+        <p>¿En alguna ocasión su médico le ha dicho que tiene algún problema cardiaco y que solamente podría hacer ejercicio físico recomendado y prescrito por un medico?</p>
+        <label for="cardiacProblemYes">
+          <input type="radio" name="cardiacProblem" value="yes" id="cardiacProblemYes">
+          <span>Si</span>
+        </label>
+        <label for="cardiacProblemNo">
+          <input type="radio" name="cardiacProblem" value="no" id="cardiacProblemNo">
+          <span>No</span>
+        </label>
+      </div>
+      <div class="question">
+        <p>¿Siente dolor cuando realiza ejercicio físico?</p>
+        <label for="painYes">
+          <input type="radio" name="pain" value="yes" id="painYes">
+          <span>Si</span>
+        </label>
+        <label for="painNo">
+          <input type="radio" name="pain" value="no" id="painNo">
+          <span>No</span>
+        </label>
+      </div>
+      <div class="question">
+        <p>¿Durante el último mes ha sentido dolor en el pecho aunque no estuviera haciendo ejercicio físico?</p>
+        <label for="chestPainYes">
+          <input type="radio" name="chestPain" value="yes" id="chestPainYes">
+          <span>Si</span>
+        </label>
+        <label for="chestPainNo">
+          <input type="radio" name="chestPain" value="no" id="chestPainNo">
+          <span>No</span>
+        </label>
+      </div>
+      <div class="question">
+        <p>¿Tiene que dormir con varias almohadas porque se siente ahogado</p>
+        <label for="sleepWithPillowsYes">
+          <input type="radio" name="sleepWithPillows" value="yes" id="sleepWithPillowsYes">
+          <span>Si</span>
+        </label>
+        <label for="sleepWithPillowsNo">
+          <input type="radio" name="sleepWithPillows" value="no" id="sleepWithPillowsNo">
+          <span>No</span>
+        </label>
+      </div>
+      <div class="question">
+        <p>¿Tiene algún o problema en alguna articulación que empeora cuando aumenta su actividad física?</p>
+        <label for="jointProblemYes">
+          <input type="radio" name="jointProblem" value="yes" id="jointProblemYes">
+          <span>Si</span>
+        </label>
+        <label for="jointProblemNo">
+          <input type="radio" name="jointProblem" value="no" id="jointProblemNo">
+          <span>No</span>
+        </label>
+      </div>
+      <div class="question">
+        <p>¿Su medico le prescribe medicinas para el problema del corazón?</p>
+        <label for="heartMedicationYes">
+          <input type="radio" name="heartMedication" value="yes" id="heartMedicationYes">
+          <span>Si</span>
+        </label>
+        <label for="heartMedicationNo">
+          <input type="radio" name="heartMedication" value="no" id="heartMedicationNo">
+          <span>No</span>
+        </label>
+      </div>
+      <div class="question">
+        <p>¿Conoce alguna razón por la que no deba hacer ejercicio físico?</p>
+        <label for="exerciseReasonYes">
+          <input type="radio" name="exerciseReason" value="yes" id="exerciseReasonYes">
+          <span>Si</span>
+        </label>
+        <label for="exerciseReasonNo">
+          <input type="radio" name="exerciseReason" value="no" id="exerciseReasonNo">
+          <span>No</span>
+        </label>
+      </div>
+
+    </div>
+
+    <div>
+      <h3>ALERGIAS</h3>
+      <ul>
+        <li>Medicamentos: <input type="text"></li>
+        <li>Otras: <input type="text"></li>
+      </ul>
+
+      <h3>ENFERMEDADES PADECIDAS</h3>
+      <ul>
+        <li>Cardiacas: <input type="text"></li>
+        <li>Broncopulmonares: <input type="text"></li>
+        <li>Hepáticas: <input type="text"></li>
+        <li>Renales: <input type="text"></li>
+        <li>Endocrinas: <input type="text"></li>
+        <li>Musculo / Óseo: <input type="text"></li>
+        <li>Otras: <input type="text"></li>
+      </ul>
+
+      <h3>TRAUMATISMOS</h3>
+      <ul>
+        <li><input type="text"></li>
+      </ul>
+
+      <h3>CIRUGIAS</h3>
+      <ul>
+        <li><input type="text"></li>
+      </ul>
+
+      <h3>MEDICACION ACTUAL</h3>
+      <ul>
+        <li><input type="text"></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="assessment">
+    <h2>
+      Tallas y valoración
+      <p>
+        <input type="date" name="assessmentDate" id="assessmentDate" class="dateInline" required>
+      </p>
+    </h2>
+
+    <div class="measurements-grid">
+      <div class="contentInputs light md">
+        <label for="weight">Peso</label>
+        <div class="with-unit">
+          <input type="number" step="0.1" min="0" id="weight" name="weight" placeholder="80.4" required>
+          <span class="unit">kg</span>
+        </div>
+      </div>
+
+      <div class="contentInputs light md">
+        <label for="shoulder">Hombro</label>
+        <div class="with-unit">
+          <input type="number" step="0.1" min="0" id="shoulder" name="shoulder" placeholder="46.5" required>
+          <span class="unit">cm</span>
+        </div>
+      </div>
+
+      <div class="contentInputs light md">
+        <label for="chest">Pecho</label>
+        <div class="with-unit">
+          <input type="number" step="0.1" min="0" id="chest" name="chest" placeholder="96.5" required>
+          <span class="unit">cm</span>
+        </div>
+      </div>
+
+      <div class="contentInputs light md">
+        <label for="biceps">Bíceps</label>
+        <div class="with-unit">
+          <input type="number" step="0.1" min="0" id="biceps" name="biceps" placeholder="34.5" required>
+          <span class="unit">cm</span>
+        </div>
+      </div>
+
+      <div class="contentInputs light md">
+        <label for="forearm">Antebrazo</label>
+        <div class="with-unit">
+          <input type="number" step="0.1" min="0" id="forearm" name="forearm" placeholder="31" required>
+          <span class="unit">cm</span>
+        </div>
+      </div>
+
+      <div class="contentInputs light md">
+        <label for="waist">Cintura</label>
+        <div class="with-unit">
+          <input type="number" step="0.1" min="0" id="waist" name="waist" placeholder="87" required>
+          <span class="unit">cm</span>
+        </div>
+      </div>
+
+      <div class="contentInputs light md">
+        <label for="hip">Cadera</label>
+        <div class="with-unit">
+          <input type="number" step="0.1" min="0" id="hip" name="hip" placeholder="107" required>
+          <span class="unit">cm</span>
+        </div>
+      </div>
+
+      <div class="contentInputs light md">
+        <label for="thigh">Muslo</label>
+        <div class="with-unit">
+          <input type="number" step="0.1" min="0" id="thigh" name="thigh" placeholder="50" required>
+          <span class="unit">cm</span>
+        </div>
+      </div>
+
+      <div class="contentInputs light md">
+        <label for="midThigh">Muslo medio</label>
+        <div class="with-unit">
+          <input type="number" step="0.1" min="0" id="midThigh" name="midThigh" placeholder="59.5" required>
+          <span class="unit">cm</span>
+        </div>
+      </div>
+
+      <div class="contentInputs light md">
+        <label for="calf">Pantorrilla</label>
+        <div class="with-unit">
+          <input type="number" step="0.1" min="0" id="calf" name="calf" placeholder="40" required>
+          <span class="unit">cm</span>
+        </div>
+      </div>
+
+      <div class="contentInputs light md">
+        <label for="neck">Cuello</label>
+        <div class="with-unit">
+          <input type="number" step="0.1" min="0" id="neck" name="neck" placeholder="39.5" required>
+          <span class="unit">cm</span>
+        </div>
+      </div>
+
+      <div class="contentInputs light md">
+        <label for="back">Espalda</label>
+        <div class="with-unit">
+          <input type="number" step="0.1" min="0" id="back" name="back" placeholder="43" required>
+          <span class="unit">cm</span>
+        </div>
+      </div>
+
+      <div class="contentInputs light md">
+        <label for="abdomen">Abdomen</label>
+        <div class="with-unit">
+          <input type="number" step="0.1" min="0" id="abdomen" name="abdomen" placeholder="89" required>
+          <span class="unit">cm</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="assessment-actions">
+      <button type="button" class="btn btn-secondary" id="clearMeasurements">Limpiar</button>
+      <button type="submit" class="btn btn-primary">Guardar valoración</button>
+    </div>
+  </section>
+
+  <section id="routine">
+    <h2>Rutina asignada</h2>
+
+    <!-- Configuración rápida de la rutina -->
+    <div class="routine-meta">
+      <div class="contentInputs light md">
+        <label for="routineName">Nombre de la rutina</label>
+        <input type="text" id="routineName" placeholder="Ej. Hipertrofia torso-pierna">
+      </div>
+      <div class="contentInputs light md">
+        <label for="routineStart">Inicio</label>
+        <input type="date" id="routineStart">
+      </div>
+      <div class="contentInputs contentSelect light md">
+        <label for="routineSplit">Split</label>
+        <select id="routineSplit">
+          <option>Full Body</option>
+          <option>Torso/Pierna</option>
+          <option>PPL (Push/Pull/Legs)</option>
+          <option>Upper/Lower/Full</option>
+          <option>Personalizado</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Tabs de días -->
+    <div class="routine-days">
+      <button class="day-tab active" data-day="mon">Lun</button>
+      <button class="day-tab" data-day="tue">Mar</button>
+      <button class="day-tab" data-day="wed">Mié</button>
+      <button class="day-tab" data-day="thu">Jue</button>
+      <button class="day-tab" data-day="fri">Vie</button>
+      <button class="day-tab" data-day="sat">Sáb</button>
+      <button class="day-tab" data-day="sun">Dom</button>
+    </div>
+
+    <!-- Panel por día -->
+    <div class="day-panel active" data-day="mon">
+      <header class="exercise-header">
+        <span>#</span>
+        <span>Ejercicio</span>
+        <span>Series</span>
+        <span>Reps</span>
+        <span>Tempo</span>
+        <span>Desc. series</span>
+        <span>Desc. ejer.</span>
+        <span>RPE/RIR</span>
+        <span>Notas</span>
+        <span></span>
+      </header>
+      <div class="exercise-rows" id="rows-mon"></div>
+      <div class="exercise-actions">
+        <button class="btn btn-secondary add-row" data-target="rows-mon">Añadir ejercicio</button>
+        <div class="day-summary" id="summary-mon">Volumen: 0 reps totales</div>
+      </div>
+    </div>
+
+    <div class="day-panel" data-day="tue">
+      <header class="exercise-header">
+        <span>#</span><span>Ejercicio</span><span>Series</span><span>Reps</span><span>Tempo</span><span>Desc. series</span><span>Desc. ejer.</span><span>RPE/RIR</span><span>Notas</span><span></span>
+      </header>
+      <div class="exercise-rows" id="rows-tue"></div>
+      <div class="exercise-actions">
+        <button class="btn btn-secondary add-row" data-target="rows-tue">Añadir ejercicio</button>
+        <div class="day-summary" id="summary-tue">Volumen: 0 reps totales</div>
+      </div>
+    </div>
+
+    <div class="day-panel" data-day="wed">
+      <header class="exercise-header">
+        <span>#</span><span>Ejercicio</span><span>Series</span><span>Reps</span><span>Tempo</span><span>Desc. series</span><span>Desc. ejer.</span><span>RPE/RIR</span><span>Notas</span><span></span>
+      </header>
+      <div class="exercise-rows" id="rows-wed"></div>
+      <div class="exercise-actions">
+        <button class="btn btn-secondary add-row" data-target="rows-wed">Añadir ejercicio</button>
+        <div class="day-summary" id="summary-wed">Volumen: 0 reps totales</div>
+      </div>
+    </div>
+
+    <div class="day-panel" data-day="thu">
+      <header class="exercise-header">
+        <span>#</span><span>Ejercicio</span><span>Series</span><span>Reps</span><span>Tempo</span><span>Desc. series</span><span>Desc. ejer.</span><span>RPE/RIR</span><span>Notas</span><span></span>
+      </header>
+      <div class="exercise-rows" id="rows-thu"></div>
+      <div class="exercise-actions">
+        <button class="btn btn-secondary add-row" data-target="rows-thu">Añadir ejercicio</button>
+        <div class="day-summary" id="summary-thu">Volumen: 0 reps totales</div>
+      </div>
+    </div>
+
+    <div class="day-panel" data-day="fri">
+      <header class="exercise-header">
+        <span>#</span><span>Ejercicio</span><span>Series</span><span>Reps</span><span>Tempo</span><span>Desc. series</span><span>Desc. ejer.</span><span>RPE/RIR</span><span>Notas</span><span></span>
+      </header>
+      <div class="exercise-rows" id="rows-fri"></div>
+      <div class="exercise-actions">
+        <button class="btn btn-secondary add-row" data-target="rows-fri">Añadir ejercicio</button>
+        <div class="day-summary" id="summary-fri">Volumen: 0 reps totales</div>
+      </div>
+    </div>
+
+    <div class="day-panel" data-day="sat">
+      <header class="exercise-header">
+        <span>#</span><span>Ejercicio</span><span>Series</span><span>Reps</span><span>Tempo</span><span>Desc. series</span><span>Desc. ejer.</span><span>RPE/RIR</span><span>Notas</span><span></span>
+      </header>
+      <div class="exercise-rows" id="rows-sat"></div>
+      <div class="exercise-actions">
+        <button class="btn btn-secondary add-row" data-target="rows-sat">Añadir ejercicio</button>
+        <div class="day-summary" id="summary-sat">Volumen: 0 reps totales</div>
+      </div>
+    </div>
+
+    <div class="day-panel" data-day="sun">
+      <header class="exercise-header">
+        <span>#</span><span>Ejercicio</span><span>Series</span><span>Reps</span><span>Tempo</span><span>Desc. series</span><span>Desc. ejer.</span><span>RPE/RIR</span><span>Notas</span><span></span>
+      </header>
+      <div class="exercise-rows" id="rows-sun"></div>
+      <div class="exercise-actions">
+        <button class="btn btn-secondary add-row" data-target="rows-sun">Añadir ejercicio</button>
+        <div class="day-summary" id="summary-sun">Volumen: 0 reps totales</div>
+      </div>
+    </div>
+
+    <div class="routine-footer">
+      <button class="btn btn-secondary" id="clearRoutine">Limpiar rutina</button>
+      <button class="btn btn-primary" id="saveRoutine">Guardar rutina</button>
+    </div>
+
+    <!-- Template de fila -->
+    <template id="exercise-row-template">
+      <div class="exercise-row">
+        <span class="order"></span>
+        <input class="ex-name" type="text" list="exerciseList" placeholder="Sentadilla, Press banca, Remo...">
+        <input class="ex-sets" type="number" min="1" step="1" placeholder="4">
+        <input class="ex-reps" type="number" min="1" step="1" placeholder="10">
+        <input class="ex-tempo" type="text" placeholder="3-1-1">
+        <input class="ex-rest" type="number" min="0" step="5" placeholder="90" title="Descanso entre series (seg)">
+        <input class="ex-between" type="number" min="0" step="5" placeholder="120" title="Descanso entre ejercicios (seg)">
+        <input class="ex-rpe" type="text" placeholder="RPE 7-8 / RIR 2-3">
+        <input class="ex-notes" type="text" placeholder="Técnica, variantes, superseries...">
+        <button class="icon-btn remove-row" title="Eliminar">✕</button>
+      </div>
+    </template>
+
+    <!-- Lista rápida de ejercicios frecuentes -->
+    <datalist id="exerciseList">
+      <option value="Sentadilla trasera"></option>
+      <option value="Peso muerto convencional"></option>
+      <option value="Press de banca"></option>
+      <option value="Press militar"></option>
+      <option value="Dominadas"></option>
+      <option value="Remo con barra"></option>
+      <option value="Hip thrust"></option>
+      <option value="Zancadas"></option>
+      <option value="Curl bíceps con barra"></option>
+      <option value="Extensión de tríceps polea"></option>
+      <option value="Elevaciones laterales"></option>
+      <option value="Crunch en polea"></option>
+    </datalist>
+  </section>
+
+  <section id="nutrition">
+    <h2>Plan nutricional</h2>
+
+    <!-- Configuración del plan -->
+    <div class="nutrition-meta">
+      <div class="contentInputs light md">
+        <label for="dietName">Nombre del plan</label>
+        <input type="text" id="dietName" placeholder="Ej. Déficit 2.100 kcal">
+      </div>
+      <div class="contentInputs light md">
+        <label for="dietStart">Inicio</label>
+        <input type="date" id="dietStart">
+      </div>
+      <div class="contentInputs contentSelect light md">
+        <label for="dietFocus">Enfoque</label>
+        <select id="dietFocus">
+          <option>Déficit</option>
+          <option>Mantenimiento</option>
+          <option>Superávit</option>
+        </select>
+      </div>
+      <div class="contentInputs light md">
+        <label for="targetKcal">Objetivo kcal/día</label>
+        <input type="number" id="targetKcal" placeholder="2100" min="0" step="10">
+      </div>
+      <div class="contentInputs light md">
+        <label for="targetProtein">Proteína (g)</label>
+        <input type="number" id="targetProtein" placeholder="160" min="0" step="1">
+      </div>
+      <div class="contentInputs light md">
+        <label for="targetCarb">Carbohidratos (g)</label>
+        <input type="number" id="targetCarb" placeholder="230" min="0" step="1">
+      </div>
+      <div class="contentInputs light md">
+        <label for="targetFat">Grasas (g)</label>
+        <input type="number" id="targetFat" placeholder="60" min="0" step="1">
+      </div>
+    </div>
+
+    <!-- Tabs de días -->
+    <div class="nutrition-days">
+      <button class="n-day-tab active" data-day="mon">Lun</button>
+      <button class="n-day-tab" data-day="tue">Mar</button>
+      <button class="n-day-tab" data-day="wed">Mié</button>
+      <button class="n-day-tab" data-day="thu">Jue</button>
+      <button class="n-day-tab" data-day="fri">Vie</button>
+      <button class="n-day-tab" data-day="sat">Sáb</button>
+      <button class="n-day-tab" data-day="sun">Dom</button>
+    </div>
+
+    <!-- Panel por día -->
+    <div class="n-day-panel active" data-day="mon">
+      <header class="meal-header">
+        <span>#</span>
+        <span>Comida</span>
+        <span>Hora</span>
+        <span>Alimentos</span>
+        <span>Kcal</span>
+        <span>Prot</span>
+        <span>Carb</span>
+        <span>Grasa</span>
+        <span>Notas</span>
+        <span></span>
+      </header>
+      <div class="meal-rows" id="meals-mon"></div>
+      <div class="meal-actions">
+        <button class="btn btn-secondary add-meal" data-target="meals-mon">Añadir comida</button>
+        <div class="day-kpi" id="kpi-mon">0 kcal | P 0 g / C 0 g / G 0 g</div>
+      </div>
+    </div>
+
+    <div class="n-day-panel" data-day="tue">
+      <header class="meal-header">
+        <span>#</span><span>Comida</span><span>Hora</span><span>Alimentos</span><span>Kcal</span><span>Prot</span><span>Carb</span><span>Grasa</span><span>Notas</span><span></span>
+      </header>
+      <div class="meal-rows" id="meals-tue"></div>
+      <div class="meal-actions">
+        <button class="btn btn-secondary add-meal" data-target="meals-tue">Añadir comida</button>
+        <div class="day-kpi" id="kpi-tue">0 kcal | P 0 g / C 0 g / G 0 g</div>
+      </div>
+    </div>
+
+    <div class="n-day-panel" data-day="wed">
+      <header class="meal-header">
+        <span>#</span><span>Comida</span><span>Hora</span><span>Alimentos</span><span>Kcal</span><span>Prot</span><span>Carb</span><span>Grasa</span><span>Notas</span><span></span>
+      </header>
+      <div class="meal-rows" id="meals-wed"></div>
+      <div class="meal-actions">
+        <button class="btn btn-secondary add-meal" data-target="meals-wed">Añadir comida</button>
+        <div class="day-kpi" id="kpi-wed">0 kcal | P 0 g / C 0 g / G 0 g</div>
+      </div>
+    </div>
+
+    <div class="n-day-panel" data-day="thu">
+      <header class="meal-header">
+        <span>#</span><span>Comida</span><span>Hora</span><span>Alimentos</span><span>Kcal</span><span>Prot</span><span>Carb</span><span>Grasa</span><span>Notas</span><span></span>
+      </header>
+      <div class="meal-rows" id="meals-thu"></div>
+      <div class="meal-actions">
+        <button class="btn btn-secondary add-meal" data-target="meals-thu">Añadir comida</button>
+        <div class="day-kpi" id="kpi-thu">0 kcal | P 0 g / C 0 g / G 0 g</div>
+      </div>
+    </div>
+
+    <div class="n-day-panel" data-day="fri">
+      <header class="meal-header">
+        <span>#</span><span>Comida</span><span>Hora</span><span>Alimentos</span><span>Kcal</span><span>Prot</span><span>Carb</span><span>Grasa</span><span>Notas</span><span></span>
+      </header>
+      <div class="meal-rows" id="meals-fri"></div>
+      <div class="meal-actions">
+        <button class="btn btn-secondary add-meal" data-target="meals-fri">Añadir comida</button>
+        <div class="day-kpi" id="kpi-fri">0 kcal | P 0 g / C 0 g / G 0 g</div>
+      </div>
+    </div>
+
+    <div class="n-day-panel" data-day="sat">
+      <header class="meal-header">
+        <span>#</span><span>Comida</span><span>Hora</span><span>Alimentos</span><span>Kcal</span><span>Prot</span><span>Carb</span><span>Grasa</span><span>Notas</span><span></span>
+      </header>
+      <div class="meal-rows" id="meals-sat"></div>
+      <div class="meal-actions">
+        <button class="btn btn-secondary add-meal" data-target="meals-sat">Añadir comida</button>
+        <div class="day-kpi" id="kpi-sat">0 kcal | P 0 g / C 0 g / G 0 g</div>
+      </div>
+    </div>
+
+    <div class="n-day-panel" data-day="sun">
+      <header class="meal-header">
+        <span>#</span><span>Comida</span><span>Hora</span><span>Alimentos</span><span>Kcal</span><span>Prot</span><span>Carb</span><span>Grasa</span><span>Notas</span><span></span>
+      </header>
+      <div class="meal-rows" id="meals-sun"></div>
+      <div class="meal-actions">
+        <button class="btn btn-secondary add-meal" data-target="meals-sun">Añadir comida</button>
+        <div class="day-kpi" id="kpi-sun">0 kcal | P 0 g / C 0 g / G 0 g</div>
+      </div>
+    </div>
+
+    <div class="nutrition-footer">
+      <button class="btn btn-secondary" id="clearNutrition">Limpiar plan</button>
+      <button class="btn btn-primary" id="saveNutrition">Guardar plan</button>
+    </div>
+
+    <!-- Template de fila de comida -->
+    <template id="meal-row-template">
+      <div class="meal-row">
+        <span class="order"></span>
+        <input class="meal-name" type="text" list="mealList" placeholder="Desayuno, Almuerzo, Snack...">
+        <input class="meal-time" type="time" placeholder="08:00">
+        <input class="meal-foods" type="text" list="foodList" placeholder="Ej. Avena 60 g, Huevo 2 u, Banana 1 u">
+        <input class="meal-kcal" type="number" min="0" step="1" placeholder="500" title="Calorías">
+        <input class="meal-prot" type="number" min="0" step="1" placeholder="30" title="Proteínas (g)">
+        <input class="meal-carb" type="number" min="0" step="1" placeholder="60" title="Carbohidratos (g)">
+        <input class="meal-fat" type="number" min="0" step="1" placeholder="15" title="Grasas (g)">
+        <input class="meal-notes" type="text" placeholder="Opciones, sustituciones, prep...">
+        <button class="icon-btn remove-meal" title="Eliminar">✕</button>
+      </div>
+    </template>
+
+    <!-- Listas rápidas -->
+    <datalist id="mealList">
+      <option value="Desayuno"></option>
+      <option value="Media mañana"></option>
+      <option value="Almuerzo"></option>
+      <option value="Merienda"></option>
+      <option value="Pre-entreno"></option>
+      <option value="Post-entreno"></option>
+      <option value="Cena"></option>
+    </datalist>
+
+    <datalist id="foodList">
+      <option value="Avena"></option>
+      <option value="Huevo"></option>
+      <option value="Claras de huevo"></option>
+      <option value="Pollo pechuga"></option>
+      <option value="Arroz"></option>
+      <option value="Papa cocida"></option>
+      <option value="Banana"></option>
+      <option value="Yogur griego"></option>
+      <option value="Atún en agua"></option>
+      <option value="Pan integral"></option>
+      <option value="Aceite de oliva"></option>
+      <option value="Frutos secos"></option>
+      <option value="Verduras mixtas"></option>
+    </datalist>
+  </section>
+
+  <section id="supplementation">
+    <h2>Suplementación</h2>
+
+    <!-- Meta del stack -->
+    <div class="supp-meta">
+      <div class="contentInputs light md">
+        <label for="stackName">Nombre del stack</label>
+        <input type="text" id="stackName" placeholder="Ej. Fuerza + recuperación">
+      </div>
+      <div class="contentInputs light md">
+        <label for="stackStart">Inicio</label>
+        <input type="date" id="stackStart">
+      </div>
+      <div class="contentInputs light md">
+        <label for="stackCycle">Ciclo (semanas)</label>
+        <input type="number" id="stackCycle" min="0" step="1" placeholder="8">
+      </div>
+      <div class="contentInputs light md">
+        <label for="stackNotes">Notas generales</label>
+        <input type="text" id="stackNotes" placeholder="Ayunas, con comida, contraindicaciones...">
+      </div>
+    </div>
+
+    <!-- Encabezado tipo tabla -->
+    <header class="supp-header">
+      <span>#</span>
+      <span>Suplemento</span>
+      <span>Dosis</span>
+      <span>Forma</span>
+      <span>Frecuencia</span>
+      <span>Momento</span>
+      <span>Hora</span>
+      <span>Días</span>
+      <span>Cafeína (mg)</span>
+      <span>Notas</span>
+      <span></span>
+    </header>
+
+    <div class="supp-rows" id="suppRows"></div>
+
+    <div class="supp-actions">
+      <button class="btn btn-secondary" id="addSupp">Añadir suplemento</button>
+      <div class="supp-kpi">
+        Cafeína total estimada: <b id="caffeineTotal">0</b> mg
+      </div>
+    </div>
+
+    <div class="supp-footer">
+      <button class="btn btn-secondary" id="clearSupp">Limpiar</button>
+      <button class="btn btn-primary" id="saveSupp">Guardar suplementación</button>
+    </div>
+
+    <!-- Template de fila -->
+    <template id="supp-row-template">
+      <div class="supp-row">
+        <span class="order"></span>
+
+        <input class="sup-name" type="text" list="suppList" placeholder="Creatina, Cafeína, Omega-3...">
+
+        <input class="sup-dose" type="text" placeholder="Ej. 3 g, 200 mg, 1 cáps">
+
+        <select class="sup-form">
+          <option value="">—</option>
+          <option>Cápsula</option>
+          <option>Tableta</option>
+          <option>Polvo</option>
+          <option>Líquido</option>
+        </select>
+
+        <select class="sup-frequency" title="Veces al día/semana">
+          <option value="1xdia">1×/día</option>
+          <option value="2xdia">2×/día</option>
+          <option value="3xdia">3×/día</option>
+          <option value="preEntreno">Solo pre-entreno</option>
+          <option value="postEntreno">Solo post-entreno</option>
+          <option value="3xsem">3×/sem</option>
+          <option value="5xsem">5×/sem</option>
+        </select>
+
+        <select class="sup-timing" title="Momento preferido">
+          <option value="">—</option>
+          <option>Mañana</option>
+          <option>Mediodía</option>
+          <option>Tarde</option>
+          <option>Noche</option>
+          <option>Con comida</option>
+          <option>En ayunas</option>
+          <option>Pre-entreno</option>
+          <option>Post-entreno</option>
+        </select>
+
+        <input class="sup-time" type="time" placeholder="08:00">
+
+        <div class="sup-days">
+          <label><input type="checkbox" value="mon" checked><span>L</span></label>
+          <label><input type="checkbox" value="tue" checked><span>M</span></label>
+          <label><input type="checkbox" value="wed" checked><span>X</span></label>
+          <label><input type="checkbox" value="thu" checked><span>J</span></label>
+          <label><input type="checkbox" value="fri" checked><span>V</span></label>
+          <label><input type="checkbox" value="sat"><span>S</span></label>
+          <label><input type="checkbox" value="sun"><span>D</span></label>
+        </div>
+
+        <input class="sup-caffeine" type="number" min="0" step="1" placeholder="0" title="Si aplica">
+
+        <input class="sup-notes" type="text" placeholder="Ej. 30 min antes de entrenar">
+
+        <button class="icon-btn remove-supp" title="Eliminar">✕</button>
+      </div>
+    </template>
+
+    <!-- Lista rápida -->
+    <datalist id="suppList">
+      <option value="Creatina monohidrato"></option>
+      <option value="Proteína whey"></option>
+      <option value="Cafeína anhidra"></option>
+      <option value="Beta-alanina"></option>
+      <option value="Citrulina malato"></option>
+      <option value="Omega-3 (EPA/DHA)"></option>
+      <option value="Multivitamínico"></option>
+      <option value="Vitamina D3"></option>
+      <option value="Magnesio"></option>
+      <option value="Ashwagandha"></option>
+      <option value="Probióticos"></option>
+      <option value="Electrolitos"></option>
+    </datalist>
+  </section>
+
+  <section id="finalComments">
+    <h2>Comentarios finales</h2>
+    <textarea name="finalComments" id="finalComments" rows="10" placeholder="Escribe aquí tus comentarios..."></textarea>
+    <button class="btn btn-primary">Guardar valoración</button>
+  </section>
+
+  <script src="/public/js/assessment.js"></script>
+
 </main>

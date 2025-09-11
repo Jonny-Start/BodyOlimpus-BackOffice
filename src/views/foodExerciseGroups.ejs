@@ -1,0 +1,304 @@
+<%- include("./hooks/notifications"); -%>
+
+<%- include('./layout/nav.ejs') %>
+<main class="internal_view container-resolution">
+  <section id="foodExerciseGroups">
+    <%- include("./hooks/content_title", {title: 'Grupos de Ejercicios y Alimentación' }); -%>
+
+    <header class="resolutions-header">
+      <div class="resolutions-filters">
+        <div class="contentInputs light md" style="margin: 0; max-width: 20em;">
+          <input type="text" name="name" id="name" autocomplete="off" placeholder="Nombre del plan" required>
+          <ion-icon name="search"></ion-icon>
+        </div>
+        <section class="content_filters">
+          <div class="contentInputs contentSelect light md" style="margin: 0;">
+            <select name="status" id="status">
+              <option value="1">Activo</option>
+              <option value="0">Inactivo</option>
+            </select>
+          </div>
+          <button class="btn-primary" id="btn-add" style="width: 16em;">Agregar +</button>
+        </section>
+      </div>
+    </header>
+
+    <section class="resolutions-table">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nombre plan</th>
+            <th>Costo</th>
+            <th>Users activos</th>
+            <th>Estado</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Aquí se inyectan dinámicamente las resoluciones -->
+          <tr>
+            <td>1</td>
+            <td>Mensual</td>
+            <td>$90.000</td>
+            <td>150</td>
+            <td class="active-state">Activa</td>
+            <td>
+              <button class="btn-view">
+                <ion-icon name="eye-regular"></ion-icon>
+              </button>
+              <button class="btn-edit">
+                <ion-icon name="edit"></ion-icon>
+              </button>
+              <button class="btn-delete">
+                <ion-icon name="trash"></ion-icon>
+              </button>
+            </td>
+          </tr>
+          <!-- Más filas -->
+        </tbody>
+      </table>
+    </section>
+
+
+
+    <div class="modal-overlay" id="modalAdd">
+      <section id="nutrition" class="modal-content">
+
+        <button type="button" id="cancelModal" class="close-modal-btn" aria-label="Cerrar">&times;</button>
+
+        <h2>Asignación</h2>
+
+        <!-- Configuración del plan -->
+        <div class="nutrition-meta">
+          <div class="contentInputs light md">
+            <label for="dietName">Nombre del plan</label>
+            <input type="text" id="dietName" placeholder="Ej. Déficit 2.100 kcal">
+          </div>
+          <div class="contentInputs light md">
+            <label for="dietStart">Inicio</label>
+            <input type="date" id="dietStart">
+          </div>
+          <div class="contentInputs contentSelect light md">
+            <label for="dietFocus">Enfoque</label>
+            <select id="dietFocus">
+              <option>Déficit</option>
+              <option>Mantenimiento</option>
+              <option>Superávit</option>
+            </select>
+          </div>
+          <div class="contentInputs light md">
+            <label for="targetKcal">Objetivo kcal/día</label>
+            <input type="number" id="targetKcal" placeholder="2100" min="0" step="10">
+          </div>
+          <div class="contentInputs light md">
+            <label for="targetProtein">Proteína (g)</label>
+            <input type="number" id="targetProtein" placeholder="160" min="0" step="1">
+          </div>
+          <div class="contentInputs light md">
+            <label for="targetCarb">Carbohidratos (g)</label>
+            <input type="number" id="targetCarb" placeholder="230" min="0" step="1">
+          </div>
+          <div class="contentInputs light md">
+            <label for="targetFat">Grasas (g)</label>
+            <input type="number" id="targetFat" placeholder="60" min="0" step="1">
+          </div>
+        </div>
+
+        <!-- Tabs de días -->
+        <div class="nutrition-days">
+          <button class="n-day-tab active" data-day="mon">Lun</button>
+          <button class="n-day-tab" data-day="tue">Mar</button>
+          <button class="n-day-tab" data-day="wed">Mié</button>
+          <button class="n-day-tab" data-day="thu">Jue</button>
+          <button class="n-day-tab" data-day="fri">Vie</button>
+          <button class="n-day-tab" data-day="sat">Sáb</button>
+          <button class="n-day-tab" data-day="sun">Dom</button>
+        </div>
+
+        <!-- Panel por día -->
+        <div class="n-day-panel active" data-day="mon">
+          <header class="meal-header">
+            <span>#</span>
+            <span>Comida</span>
+            <span>Hora</span>
+            <span>Alimentos</span>
+            <span>Kcal</span>
+            <span>Prot</span>
+            <span>Carb</span>
+            <span>Grasa</span>
+            <span>Notas</span>
+            <span></span>
+          </header>
+          <div class="meal-rows" id="meals-mon"></div>
+          <div class="meal-actions">
+            <button class="btn btn-secondary add-meal" data-target="meals-mon">Añadir comida</button>
+            <div class="day-kpi" id="kpi-mon">0 kcal | P 0 g / C 0 g / G 0 g</div>
+          </div>
+        </div>
+
+        <div class="n-day-panel" data-day="tue">
+          <header class="meal-header">
+            <span>#</span><span>Comida</span><span>Hora</span><span>Alimentos</span><span>Kcal</span><span>Prot</span><span>Carb</span><span>Grasa</span><span>Notas</span><span></span>
+          </header>
+          <div class="meal-rows" id="meals-tue"></div>
+          <div class="meal-actions">
+            <button class="btn btn-secondary add-meal" data-target="meals-tue">Añadir comida</button>
+            <div class="day-kpi" id="kpi-tue">0 kcal | P 0 g / C 0 g / G 0 g</div>
+          </div>
+        </div>
+
+        <div class="n-day-panel" data-day="wed">
+          <header class="meal-header">
+            <span>#</span><span>Comida</span><span>Hora</span><span>Alimentos</span><span>Kcal</span><span>Prot</span><span>Carb</span><span>Grasa</span><span>Notas</span><span></span>
+          </header>
+          <div class="meal-rows" id="meals-wed"></div>
+          <div class="meal-actions">
+            <button class="btn btn-secondary add-meal" data-target="meals-wed">Añadir comida</button>
+            <div class="day-kpi" id="kpi-wed">0 kcal | P 0 g / C 0 g / G 0 g</div>
+          </div>
+        </div>
+
+        <div class="n-day-panel" data-day="thu">
+          <header class="meal-header">
+            <span>#</span><span>Comida</span><span>Hora</span><span>Alimentos</span><span>Kcal</span><span>Prot</span><span>Carb</span><span>Grasa</span><span>Notas</span><span></span>
+          </header>
+          <div class="meal-rows" id="meals-thu"></div>
+          <div class="meal-actions">
+            <button class="btn btn-secondary add-meal" data-target="meals-thu">Añadir comida</button>
+            <div class="day-kpi" id="kpi-thu">0 kcal | P 0 g / C 0 g / G 0 g</div>
+          </div>
+        </div>
+
+        <div class="n-day-panel" data-day="fri">
+          <header class="meal-header">
+            <span>#</span><span>Comida</span><span>Hora</span><span>Alimentos</span><span>Kcal</span><span>Prot</span><span>Carb</span><span>Grasa</span><span>Notas</span><span></span>
+          </header>
+          <div class="meal-rows" id="meals-fri"></div>
+          <div class="meal-actions">
+            <button class="btn btn-secondary add-meal" data-target="meals-fri">Añadir comida</button>
+            <div class="day-kpi" id="kpi-fri">0 kcal | P 0 g / C 0 g / G 0 g</div>
+          </div>
+        </div>
+
+        <div class="n-day-panel" data-day="sat">
+          <header class="meal-header">
+            <span>#</span><span>Comida</span><span>Hora</span><span>Alimentos</span><span>Kcal</span><span>Prot</span><span>Carb</span><span>Grasa</span><span>Notas</span><span></span>
+          </header>
+          <div class="meal-rows" id="meals-sat"></div>
+          <div class="meal-actions">
+            <button class="btn btn-secondary add-meal" data-target="meals-sat">Añadir comida</button>
+            <div class="day-kpi" id="kpi-sat">0 kcal | P 0 g / C 0 g / G 0 g</div>
+          </div>
+        </div>
+
+        <div class="n-day-panel" data-day="sun">
+          <header class="meal-header">
+            <span>#</span><span>Comida</span><span>Hora</span><span>Alimentos</span><span>Kcal</span><span>Prot</span><span>Carb</span><span>Grasa</span><span>Notas</span><span></span>
+          </header>
+          <div class="meal-rows" id="meals-sun"></div>
+          <div class="meal-actions">
+            <button class="btn btn-secondary add-meal" data-target="meals-sun">Añadir comida</button>
+            <div class="day-kpi" id="kpi-sun">0 kcal | P 0 g / C 0 g / G 0 g</div>
+          </div>
+        </div>
+
+        <div class="nutrition-footer">
+          <button class="btn btn-secondary" id="clearNutrition">Limpiar plan</button>
+          <button class="btn btn-primary" id="saveNutrition">Guardar plan</button>
+        </div>
+
+        <!-- Template de fila de comida -->
+        <template id="meal-row-template">
+          <div class="meal-row">
+            <span class="order"></span>
+            <input class="meal-name" type="text" list="mealList" placeholder="Desayuno, Almuerzo, Snack...">
+            <input class="meal-time" type="time" placeholder="08:00">
+            <input class="meal-foods" type="text" list="foodList" placeholder="Ej. Avena 60 g, Huevo 2 u, Banana 1 u">
+            <input class="meal-kcal" type="number" min="0" step="1" placeholder="500" title="Calorías">
+            <input class="meal-prot" type="number" min="0" step="1" placeholder="30" title="Proteínas (g)">
+            <input class="meal-carb" type="number" min="0" step="1" placeholder="60" title="Carbohidratos (g)">
+            <input class="meal-fat" type="number" min="0" step="1" placeholder="15" title="Grasas (g)">
+            <input class="meal-notes" type="text" placeholder="Opciones, sustituciones, prep...">
+            <button class="icon-btn remove-meal" title="Eliminar">✕</button>
+          </div>
+        </template>
+
+        <!-- Listas rápidas -->
+        <datalist id="mealList">
+          <option value="Desayuno"></option>
+          <option value="Media mañana"></option>
+          <option value="Almuerzo"></option>
+          <option value="Merienda"></option>
+          <option value="Pre-entreno"></option>
+          <option value="Post-entreno"></option>
+          <option value="Cena"></option>
+        </datalist>
+
+        <datalist id="foodList">
+          <option value="Avena"></option>
+          <option value="Huevo"></option>
+          <option value="Claras de huevo"></option>
+          <option value="Pollo pechuga"></option>
+          <option value="Arroz"></option>
+          <option value="Papa cocida"></option>
+          <option value="Banana"></option>
+          <option value="Yogur griego"></option>
+          <option value="Atún en agua"></option>
+          <option value="Pan integral"></option>
+          <option value="Aceite de oliva"></option>
+          <option value="Frutos secos"></option>
+          <option value="Verduras mixtas"></option>
+        </datalist>
+
+      </section>
+      <script>
+        document.getElementById('cancelModal').addEventListener('click', function() {
+          document.getElementById('modalAdd').style.display = 'none';
+        });
+      </script>
+    </div>
+
+    <script src="/js/feeding.js" defer></script>
+    <script>
+      const modal = document.getElementById("modalAdd");
+      const btnOpen = document.getElementById("btn-add");
+      const btnCancel = document.getElementById("cancelModal");
+      const form = document.getElementById("formAddResolution");
+
+      btnOpen.addEventListener("click", () => {
+        modal.style.display = "flex";
+      });
+
+      btnCancel.addEventListener("click", () => {
+        modal.style.display = "none";
+        form.reset();
+      });
+
+      // Validación archivo
+      form.addEventListener("submit", (e) => {
+        const archivo = form.documento.files[0];
+
+        if (archivo) {
+          const maxSizeMB = 2;
+          const isPDF = archivo.type === "application/pdf";
+
+          if (!isPDF) {
+            alert("Solo se permiten archivos PDF.");
+            e.preventDefault();
+            return;
+          }
+
+          if (archivo.size > maxSizeMB * 1024 * 1024) {
+            alert("El archivo no debe superar los 2 MB.");
+            e.preventDefault();
+            return;
+          }
+        } else {
+          alert("Por favor adjunta el archivo de resolución.");
+          e.preventDefault();
+        }
+      });
+    </script>
+
+</main>

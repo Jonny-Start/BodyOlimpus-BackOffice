@@ -3,7 +3,6 @@ const { getToken } = require('../utils/cookie');
 const Message = require('../utils/Message');
 
 const _template = {
-
     get: async (req, res) => {
         try {
             const userAdmin = req.context;

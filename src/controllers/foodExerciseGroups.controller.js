@@ -2,21 +2,13 @@
 const { getToken } = require('../utils/cookie');
 const Message = require('../utils/Message');
 
-const assessment = {
-
+const foodExerciseGroups = {
     get: async (req, res) => {
         try {
             const userAdmin = req.context;
-            const { id } = req.params;
-
-            if (!id) {
-                Message.error.push('Error, para ingresar a la evaluación es necesario un ID de usuario.');
-                return res.redirect("/users");
-            }
-
 
             res.render('index', {
-                body: 'assessment',
+                body: 'foodExerciseGroups',
                 userAdmin,
                 errors: Message.error,
                 success: Message.success
@@ -28,14 +20,14 @@ const assessment = {
         }
     },
     post: async (req, res) => {
-        try {
-            return res.redirect('/assessment');
+        try {    
+          return res.redirect('/foodExerciseGroups');
         } catch (error) {
-            console.error(error);
-            return res.status(500).send('Error fetching data');
+          console.error(error);
+          return res.status(500).send('Error fetching data');
         }
-    }
+      }
 
 }
 
-module.exports = assessment
+module.exports = foodExerciseGroups

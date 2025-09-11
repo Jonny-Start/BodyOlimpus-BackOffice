@@ -7,6 +7,12 @@ const validateToken = require('../middleware/validateToken.js');
 /**
  * @separator
 */
+// const _template = require('../controllers/_template.controller.js');
+// router.route('/_template').get(validateAccess, _template.get).post(validateAccess, _template.post);
+
+/**
+ * @separator
+*/
 const loginController = require('../controllers/login.controller');
 router.get('/', validateAccess, loginController.get);
 router.route('/login').get(validateAccess, loginController.get).post(validateAccess, loginController.post);
@@ -49,6 +55,7 @@ const company = require('../controllers/company.controller.js');
 router.route('/company').get(validateAccess, company.get).post(validateAccess, company.post);
 router.route('/company/legal').get(validateAccess, company.get).post(validateAccess, company.post);
 router.route('/company/advanced').get(validateAccess, company.get).post(validateAccess, company.post);
+router.route('/company/plans').get(validateAccess, company.get).post(validateAccess, company.post);
 /**
  * @separator
 */
@@ -62,7 +69,33 @@ router.route('/users').get(validateAccess, users.get).post(validateAccess, users
 /**
  * @separator
 */
+const profile = require('../controllers/profile.controller.js');
+router.route('/profile').get(validateAccess, profile.get).post(validateAccess, profile.post);
+/**
+ * @separator
+*/
+const assignments = require('../controllers/assignments.controller.js');
+router.route('/assignments').get(validateAccess, assignments.get).post(validateAccess, assignments.post);
+/**
+ * @separator
+*/
+const exercises = require('../controllers/exercises.controller.js');
+router.route('/exercises').get(validateAccess, exercises.get).post(validateAccess, exercises.post);
+/**
+ * @separator
+*/
+const feeding = require('../controllers/feeding.controller.js');
+router.route('/feeding').get(validateAccess, feeding.get).post(validateAccess, feeding.post);
+/**
+ * @separator
+*/
+const foodExerciseGroups = require('../controllers/foodExerciseGroups.controller.js');
+router.route('/foodExerciseGroups').get(validateAccess, foodExerciseGroups.get).post(validateAccess, foodExerciseGroups.post);
+/**
+ * @separator
+*/
 const assessment = require('../controllers/assessment.controller.js');
+router.route('/assessment').get(validateAccess, assessment.get).post(validateAccess, assessment.post);
 router.route('/assessment/:id').get(validateAccess, assessment.get).post(validateAccess, assessment.post);
 /**
  * @separator
