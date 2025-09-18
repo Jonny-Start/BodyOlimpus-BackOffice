@@ -70,7 +70,7 @@ function initializeWithCoordinates(location) {
     if (google.maps.marker && google.maps.marker.AdvancedMarkerElement) {
         // Usar AdvancedMarkerElement si está disponible
         const pinElement = document.createElement('div');
-        pinElement.innerHTML = '<img src="/public/img/Logo_White.png" style="width: 40px; height: 40px;">';
+        pinElement.innerHTML = '<img src="/public/img/pinMaps.png" style="width: 40px; height: 50px;">';
 
         marker = new google.maps.marker.AdvancedMarkerElement({
             map: map,
@@ -90,8 +90,8 @@ function initializeWithCoordinates(location) {
             map: map,
             draggable: true,
             icon: {
-                url: "/public/img/Logo_White.png",
-                scaledSize: new google.maps.Size(40, 40),
+                url: "/public/img/pinMaps.png",
+                scaledSize: new google.maps.Size(40, 50),
             }
         });
 

@@ -1,35 +1,58 @@
 'use strict'
 const { getToken } = require('../utils/cookie');
 const Message = require('../utils/Message');
+const Http = require('../utils/http');
 
 const company = {
+  get: async (req, res) => {
+    try {
+      const userAdmin = req.context;
+      const environment = req.url.split('/')[2] || 'basic';
 
-    get: async (req, res) => {
-        try {
-            const userAdmin = req.context;
-            const environment = req.url.split('/')[2] || 'basic';
-            res.render('index', {
-                body: 'company',
-                environment,
-                userAdmin,
-                MAPS_API_KEY: process.env.MAPS_API_KEY,
-                errors: Message.error,
-                success: Message.success
-            });
-            return Message.clearMessages();
-        } catch (error) {
-            console.error(error);
-            res.status(500).send('Error fetching data');
-        }
-    },
-    post: async (req, res) => {
-        try {    
-          return res.redirect('/company');
-        } catch (error) {
-          console.error(error);
-          return res.status(500).send('Error fetching data');
-        }
+      let dataCompany = {};
+      const getCompany = await Http.get(`company`, getToken(req));
+      if ('error' in getCompany) {
+        Message.error.push('Error al obtener datos de la empresa');
+        console.error(getCompany.error);
+      } else {
+        dataCompany = getCompany.data;
       }
+
+      res.render('index', {
+        body: 'company',
+        dataCompany,
+        environment,
+        userAdmin,
+        MAPS_API_KEY: process.env.MAPS_API_KEY,
+        API_BASE_URL: process.env.URL_API,
+        errors: Message.error,
+        success: Message.success
+      });
+      return Message.clearMessages();
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Error fetching data');
+    }
+  },
+  post: async (req, res) => {
+    try {
+      const body = req.body;
+      if (req.files) {
+        body.files = req.files;
+      }
+      const updateCompany = await Http.put('company', body, getToken(req));
+
+      if ('error' in updateCompany) {
+        Message.error.push(updateCompany.error || 'Error al actualizar la empresa');
+      } else {
+        Message.success.push('Empresa actualizada correctamente');
+      }
+      return res.redirect('/company');
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send('Error fetching data');
+    }
+  }
 
 }
 

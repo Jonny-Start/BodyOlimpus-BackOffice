@@ -1,11 +1,12 @@
 <main class="internal_view">
   <%- include("./../hooks/content_title", {title: 'GYM', child: buttonsHTML}); -%>
   <form action="/company" method="post" enctype="multipart/form-data" id="formCompanyBasic">
+    <input type="hidden" name="company_id" id="company_id" value="<%= dataCompany.company_id %>">
     <section id="inf_basic_img">
       <div class="content_form">
         <div class="contentInputs light md">
           <label for="name">Nombre</label>
-          <input type="text" name="name" id="name" autocomplete="off" placeholder="Nombre Empresa/GYM" required>
+          <input type="text" name="name" id="name" autocomplete="off" placeholder="Nombre Empresa/GYM" value="<%= dataCompany.name %>" required>
           <ion-icon name="mail-outline"></ion-icon>
         </div>
         <div class="contentInputAndButton">
@@ -100,7 +101,7 @@
     <button class="close-btn" onclick="closePopupMap()">✖</button>
     <h3>Select Location</h3>
     <!-- Asegúrate de que este elemento no tenga atributos que puedan interferir -->
-    <input id="addressSearch" type="text" placeholder="Search address...">
+    <input id="addressSearch" type="text" placeholder="Buscar dirección...">
     <div id="map"></div>
     <button class="btn btn-primary" onclick="confirmLocation()" style="width: 10em;">Confirmar</button>
   </div>
