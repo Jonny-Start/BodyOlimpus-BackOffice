@@ -12,29 +12,33 @@
         <div class="contentInputAndButton">
           <div class="contentInputs light md">
             <label for="direccion">Ubicación</label>
-            <input type="text" name="address" id="address" autocomplete="on" placeholder="Dirección exacta" readonly onclick="openPopupMap()">
+            <input type="text" name="address" id="address" autocomplete="on" placeholder="Dirección exacta" readonly onclick="openPopupMap()" value="<%= dataCompany.address %>">
             <ion-icon name="location-outline"></ion-icon>
           </div>
           <button type="button" class="btn" onclick="openPopupMap()">
             <ion-icon name="location-outline" class="iconLocation"></ion-icon>
           </button>
         </div>
-        <input type="hidden" name="latitude" id="latitude">
-        <input type="hidden" name="longitude" id="longitude">
+        <input type="hidden" name="latitude" id="latitude" value="<%= dataCompany.latitude %>">
+        <input type="hidden" name="longitude" id="longitude" value="<%= dataCompany.longitude %>">
 
         <div class="contentInputs contentSelect light md">
           <label for="name">Estado</label>
           <select name="status" id="status">
-            <option value="1">Activo</option>
-            <option value="0">Inactivo</option>
+            <option value="1" <%= dataCompany.active == 1 ? 'selected' : '' %>>Activo</option>
+            <option value="0" <%= dataCompany.active == 0 ? 'selected' : '' %>>Inactivo</option>
           </select>
         </div>
       </div>
       <div class="file-upload">
-        <input type="hidden" name="currentImgFile" id="currentImgFile" value="">
-        <input type="file" id="fileInput_plan" name="imgFile" class="file-input" accept="image/png, image/jpeg" onchange="previewImage(event)" required>
-        <label for="fileInput_plan" id="contentLetter_plan" class="file-label">
-          <img src="/public/img/documento.svg" alt="">
+        <input type="hidden" name="currentImgFile" id="currentImgFile" value="<%= dataCompany.imgFile || '' %>">
+        <input type="file" id="fileInput_plan" name="imgFile" class="file-input" accept="image/png, image/jpeg" onchange="previewImage(event)" <%= dataCompany.img_path ? '' : 'required' %>>
+        <label for="fileInput_plan" id="contentLetter_plan" class="file-label" data-img-url="<%= dataCompany.img_path ? API_BASE_URL + "/" + dataCompany.img_path : '' %>">
+          <% if (dataCompany.imgUrl) { %>
+            <img src="<%= dataCompany.imgUrl %>" alt="Plano actual" style="display:none;">
+          <% } else { %>
+            <img src="/public/img/documento.svg" alt="">
+          <% } %>
           <p>
             Cargue o arrastre el plano de distribución desde
             <br />
@@ -50,34 +54,34 @@
     <div class="row">
       <div class="contentInputs light md">
         <label for="facebook">Facebook</label>
-        <input type="text" name="facebook" id="facebook" autocomplete="facebook" placeholder="www.sitio.com/cuenta" required>
+        <input type="text" name="facebook" id="facebook" autocomplete="facebook" placeholder="www.sitio.com/cuenta">
         <ion-icon name="mail-outline"></ion-icon>
       </div>
       <div class="contentInputs light md">
         <label for="youtube">Youtube</label>
-        <input type="text" name="youtube" id="youtube" autocomplete="youtube" placeholder="www.sitio.com/cuenta" required>
+        <input type="text" name="youtube" id="youtube" autocomplete="youtube" placeholder="www.sitio.com/cuenta">
         <ion-icon name="mail-outline"></ion-icon>
       </div>
       <div class="contentInputs light md">
         <label for="instagram">Instagram</label>
-        <input type="text" name="instagram" id="instagram" autocomplete="instagram" placeholder="www.sitio.com/cuenta" required>
+        <input type="text" name="instagram" id="instagram" autocomplete="instagram" placeholder="www.sitio.com/cuenta">
         <ion-icon name="mail-outline"></ion-icon>
       </div>
     </div>
     <div class="row">
       <div class="contentInputs light md">
         <label for="tiktok">TikTok</label>
-        <input type="text" name="tiktok" id="tiktok" autocomplete="tiktok" placeholder="www.sitio.com/cuenta" required>
+        <input type="text" name="tiktok" id="tiktok" autocomplete="tiktok" placeholder="www.sitio.com/cuenta">
         <ion-icon name="mail-outline"></ion-icon>
       </div>
       <div class="contentInputs light md">
         <label for="x">X</label>
-        <input type="text" name="x" id="x" autocomplete="x" placeholder="www.sitio.com/cuenta" required>
+        <input type="text" name="x" id="x" autocomplete="x" placeholder="www.sitio.com/cuenta">
         <ion-icon name="mail-outline"></ion-icon>
       </div>
       <div class="contentInputs light md">
         <label for="whatsapp">Whatsapp</label>
-        <input type="number" name="whatsapp" id="whatsapp" autocomplete="whatsapp" placeholder="319*******" required>
+        <input type="number" name="whatsapp" id="whatsapp" autocomplete="whatsapp" placeholder="319*******">
         <ion-icon name="mail-outline"></ion-icon>
       </div>
     </div>
@@ -107,9 +111,22 @@
   </div>
 </div>
 
+<script src="/public/js/company.js?v=1.0" type="text/javascript"></script>
 
-<script src="/public/js/company.js" type="text/javascript"></script>
-<script src="/public/js/configMaps.js"></script>
+<script>
+// Precargar imagen si existe
+window.addEventListener('DOMContentLoaded', function () {
+  const label = document.getElementById('contentLetter_plan');
+  const imgUrl = label.getAttribute('data-img-url');
+  if (imgUrl) {
+    label.style.backgroundImage = `url(${imgUrl})`;
+    label.style.backgroundSize = 'cover';
+    label.textContent = '';
+  }
+});
+</script>
+
+<script src="/public/js/configMaps.js?v=1.0"></script>
 
 <!-- API de Google Maps con las bibliotecas necesarias -->
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= MAPS_API_KEY %>&libraries=places&callback=initMap" async defer></script>

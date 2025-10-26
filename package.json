@@ -19,10 +19,10 @@
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "express-fileupload": "^1.5.2",
-    "pm2": "^6.0.11"
+    "pm2": "^6.0.11",
+    "sass": "^1.92.1"
   },
   "devDependencies": {
-    "node-sass": "^9.0.0",
     "nodemon": "^3.1.4"
   }
 }

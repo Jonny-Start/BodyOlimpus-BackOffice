@@ -34,6 +34,7 @@ const company = {
       res.status(500).send('Error fetching data');
     }
   },
+
   post: async (req, res) => {
     try {
       const body = req.body;
@@ -41,7 +42,6 @@ const company = {
         body.files = req.files;
       }
       const updateCompany = await Http.put('company', body, getToken(req));
-
       if ('error' in updateCompany) {
         Message.error.push(updateCompany.error || 'Error al actualizar la empresa');
       } else {
@@ -50,7 +50,8 @@ const company = {
       return res.redirect('/company');
     } catch (error) {
       console.error(error);
-      return res.status(500).send('Error fetching data');
+      Message.error.push(error.message || 'Error al actualizar la empresa');
+      return res.redirect('/company');
     }
   }
 
