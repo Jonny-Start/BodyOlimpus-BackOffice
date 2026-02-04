@@ -10,7 +10,7 @@ const company = {
       const environment = req.url.split('/')[2] || 'basic';
 
       let dataCompany = {};
-      const getCompany = await Http.get(`company`, getToken(req));
+      const getCompany = await Http.get(`company/allDataBasic`, getToken(req));
       if ('error' in getCompany) {
         Message.error.push('Error al obtener datos de la empresa');
         console.error(getCompany.error);
@@ -18,7 +18,17 @@ const company = {
         dataCompany = getCompany.data;
       }
 
+      //Todas las opciones de redes sociales
+      const getAllSocialNetworks = await Http.get('socialNetworks', getToken(req));
+      if ('error' in getAllSocialNetworks) {
+        Message.error.push('Error al obtener las redes sociales');
+        console.error(getAllSocialNetworks.error);
+      }
+
       res.render('index', {
+        options: {
+          socialNetworks: getAllSocialNetworks.data || []
+        },
         body: 'company',
         dataCompany,
         environment,
@@ -38,15 +48,26 @@ const company = {
   post: async (req, res) => {
     try {
       const body = req.body;
-      if (req.files) {
-        body.files = req.files;
+
+      // Actualizar datos basicos de la empresa y posibles redes sociales
+      if (body.name) {
+        if (req.files) {
+          body.files = req.files;
+        }
+        const updateCompany = await Http.put('company', body, getToken(req));
+        if ('error' in updateCompany) {
+          Message.error.push(updateCompany.error || 'Error al actualizar la empresa');
+        } else {
+          Message.success.push('Empresa actualizada correctamente');
+        }
+
+        // Actualizar redes sociales
+        // if(body.){
+
+        // }
+
       }
-      const updateCompany = await Http.put('company', body, getToken(req));
-      if ('error' in updateCompany) {
-        Message.error.push(updateCompany.error || 'Error al actualizar la empresa');
-      } else {
-        Message.success.push('Empresa actualizada correctamente');
-      }
+
       return res.redirect('/company');
     } catch (error) {
       console.error(error);

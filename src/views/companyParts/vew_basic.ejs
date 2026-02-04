@@ -51,40 +51,21 @@
         </label>
       </div>
     </section>
-    <div class="row">
-      <div class="contentInputs light md">
-        <label for="facebook">Facebook</label>
-        <input type="text" name="facebook" id="facebook" autocomplete="facebook" placeholder="www.sitio.com/cuenta">
-        <ion-icon name="mail-outline"></ion-icon>
-      </div>
-      <div class="contentInputs light md">
-        <label for="youtube">Youtube</label>
-        <input type="text" name="youtube" id="youtube" autocomplete="youtube" placeholder="www.sitio.com/cuenta">
-        <ion-icon name="mail-outline"></ion-icon>
-      </div>
-      <div class="contentInputs light md">
-        <label for="instagram">Instagram</label>
-        <input type="text" name="instagram" id="instagram" autocomplete="instagram" placeholder="www.sitio.com/cuenta">
-        <ion-icon name="mail-outline"></ion-icon>
-      </div>
-    </div>
-    <div class="row">
-      <div class="contentInputs light md">
-        <label for="tiktok">TikTok</label>
-        <input type="text" name="tiktok" id="tiktok" autocomplete="tiktok" placeholder="www.sitio.com/cuenta">
-        <ion-icon name="mail-outline"></ion-icon>
-      </div>
-      <div class="contentInputs light md">
-        <label for="x">X</label>
-        <input type="text" name="x" id="x" autocomplete="x" placeholder="www.sitio.com/cuenta">
-        <ion-icon name="mail-outline"></ion-icon>
-      </div>
-      <div class="contentInputs light md">
-        <label for="whatsapp">Whatsapp</label>
-        <input type="number" name="whatsapp" id="whatsapp" autocomplete="whatsapp" placeholder="319*******">
-        <ion-icon name="mail-outline"></ion-icon>
-      </div>
-    </div>
+    <% options.socialNetworks.forEach(function(network, index) { %>
+      <% if (index % 3 === 0) { %>
+        <div class="row">
+      <% } %>
+        <!-- Aquí va el contenido de cada opción de red social -->
+        <div class="contentInputs light md">
+          <label for="network_<%= network.social_networks_id %>"><%= network.name %></label>
+          <input type="text" name="network_<%= network.name %>_<%= network.social_networks_id %>" id="network_<%= network.social_networks_id %>" autocomplete="<%= network.name %>" placeholder="<%= network.place_holder %>" pattern="<%= network.validation_pattern %>">
+          <ion-icon name="mail-outline"></ion-icon>
+        </div>
+      <% if ((index + 1) % 3 === 0 || index === options.socialNetworks.length - 1) { %>
+        </div>
+      <% } %>
+    <% }); %>
+
     <button type="submit" class="btn btn-primary right">Guardar</button>
   </form>
   <%- include("./../hooks/company/paymentMethods"); -%>
