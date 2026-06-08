@@ -55,7 +55,7 @@ module.exports = API = {
         };
       }
 
-      if (error.response.data) {
+      if (error.response?.data) {
         return {
           success: false,
           error: error.response.data?.error?.code || error.response.data?.error?.details || 'UNKNOWN_ERROR',
