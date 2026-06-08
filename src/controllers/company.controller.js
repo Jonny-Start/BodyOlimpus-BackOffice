@@ -25,9 +25,29 @@ const company = {
         console.error(getAllSocialNetworks.error);
       }
 
+      // Catálogo completo de métodos de pago disponibles
+      const getAllPaymentMethods = await Http.get('paymentMethods', getToken(req));
+      if ('error' in getAllPaymentMethods) {
+        Message.error.push('Error al obtener los métodos de pago');
+        console.error(getAllPaymentMethods.error);
+      }
+
+      // Métodos de pago que ya tiene registrados la empresa
+      let companyPaymentMethods = [];
+      if (dataCompany.company_id) {
+        const getCompanyPaymentMethods = await Http.get(`paymentMethods/company/${dataCompany.company_id}`, getToken(req));
+        if ('error' in getCompanyPaymentMethods) {
+          console.error('Error al obtener métodos de pago de la empresa:', getCompanyPaymentMethods.error);
+        } else {
+          companyPaymentMethods = getCompanyPaymentMethods.data || [];
+        }
+      }
+
       res.render('index', {
         options: {
-          socialNetworks: getAllSocialNetworks.data || []
+          socialNetworks: getAllSocialNetworks.data || [],
+          paymentMethods: getAllPaymentMethods.data || [],
+          companyPaymentMethods,
         },
         body: 'company',
         dataCompany,
@@ -35,6 +55,7 @@ const company = {
         userAdmin,
         MAPS_API_KEY: process.env.MAPS_API_KEY,
         API_BASE_URL: process.env.URL_API,
+        token: getToken(req),
         errors: Message.error,
         success: Message.success
       });

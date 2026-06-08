@@ -1,49 +1,50 @@
+<%
+  /**
+   * Construye un Set con los payment_method_id que la empresa ya tiene registrados
+   * y un mapa de payment_method_id → company_payment_method_id para poder hacer PUT/DELETE
+   */
+  const companyMethodsMap = {};
+  (options.companyPaymentMethods || []).forEach(function(cpm) {
+    companyMethodsMap[cpm.payment_method_id] = cpm.company_payment_method_id;
+  });
+%>
+
 <h2>
-  Metodos de pago <ion-icon name="exclamation"></ion-icon>
+  Métodos de pago <ion-icon name="card-outline"></ion-icon>
 </h2>
 <section id="paymentMethods">
+  <article class="row wrap" id="paymentMethodsList">
 
-  <form action="#" method="post" enctype="multipart/form-data" id="formPaymentMethod">
-    <article class="row wrap">
+    <% if (options.paymentMethods && options.paymentMethods.length > 0) { %>
+      <% options.paymentMethods.forEach(function(method) { %>
+        <%
+          const isChecked    = companyMethodsMap.hasOwnProperty(method.payment_method_id);
+          const cpmId        = isChecked ? companyMethodsMap[method.payment_method_id] : '';
+          const checkboxId   = 'pm_' + method.payment_method_id;
+        %>
+        <div class="contentCheck md flex paymentMethod">
+          <input
+            type="checkbox"
+            id="<%= checkboxId %>"
+            name="payment_method_<%= method.payment_method_id %>"
+            value="<%= method.payment_method_id %>"
+            data-payment-method-id="<%= method.payment_method_id %>"
+            data-company-payment-method-id="<%= cpmId %>"
+            data-company-id="<%= dataCompany.company_id %>"
+            <%= isChecked ? 'checked' : '' %>
+            onchange="togglePaymentMethod(this)"
+          >
+          <label for="<%= checkboxId %>">
+            <% if (method.icon) { %>
+              <ion-icon name="<%= method.icon %>"></ion-icon>
+            <% } %>
+            <%= method.name %>
+          </label>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <p class="empty-state">No hay métodos de pago disponibles.</p>
+    <% } %>
 
-      <div class="contentCheck md flex paymentMethod">
-        <input type="checkbox" name="cash" id="cash" value="cash">
-        <label for="cash">Efectivo</label>
-      </div>
-      <div class="contentCheck md flex paymentMethod">
-        <input type="checkbox" name="Nequi" id="Nequi" value="Nequi">
-        <label for="Nequi">Nequi</label>
-      </div>
-      <div class="contentCheck md flex paymentMethod">
-        <input type="checkbox" name="Nequi" id="Nequi" value="Nequi">
-        <label for="Nequi">Nequi</label>
-      </div>
-      <div class="contentCheck md flex paymentMethod">
-        <input type="checkbox" name="Bank_Transfer" id="Bank_Transfer" value="Bank_Transfer">
-        <label for="Bank_Transfer">Transferencia <br /> Bancaria</label>
-      </div>
-      <div class="contentCheck md flex paymentMethod">
-        <input type="checkbox" name="Payment_link" id="Payment_link" value="Payment_link">
-        <label for="Payment_link">Link de pago</label>
-      </div>
-      <div class="contentCheck md flex paymentMethod">
-        <input type="checkbox" name="Mercado_pago" id="Mercado_pago" value="Mercado_pago">
-        <label for="Mercado_pago">Mercado pago</label>
-      </div>
-      <div class="contentCheck md flex paymentMethod">
-        <input type="checkbox" name="ADDI" id="ADDI" value="ADDI">
-        <label for="ADDI">ADDI</label>
-      </div>
-      <div class="contentCheck md flex paymentMethod">
-        <input type="checkbox" name="PSE" id="PSE" value="PSE">
-        <label for="PSE">PSE</label>
-      </div>
-      <div class="contentCheck md flex paymentMethod">
-        <input type="checkbox" name="WOMPI" id="WOMPI" value="WOMPI">
-        <label for="WOMPI">WOMPI</label>
-      </div>
-    </article>
-
-    <button class="btn btn-primary right" id="addPaymentMethod">Guardar</button>
-  </form>
+  </article>
 </section>
