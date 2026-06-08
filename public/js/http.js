@@ -2,8 +2,11 @@
 // Utilidad para hacer peticiones HTTP a una API REST
 const API_BASE_URL = window.API_BASE_URL || '/api';
 
-// Función para obtener el token de la cookie
+// Función para obtener el token de la cookie o del window object
 function getCookie(name) {
+	if (name === 'token' && window.USER_TOKEN) {
+		return window.USER_TOKEN;
+	}
 	const value = `; ${document.cookie}`;
 	const parts = value.split(`; ${name}=`);
 	if (parts.length === 2) return parts.pop().split(';').shift();

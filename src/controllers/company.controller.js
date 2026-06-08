@@ -55,6 +55,7 @@ const company = {
         userAdmin,
         MAPS_API_KEY: process.env.MAPS_API_KEY,
         API_BASE_URL: process.env.URL_API,
+        token: getToken(req),
         errors: Message.error,
         success: Message.success
       });
