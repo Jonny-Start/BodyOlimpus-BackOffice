@@ -41,3 +41,59 @@ fileLabel.addEventListener('drop', (e) => {
         }
     }); // Mostrar la vista previa de la imagen
 });
+
+/**
+ * Toggle de método de pago — Opción A: acción inmediata por checkbox
+ *
+ * Checked   → POST /api/paymentMethods/company  (crear asociación)
+ * Unchecked → DELETE /api/paymentMethods/company/:id (eliminar asociación)
+ *
+ * En caso de error revierte el estado visual del checkbox.
+ */
+async function togglePaymentMethod(checkbox) {
+    const paymentMethodId        = parseInt(checkbox.dataset.paymentMethodId);
+    const companyId              = parseInt(checkbox.dataset.companyId);
+    let   companyPaymentMethodId = checkbox.dataset.companyPaymentMethodId
+                                     ? parseInt(checkbox.dataset.companyPaymentMethodId)
+                                     : null;
+
+    // Deshabilitar mientras se procesa para evitar doble clic
+    checkbox.disabled = true;
+
+    try {
+        if (checkbox.checked) {
+            // ── CREAR asociación ──────────────────────────────────────────
+            const response = await httpRequest('/api/paymentMethods/company', {
+                method: 'POST',
+                body: { company_id: companyId, payment_method_id: paymentMethodId, available: true }
+            });
+
+            // Guardar el nuevo ID para futuras operaciones (toggle off / delete)
+            if (response && response.data && response.data.company_payment_method_id) {
+                checkbox.dataset.companyPaymentMethodId = response.data.company_payment_method_id;
+            }
+
+        } else {
+            // ── ELIMINAR asociación ───────────────────────────────────────
+            if (!companyPaymentMethodId) {
+                console.error('No se encontró el ID de la asociación para eliminar.');
+                checkbox.checked = true; // Revertir estado
+                return;
+            }
+            await httpRequest(`/api/paymentMethods/company/${companyPaymentMethodId}`, {
+                method: 'DELETE'
+            });
+
+            // Limpiar el ID guardado
+            checkbox.dataset.companyPaymentMethodId = '';
+        }
+
+    } catch (error) {
+        console.error('Error al actualizar método de pago:', error);
+        // Revertir el estado visual del checkbox
+        checkbox.checked = !checkbox.checked;
+    } finally {
+        checkbox.disabled = false;
+    }
+}
+
