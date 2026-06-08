@@ -39,18 +39,21 @@ async function httpRequest(endpoint, { method = 'GET', body = null, headers = {}
 }
 
 // Métodos específicos para GET, POST, PUT, DELETE
-export async function get(endpoint, headers = {}) {
+async function get(endpoint, headers = {}) {
 	return httpRequest(endpoint, { method: 'GET', headers });
 }
 
-export async function post(endpoint, body, headers = {}) {
+async function post(endpoint, body, headers = {}) {
 	return httpRequest(endpoint, { method: 'POST', body, headers });
 }
 
-export async function put(endpoint, body, headers = {}) {
+async function put(endpoint, body, headers = {}) {
 	return httpRequest(endpoint, { method: 'PUT', body, headers });
 }
 
-export async function del(endpoint, headers = {}) {
+async function del(endpoint, headers = {}) {
 	return httpRequest(endpoint, { method: 'DELETE', headers });
 }
+
+window.http = { get, post, put, del, httpRequest };
+
