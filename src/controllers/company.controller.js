@@ -34,12 +34,21 @@ const company = {
 
       // Métodos de pago que ya tiene registrados la empresa
       let companyPaymentMethods = [];
+      let companySchedules = [];
       if (dataCompany.company_id) {
         const getCompanyPaymentMethods = await Http.get(`paymentMethods/company/${dataCompany.company_id}`, getToken(req));
         if ('error' in getCompanyPaymentMethods) {
           console.error('Error al obtener métodos de pago de la empresa:', getCompanyPaymentMethods.error);
         } else {
           companyPaymentMethods = getCompanyPaymentMethods.data || [];
+        }
+
+        // Horarios de apertura de la empresa
+        const getCompanySchedules = await Http.get(`schedules/company/${dataCompany.company_id}`, getToken(req));
+        if ('error' in getCompanySchedules) {
+          console.error('Error al obtener horarios de la empresa:', getCompanySchedules.error);
+        } else {
+          companySchedules = getCompanySchedules.data || [];
         }
       }
 
@@ -48,6 +57,7 @@ const company = {
           socialNetworks: getAllSocialNetworks.data || [],
           paymentMethods: getAllPaymentMethods.data || [],
           companyPaymentMethods,
+          companySchedules,
         },
         body: 'company',
         dataCompany,

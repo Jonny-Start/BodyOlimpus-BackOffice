@@ -16,10 +16,25 @@
       padding: 20px;
     }
 
+    .preview-badge {
+      background: #fff3cd;
+      color: #856404;
+      border: 1px solid #ffc107;
+      border-radius: 4px;
+      padding: 6px 12px;
+      text-align: center;
+      font-size: 12px;
+      margin-bottom: 15px;
+    }
+
     @media print {
       body {
         margin: 0;
         padding: 0;
+      }
+
+      .preview-badge {
+        display: none;
       }
     }
   </style>
@@ -27,9 +42,25 @@
 
 <body>
   <div class="factura-container">
+    <% if (factura.isPreview) { %>
+      <div class="preview-badge">
+        📋 Vista previa de ejemplo — Los datos del cliente se completarán al generar una factura real.
+      </div>
+    <% } %>
+
     <div style="text-align: center; margin-bottom: 20px;">
-      <img src="<%= factura.logo || '/public/img/Logo_White.png' %>" style="max-height: 80px;" />
-      <h2>Factura de Inscripción</h2>
+      <% if (factura.logo) { %>
+        <img src="<%= factura.logo %>" style="max-height: 80px; margin-bottom: 10px;" />
+      <% } else { %>
+        <div style="height: 80px; display: flex; align-items: center; justify-content: center; background: #eee; margin-bottom: 10px;">
+          <span>Sin Logo</span>
+        </div>
+      <% } %>
+      <h2 style="margin: 0;"><%= factura.nombreGym || "Factura de Inscripción" %></h2>
+      <% if (factura.nitGym) { %>
+        <p style="margin: 5px 0 15px 0; color: #555;">NIT: <%= factura.nitGym %></p>
+      <% } %>
+      <h3 style="margin-top: 15px;">Factura de Inscripción</h3>
     </div>
 
     <p><strong>Cliente:</strong> <%= factura.cliente %></p>
@@ -44,7 +75,7 @@
 
     <hr>
 
-    <p><strong>Total:</strong> $<%= factura.total.toLocaleString() %></p>
+    <p><strong>Total:</strong> $<%= factura.total.toLocaleString('es-CO') %></p>
 
     <p style="text-align: center; margin-top: 30px;">¡Gracias por tu inscripción!</p>
   </div>

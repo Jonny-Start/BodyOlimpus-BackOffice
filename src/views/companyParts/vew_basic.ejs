@@ -9,6 +9,11 @@
           <input type="text" name="name" id="name" autocomplete="off" placeholder="Nombre Empresa/GYM" value="<%= dataCompany.name %>" required>
           <ion-icon name="mail-outline"></ion-icon>
         </div>
+        <div class="contentInputs light md">
+          <label for="nit">NIT</label>
+          <input type="text" name="nit" id="nit" autocomplete="off" placeholder="NIT (Ej. 900.123.456-7)" value="<%= dataCompany.nit || '' %>">
+          <ion-icon name="document-text-outline"></ion-icon>
+        </div>
         <div class="contentInputAndButton">
           <div class="contentInputs light md">
             <label for="direccion">Ubicación</label>
