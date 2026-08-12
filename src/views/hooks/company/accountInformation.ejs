@@ -1,45 +1,31 @@
 <h2>
-  Información de la cuenta
+  Información de la cuenta (Planes)
 </h2>
 <section id="accountInformation">
 
-  <form action="#" method="post" enctype="multipart/form-data" id="formPaymentMethod">
+  <form action="#" method="post" id="formSubscriptionPlans">
     <article class="row wrap">
 
       <section class="grid-3" style="width: -webkit-fill-available;">
         <div class="contentInputs light md">
-          <label for="price">Valor dia</label>
-          <input type="number" name="price" id="price" autocomplete="off" placeholder="$0.00" required>
-          <ion-icon name="attach-money"></ion-icon>
+          <label for="price_day">Valor día</label>
+          <input type="number" name="price_day" id="price_day" autocomplete="off" placeholder="$0.00" value="<%= dataCompany.price_day || '' %>" required min="0">
+          <ion-icon name="cash-outline"></ion-icon>
         </div>
         <div class="contentInputs light md">
-          <label for="price">Valor mes</label>
-          <input type="number" name="price" id="price" autocomplete="off" placeholder="$0.00" required>
-          <ion-icon name="attach-money"></ion-icon>
+          <label for="price_month">Valor mes</label>
+          <input type="number" name="price_month" id="price_month" autocomplete="off" placeholder="$0.00" value="<%= dataCompany.price_month || '' %>" required min="0">
+          <ion-icon name="cash-outline"></ion-icon>
         </div>
         <div class="contentInputs light md">
-          <label for="price"> Valor bimestre</label>
-          <input type="number" name="price" id="price" autocomplete="off" placeholder="$0.00" required>
-          <ion-icon name="attach-money"></ion-icon>
+          <label for="price_bimonthly">Valor bimestre</label>
+          <input type="number" name="price_bimonthly" id="price_bimonthly" autocomplete="off" placeholder="$0.00" value="<%= dataCompany.price_bimonthly || '' %>" required min="0">
+          <ion-icon name="cash-outline"></ion-icon>
         </div>
-      </section>
-
-      <section class="grid-3" style="width: -webkit-fill-available;">
-        <div class="contentInputs light md">
-          <label for="price">Valor dia</label>
-          <input type="number" name="price" id="price" autocomplete="off" placeholder="$0.00" required>
-          <ion-icon name="attach-money"></ion-icon>
-        </div>
-        <div class="contentInputs light md">
-          <label for="price">Valor mes</label>
-          <input type="number" name="price" id="price" autocomplete="off" placeholder="$0.00" required>
-          <ion-icon name="attach-money"></ion-icon>
-        </div>
-
       </section>
 
     </article>
 
-    <button class="btn btn-secondary right" id="addPaymentMethod">Actualizar Plan</button>
+    <button type="button" class="btn btn-secondary right" id="updatePlansBtn" onclick="updatePlans()">Actualizar Plan</button>
   </form>
 </section>
