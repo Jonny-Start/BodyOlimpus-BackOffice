@@ -52,7 +52,7 @@ const indexRouter = require('./routes/index.js');
 app.use('/', indexRouter);
 
 // Middleware para manejar rutas no encontradas
-app.use('*', (req, res) => {
+app.use('/{*splat}', (req, res) => {
   res.status(404).json({
     error: 'Ruta no encontrada',
     method: req.method,

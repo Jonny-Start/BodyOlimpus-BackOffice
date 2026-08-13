@@ -1,4 +1,3 @@
-const { name } = require('ejs');
 const Message = require('./Message');
 
 module.exports = cookie = {
